@@ -42,15 +42,3 @@ for i in $(find ./scripts/ -type f -name '*.sh'|sort); do
 done
 
 echo "*** setup.sh - End ***"
-
-
-# - com.bitwarden.desktop # Password Manager
-# - com.discordapp.Discord # Chat
-# - com.transmissionbt.Transmission # BitTorrent Client
-# - com.valvesoftware.Steam # Games
-# - net.displaycal.DisplayCAL # Display Calibration
-# - org.remmina.Remmina # Remote Desktop
-# - org.signal.Signal # Encrypted Chat
-# - org.mozilla.Thunderbird # Email
-# - org.gnome.GHex # Hex Editor
-# - org.gnome.meld # Graphical Diff tool
