@@ -10,13 +10,11 @@ SCRIPT_URL="https://raw.githubusercontent.com/daringer/smartcard-key-luks/main/s
 if [ "$OSNAME" = "Fedora Linux" ]; then
     echo "Ensuring installed dependencies"
     sudo dnf install opensc gnupg2 gnupg2-smime
-    exit 0
 fi
 
 if [ "$OSNAME" = "Ubuntu" ]; then
     echo "Ensuring installed dependencies"
     sudo apt install scdaemon opensc gnupg2
-    exit 0
 fi
 
 LUKS_DEVICE=$(cat /etc/crypttab | awk -F' ' '{print $1}')

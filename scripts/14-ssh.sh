@@ -21,7 +21,7 @@ sudo systemctl start openssh-server
 
 echo "Adding SSH private key"
 ![[ -d ${HOME}/.ssh ]] && mkdir ${HOME}/.ssh
-sops -d --extract '["id_rsa_priv_key"]' files/ssh/vault.sops.yml > ${HOME}/.ssh/id_rsa
+sops -d --extract '["id_rsa_priv_key"]' ${FILESDIR}/all/vault.sops.yml > ${HOME}/.ssh/id_rsa
 chmod 600 ${HOME}/.ssh/id_rsa
 
 echo "Copying pub key"
