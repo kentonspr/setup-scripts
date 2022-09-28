@@ -7,4 +7,4 @@ if [[ $SKIP_FLATPAK ]] || [[ $SKIP_REMMINA ]]; then
 fi
 
 echo "Install remmina flatpak"
-flatpak install flathub org.remmina.Remmina
+flatpak install -y --noninteractive org.remmina.Remmina

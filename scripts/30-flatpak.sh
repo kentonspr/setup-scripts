@@ -7,6 +7,11 @@ if [[ $SKIP_FLATPAK ]]; then
     exit 0
 fi
 
+if [ "$OSNAME" = "Fedora Linux" ]; then
+    echo "Removing flathub filter"
+    flatpak remote-modify flathub --no-filter
+fi
+
 if [ "$OSNAME" = "Ubuntu" ]; then
     echo "Install flatpak"
     sudp apt install flatpak gnome-software-plugin-flatpak

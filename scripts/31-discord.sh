@@ -7,4 +7,4 @@ if [[ $SKIP_FLATPAK ]] || [[ $SKIP_DISCORD ]]; then
 fi
 
 echo "Install discord flatpak"
-flatpak install flathub com.discordpp.Discord
+flatpak install -y --noninteractive com.discordapp.Discord

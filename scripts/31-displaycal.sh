@@ -7,4 +7,4 @@ if [[ $SKIP_FLATPAK ]] || [[ $SKIP_DCAL ]]; then
 fi
 
 echo "Install displaycal flatpak"
-flatpak install flathub net.displaycal.DisplayCAL
+flatpak install -y --noninteractive net.displaycal.DisplayCAL

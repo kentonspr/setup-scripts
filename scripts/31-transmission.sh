@@ -7,4 +7,4 @@ if [[ $SKIP_FLATPAK ]] || [[ $SKIP_TBT ]]; then
 fi
 
 echo "Install transmissionsbt flatpak"
-flatpak install flathub com.transmissionbt.Transmission
+flatpak install -y --noninteractive com.transmissionbt.Transmission

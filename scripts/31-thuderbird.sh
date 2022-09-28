@@ -7,4 +7,4 @@ if [[ $SKIP_FLATPAK ]] || [[ $SKIP_TBIRD ]]; then
 fi
 
 echo "Install thunderbird flatpak"
-flatpak install flathub org.mozilla.Thunderbird
+flatpak install -y --noninteractive org.mozilla.Thunderbird

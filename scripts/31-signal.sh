@@ -7,4 +7,4 @@ if [[ $SKIP_FLATPAK ]] || [[ $SKIP_SIGNAL ]]; then
 fi
 
 echo "Install signal flatpak"
-flatpak install flathub org.signal.Signal
+flatpak install -y --noninteractive org.signal.Signal

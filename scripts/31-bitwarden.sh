@@ -7,4 +7,4 @@ if [[ $SKIP_FLATPAK ]] || [[ $SKIP_BITWARDEN ]]; then
 fi
 
 echo "Install bitwarden flatpak"
-flatpak install flathub com.bitwarden.desktop
+flatpak install -y --noninteractive com.bitwarden.desktop

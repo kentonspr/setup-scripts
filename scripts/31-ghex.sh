@@ -7,4 +7,4 @@ if [[ $SKIP_FLATPAK ]] || [[ $SKIP_GHEX ]]; then
 fi
 
 echo "Install ghex flatpak"
-flatpak install flathub com.gnome.GHex
+flatpak install -y --noninteractive com.gnome.GHex

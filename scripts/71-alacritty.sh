@@ -31,9 +31,17 @@ echo "Install term info"
 tic -xe alacritty,alacritty-direct extra/alacritty.info
 
 echo "Symlink binary"
+if ![ -d ${HOME}/.local/bin ]; then
+    mkdir -p ${HOME}/.local/bin
+fi
+
 ln -s ${REPODIR}/target/release/alacritty ${HOME}/.local/bin/alacritty
 
 echo "Copy icon"
+if ![ -d ${HOME}/.local/share/icons ]; then
+    mkdir -p ${HOME}/.local/share/icons
+fi
+
 cp ${REPODIR}/extra/logo/alacritty-term.svg ${HOME}/.local/share/icons/Alacritty.svg
 
 echo "Installing desktop file"

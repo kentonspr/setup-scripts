@@ -7,4 +7,4 @@ if [[ $SKIP_FLATPAK ]] || [[ $SKIP_STEAM ]]; then
 fi
 
 echo "Install steam flatpak"
-flatpak install flathub com.valvesoftware.Steam
+flatpak install -y --noninteractive com.valvesoftware.Steam
