@@ -24,6 +24,7 @@ if [ "$OSNAME" = "Ubuntu" ]; then
 fi
 
 chmod +x ./scripts/*
+mkdir -p ${TMPDIR}
 
 for i in $(find ./scripts/ -type f -name '*.sh'|sort); do
     echo "$(date) - Executing ${i}"
