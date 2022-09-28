@@ -22,4 +22,4 @@ ln -s ${PYENV_REPO_DIR} ${HOME}/.pyenv
 
 echo "Symlinking config files"
 ln -s ${CODEDIR}/dotfiles/zsh/zprofile.d/70-pyenv.zsh ${ZPROFILEDIR}/70-pyenv.zsh
-ln -s ${CODEDIR}/dotfiles/zsh/zshrc.d/70-pyenv.zsh ${ZSHCRDIR}/70-pyenv.zsh
+ln -s ${CODEDIR}/dotfiles/zsh/zshrc.d/70-pyenv.zsh ${ZSHRCDIR}/70-pyenv.zsh
