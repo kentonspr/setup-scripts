@@ -34,4 +34,4 @@ ln -s ${CODEDIR}/public/all-the-icons $FONTSDIR/all-the-icons
 
 echo "Ensuring permissions for fonts are correct"
 chown -R ${USER}:${USER} ${FONTSDIR}
-chmod -R -0755 ${FONTSDIR}
+chmod -R 0755 ${FONTSDIR}
