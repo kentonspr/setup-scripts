@@ -2,11 +2,6 @@
 # This is the initial script to run on first boot.
 
 echo "*** setup.sh - Begin ***"
-# The first phase creates creates all pre-setup stuff. Add repos, append packages
-# to the apt list, etc...
-
-# List of base packages that will be installed. All other setup scripts will append
-# to this list if needed
 export TMPDIR="${HOME}/.tmp/setup"
 export FILESDIR="../../files"
 export CODEDIR="${HOME}/Code"
