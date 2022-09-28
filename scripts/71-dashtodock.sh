@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installs and configures the dash-to-dock extension
 
-if [ -n ${SKIP_DTD} ]; then
+if [[ $SKIP_DTD ]]; then
     echo "SKIP_DTD is set. Skipping 71-dashtodock.sh"
     exit 0
 fi

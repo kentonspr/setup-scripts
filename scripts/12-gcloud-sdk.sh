@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Script to install gcloud sdk
 
-if [ -n ${SKIP_GCLOUD} ]; then
+if [[ $SKIP_GCLOUD ]]; then
     echo "SKIP_GCLOUD is set. Skipping 12-gcloud-sdk.sh"
     exit 0
 fi
 
-if [ "$OSNAME" = "Fedora Linux"]; then
+if [ "$OSNAME" = "Fedora Linux" ]; then
     echo "Adding Repo to DNF"
     sudo cp ${FILESDIR}/gcloudsdk/google-cloud-sdk.repo /etc/yum.repos.d/
 
@@ -14,7 +14,7 @@ if [ "$OSNAME" = "Fedora Linux"]; then
     exit 0
 fi
 
-if [ "$OSNAME" = "Ubuntu"]; then
+if [ "$OSNAME" = "Ubuntu" ]; then
     GPG_KEY_URL="https://packages.cloud.google.com/apt/doc/apt-key.gpg"
     echo "Adding Repo to APT"
     sudo cp ${FILESDIR}/gcloudsdk/google-cloud-sdk.list /etc/apt/sources.list.d/

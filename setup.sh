@@ -13,11 +13,11 @@ export OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 echo "OS = $OSNAME"
 
 echo "Updating system before proceeding"
-if [ "$OSNAME" = "Fedora Linux"]; then
+if [ "$OSNAME" = "Fedora Linux" ]; then
     sudo dnf upgrade --refresh -y
 fi
 
-if [ "$OSNAME" = "Ubuntu"]; then
+if [ "$OSNAME" = "Ubuntu" ]; then
     sudo apt update
     sudo apt dist-upgrade -y
     sudo apt autoremove -y

@@ -2,7 +2,7 @@
 # Installs flatpak it not already installed
 # Shouldn't be needed on fedora
 
-if [ -n ${SKIP_FLATPAK} ]; then
+if [ -z ${SKIP_FLATPAK} ]; then
     echo "SKIP_FLATPAK is set. Skipping 30-flatpak.sh"
     exit 0
 fi

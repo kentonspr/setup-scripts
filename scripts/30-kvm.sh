@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Sets up KVM for virtualization
 
-if [ -n ${SKIP_KVM} ]; then
+if [ $SKIP_KVM ]; then
     echo "SKIP_KVM is set. Skipping 30-kvm.sh"
     exit 0
 fi

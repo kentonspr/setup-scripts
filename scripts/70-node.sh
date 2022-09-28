@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -n ${SKIP_NODE} ]; then
+if [[ $SKIP_NODE ]]; then
     echo "SKIP_NODE is set. Skipping 60-node.sh"
     exit 0
 fi

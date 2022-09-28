@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installs and configures pop-shell for gnome
 
-if [ -n ${SKIP_POPSHELL} ]; then
+if [[ $SKIP_POPSHELL ]]; then
     echo "SKIP_POPSHELL is set. Skipping 30-popshell.sh"
     exit 0
 fi

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installs rust and sets up env
 
-if [ -n ${SKIP_RUST} ]; then
+if [[ $SKIP_RUST ]]; then
     echo "SKIP_RUST is set. Skipping 60-rust.sh"
     exit 0
 fi

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installs neovim and sets it as default editor
 
-if [ -n ${SKIP_NVIM} ]; then
+if [[ $SKIP_NVIM ]]; then
     echo "SKIP_NVIM is set. Skipping 30-nvim.sh"
     exit 0
 fi

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Install sops to use with vaulted passwords
 
-if [ -n ${SKIP_SOPS} ]; then
+if [[ $SKIP_SOPS ]]; then
     echo "SKIP_SOPS is set. Skipping 11-sops.sh"
     exit 0
 fi
@@ -9,7 +9,7 @@ fi
 $SOPS_OUTPUT=$(curl -s https://api.github.com/repos/mozilla/sops/releases/latest) 
 mkdir $TMPDIR/sops && cd $TMPDIR/sops
 
-if [ "$OSNAME" = "Fedora Linux"]; then
+if [ "$OSNAME" = "Fedora Linux" ]; then
     echo "Ensuring installed dependencies"
     sudo dnf install curl jq
 
@@ -27,7 +27,7 @@ if [ "$OSNAME" = "Fedora Linux"]; then
     exit 0
 fi
 
-if [ "$OSNAME" = "Ubuntu"]; then
+if [ "$OSNAME" = "Ubuntu" ]; then
     echo "Ensuring installed dependencies"
     sudo apt install curl jq
 

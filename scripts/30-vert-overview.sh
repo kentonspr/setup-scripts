@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -n ${SKIP_VERT_OVERVIEW} ]; then
+if [[ $SKIP_VERT_OVERVIEW ]]; then
     echo "SKIP_VERT_OVERVIEW is set. Skipping 30-vert-overview.sh"
     exit 0
 fi

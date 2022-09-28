@@ -2,7 +2,7 @@
 # Installs and configures alacritty terminal
 # Requires rust cargo
 
-if [ -n ${SKIP_ALACRITTY} ]; then
+if [[ $SKIP_ALACRITTY ]]; then
     echo "SKIP_ALACRITTY is set. Skipping 71-alacritty.sh"
     exit 0
 fi

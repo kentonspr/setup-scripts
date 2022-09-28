@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 # Installs and configures git
 
-if [ -n ${SKIP_GIT} ]; then
+if [[ $SKIP_GIT ]]; then
     echo "SKIP_GIT is set. Skipping 15-git.sh"
     exit 0
 fi
 
-if [ "$OSNAME" = "Fedora Linux"]; then
+if [ "$OSNAME" = "Fedora Linux" ]; then
     echo "Ensuring git is installed"
     sudo dnf install git
 fi
 
-if [ "$OSNAME" = "Ubuntu"]; then
+if [ "$OSNAME" = "Ubuntu" ]; then
     echo "Ensuring git is installed"
     sudo apt install git
 fi

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Sets up SSH config for server and user
 
-if [ -n ${SKIP_SSH} ]; then
+if [[ $SKIP_SSH ]]; then
     echo "SKIP_SSH is set. Skipping 14-ssh.sh"
     exit 0
 fi

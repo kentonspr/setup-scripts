@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # Installs fonts
 
+if [[ $SKIP_FONTS ]]; then
+    echo "SKIP_FONTS is set. Skipping 30-fonts.sh"
+    exit 0
+fi
+
 FONTSDIR=${HOME}/.local/share/fonts
 echo "Cleaning ${FONTSDIR}"
 rm -rf ${FONTSDIR} && mkdir -p ${FONTSDIR}

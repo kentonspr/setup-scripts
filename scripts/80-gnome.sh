@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Sets gnome settings and extensions for user
 
-if [ -n ${SKIP_GNOME} ]; then
+if [[ $SKIP_GNOME ]]; then
     echo "SKIP_GNOME is set. Skipping 80-gnome.sh"
     exit 0
 fi

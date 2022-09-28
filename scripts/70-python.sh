@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installs pyenv & pyenv virtualenv
 
-if [ -n ${SKIP_PYTHON} ]; then
+if [[ $SKIP_PYTHON ]]; then
     echo "SKIP_PYTHON is set. Skipping 60-pyenv.sh"
     exit 0
 fi
