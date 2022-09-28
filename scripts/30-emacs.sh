@@ -3,7 +3,7 @@
 
 GCC_VERSION=12
 
-if [ -z ${SKIP_EMACS} ]; then
+if [[ $SKIP_EMACS ]]; then
     echo "SKIP_EMACS is set. Skipping 30-emacs.sh"
     exit 0
 fi

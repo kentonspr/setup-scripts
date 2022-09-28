@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installs chrome
 
-if [ -z ${SKIP_CHROME} ]; then
+if [[ $SKIP_CHROME ]]; then
     echo "SKIP_CHROME is set. Skipping 30-chrome.sh"
     exit 0
 fi

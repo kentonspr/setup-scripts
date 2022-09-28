@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installs and sets up zsh
 
-if [ -z ${SKIP_ZSH} ]; then
+if [[ $SKIP_ZSH ]]; then
     echo "SKIP_ZSH is set. Skipping 16-zsh.sh"
     exit 0
 fi
