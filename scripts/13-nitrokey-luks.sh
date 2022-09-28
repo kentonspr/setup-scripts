@@ -17,7 +17,7 @@ if [ "$OSNAME" = "Ubuntu" ]; then
     sudo apt install scdaemon opensc gnupg2
 fi
 
-LUKS_DEVICE=$(cat /etc/crypttab | awk -F' ' '{print $1}')
+LUKS_DEVICE=$(sudo cat /etc/crypttab | awk -F' ' '{print $1}')
 echo "Found LUKS device ${LUKS}_DEVICE"
 
 echo "Retrieving smartcard LUKS script"
