@@ -12,9 +12,6 @@ export OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 
 echo "OS = $OSNAME"
 
-UBUNTU_PACKAGES="git net-tools jq unzip zip nfs-utils ripgrep fzf tree whois"
-FEDORA_PACKAGES="git net-tools jq unzip zip nfs-utils ripgrep fzf tree whois"
-
 echo "Updating system and installing packages"
 if [ "$OSNAME" = "Fedora Linux"]; then
     sudo dnf upgrade --refresh -y
