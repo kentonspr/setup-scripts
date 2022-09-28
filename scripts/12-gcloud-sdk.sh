@@ -10,8 +10,7 @@ if [ "$OSNAME" = "Fedora Linux" ]; then
     echo "Adding Repo to DNF"
     sudo cp ${FILESDIR}/gcloudsdk/google-cloud-sdk.repo /etc/yum.repos.d/
 
-    sudo dnf install google-cloud-cli
-    exit 0
+    sudo dnf install -y google-cloud-cli
 fi
 
 if [ "$OSNAME" = "Ubuntu" ]; then
@@ -22,8 +21,7 @@ if [ "$OSNAME" = "Ubuntu" ]; then
     echo "Adding Repo Key"
     curl ${GPG_KEY_URL} | sudo tee /usr/share/keyrings/cloud.google.gpg
 
-    sudo apt install apt-transport-https ca-certificates gnupg google-cloud-cli
-    exit 0
+    sudo apt install -y apt-transport-https ca-certificates gnupg google-cloud-cli
 fi
 
 echo "Logging into gcloud SDK"
