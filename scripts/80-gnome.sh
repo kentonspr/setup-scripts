@@ -7,12 +7,12 @@ if [[ $SKIP_GNOME ]]; then
 fi
 
 echo "Configuring gnome settings"
-echo "Fonts -"
+# Fonts -
 gsettings set org.gnome.desktop.interface font-name 'Source Sans Pro Regular 11'
 gsettings set org.gnome.desktop.interface document-font-name 'Source Sans Pro Regular 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 11'
 
-echo "Desktop -"
+# Desktop - 
 # TODO - Wallpaper maybe?
 # gsettings set org.gnome.desktop.background picture-uri ''
 # Options below - none, wallpaper, centered, scaled, stretched, zoomed, spanned
