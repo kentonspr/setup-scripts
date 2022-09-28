@@ -1,0 +1,4 @@
+creation_rules:
+  - gcp_kms: 'projects/digaida-net/locations/global/keyRings/main/cryptoKeys/sops-kms'
+    pgp: >-
+      F37BACAFBA5F2DE9220330CDD696AAB9DB9A6D55
