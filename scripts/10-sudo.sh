@@ -7,10 +7,6 @@ if [[ $SKIP_SUDO ]]; then
 fi
 
 COMMAND="EDITOR=\"tee\" visudo -f /etc/sudoers.d/$USER"
-
-echo "Adding sudoers file for $USER"
-if [ $PHASE -eq 1]; then
-    echo "$USER ALL=NOPASSWD: ALL" | (sudo su -c "$COMMAND")
-fi
+echo "$USER ALL=NOPASSWD: ALL" | (sudo su -c "$COMMAND")
 
 exit 0
