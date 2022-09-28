@@ -27,8 +27,9 @@ chmod +x ./scripts/*
 
 for i in $(find ./scripts/ -type f -name '*.sh'|sort); do
     echo "$(date) - Executing ${i}"
+    FILENAME=$(basename -- "$i")
 
-    ${i} | tee -a ${TMPDIR}/${i}.log 2>&1
+    ${i} | tee -a ${TMPDIR}/${FILENAME}.log 2>&1
 
     echo "$(date) - END of ${i}\n"
 done
