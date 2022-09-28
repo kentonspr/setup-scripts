@@ -7,11 +7,11 @@ if [[ $SKIP_NVIM ]]; then
 fi
 
 if [ "$OSNAME" = "Fedora Linux" ]; then
-    sudo dnf install neovim python3-neovim
+    sudo dnf install -y neovim python3-neovim
 fi
 
 if [ "$OSNAME" = "Ubuntu" ]; then
-    sudo apt install neovim
+    sudo apt install -y neovim
 fi
 
 #TODO Alternatives update

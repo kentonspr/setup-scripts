@@ -11,11 +11,11 @@ REPODIR=${CODEDIR}/public/pop-shell
 
 echo "Installing pop-shell"
 if [ "$OSNAME" = "Fedora Linux" ]; then
-    sudo dnf install gnome-shell-extension-pop-shell
+    sudo dnf install -y gnome-shell-extension-pop-shell
 fi
 
 if [ "$OSNAME" = "Ubuntu" ]; then
-    sudo apt install git node-typescript make
+    sudo apt install -y git node-typescript make
     git clone --depth 1 -- ${REPO} ${REPODIR}
 
     cd ${REPODIR}

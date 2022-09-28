@@ -6,7 +6,7 @@ if [[ $SKIP_SOPS ]]; then
     exit 0
 fi
 
-$SOPS_OUTPUT=$(curl -s https://api.github.com/repos/mozilla/sops/releases/latest) 
+SOPS_OUTPUT=$(curl -s https://api.github.com/repos/mozilla/sops/releases/latest) 
 mkdir $TMPDIR/sops && cd $TMPDIR/sops
 
 if [ "$OSNAME" = "Fedora Linux" ]; then
