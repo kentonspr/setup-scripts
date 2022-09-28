@@ -7,4 +7,4 @@ if [[ $SKIP_FLATPAK ]] || [[ $SKIP_MELD ]]; then
 fi
 
 echo "Install meld flatpak"
-flatpak install -y --noninteractive com.gnome.meld
+flatpak install -y --noninteractive org.gnome.meld
