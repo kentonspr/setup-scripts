@@ -8,14 +8,15 @@ fi
 
 export SASS=dart
 REPO="https://github.com/micheleg/dash-to-dock.git"
-REPODIR="${HOME}/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
+REPODIR="${CODEDIR}public/dash-to-dock@micxgx.gmail.com"
 
 echo "Cloning repo"
 git clone --depth 1 -- ${REPO} ${REPODIR}
 
 echo "Building dash-to-dock"
 cd ${REPODIR}
-make -C dash-to-dock install
+make
+make install
 
 echo "Changing default settings"
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'LEFT'
