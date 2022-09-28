@@ -3,7 +3,7 @@
 
 echo "*** setup.sh - Begin ***"
 export TMPDIR="${HOME}/.tmp/setup"
-export FILESDIR="../../files"
+export FILESDIR="../files"
 export CODEDIR="${HOME}/Code"
 export ZDOTDIR="${HOME}/.zsh"
 export ZSHRCDIR="${ZDOTDIR}/zshrc.d"
