@@ -12,7 +12,7 @@ export OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 
 echo "OS = $OSNAME"
 
-echo "Updating system and installing packages"
+echo "Updating system before proceeding"
 if [ "$OSNAME" = "Fedora Linux"]; then
     sudo dnf upgrade --refresh -y
 fi
