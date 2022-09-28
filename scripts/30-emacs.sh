@@ -10,7 +10,9 @@ fi
 
 if [ "$OSNAME" = "Fedora Linux" ]; then
     echo "Installing Dependencies"
-    sudo dnf install -y mpfr-devel libmpc-devel gmp-devel libgccjit-devel autoconf texinfo libX11-devel jansson jansson-devel libXpm libXaw-devel \ libjpeg-turbo-devel libpng-devel giflib-devel libtiff-devel gnutls-devel ncurses-devel gtk3-devel webkit2gtk3-devel fi
+    sudo dnf install -y mpfr-devel libmpc-devel gmp-devel libgccjit-devel autoconf texinfo libX11-devel jansson jansson-devel libXpm libXaw-devel \
+         libjpeg-turbo-devel libpng-devel giflib-devel libtiff-devel gnutls-devel ncurses-devel gtk3-devel webkit2gtk3-devel
+fi
 
 if [ "$OSNAME" = "Ubuntu" ]; then
     # TODO - the GCC_VERSION is going to depend on the release I think
@@ -18,7 +20,6 @@ if [ "$OSNAME" = "Ubuntu" ]; then
     sudo apt install -y build-essential linux-headers-generic autoconf texinfo git libgtk-3-dev libtiff5-dev libgif-dev libjpeg-dev libpng-dev \
          libxpm-dev libncurses-dev libgnutls28-dev libgccjit0 libgccjit-${GCC_VERSION}-dev
 fi
-
 
 echo "Cloning Repos"
 git clone --depth 1 -- https://github.com/emacs-mirror/emacs.git ${CODEDIR}/public/emacs
