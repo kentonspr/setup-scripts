@@ -22,7 +22,7 @@ if [ "$OSNAME" = "Fedora Linux" ]; then
     curl -LO $URL
 
     echo "Installing $FILE"
-    sudo dnf install ./$FILE
+    sudo dnf install -y ./$FILE
 
     exit 0
 fi
