@@ -1,0 +1,7 @@
+Host github.com
+    User git
+    IdentityFile ~/.ssh/github
+
+Host *
+    User kenton
+    IdentityFile ~/.ssh/id_rsa

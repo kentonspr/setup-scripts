@@ -1,0 +1,35 @@
+github_token: ENC[AES256_GCM,data:O/QGZLwg8PeUN9RbkHF7a1wU17WaqRs9Ev2j+wD5937x4Ap5iofPQw==,iv:ZEuPXOQ+T78jDjEsQY1V6S/XXphit2dDwOyB1w1as44=,tag:LEYjP4UfcimkhlfjZqAOfg==,type:str]
+sops:
+    kms: []
+    gcp_kms:
+        - resource_id: projects/digaida-net/locations/global/keyRings/main/cryptoKeys/sops-kms
+          created_at: "2022-09-26T01:39:21Z"
+          enc: CiQAz16OzfH2FBAH+FRHI2mB1Y+nITVYxKQFEtsQWrMsZstrnocSSQCcL8595S/LFV6lpoNW5N+9W+iXp+4SI6IQUMq3M+hcltLIVFItqDzna/YOcI95ck/b8LPAH6ys6K0/24lQlLvFmbC4wk1N53k=
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-09-26T01:39:56Z"
+    mac: ENC[AES256_GCM,data:3ODcVF/LJbdNbUyKRdq/uJAFIT2IhFETYnWWzQ/d6/cLO0l+r/lymj9uxv8SfghEWplVUml/ZDDv2u0nF9jc5/CkXNgIY2nIcA6lYQu2h9VYZpPrLYF2cSrvVGgr2fCda8Xr259JIQfxugWSRnBIwnmIAyn2YuKYfTfMUvNP7hc=,iv:y0E8gSnyfligksi1nbCCfjTRUag+BMtZhY9ZCiujjBc=,tag:I3ZsO1N2RDf+lwmpWf+pZA==,type:str]
+    pgp:
+        - created_at: "2022-09-26T01:39:21Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA3PQnft2Jh/tARAAiNpPZNV4I8g5ZQYEBEE2MLMvlEoVt9UTHLVdycF5O1Zk
+            ZyGDUUq0OJbqkrp1HZoqihhf/a9unIv8R9vQ/y/hExfyphiLihNbXLVanlVEphKW
+            F+JV6Dy4QIJYKCCAjAdkOGZ5UHuEImrBfrY3qu90F/DSAgb2lQkQLrws7Yr07Es6
+            ySBSpKWrUIPEIrSwF+ia7afPc7bxGJJXKH3PecWP5Qzt67SdQR1msDtv7LPUxalg
+            k5iu73kx1HJfE24siIn5MuYjcRZhpuvDwoGkS/W8wlfwnPmDB8GvgUbxixRggGEP
+            /y9CvikZ4p48QzGLxRH8g+QaF8AIAUIrIVkzFL97R9Ww70hjrJZMoTCrN0/BpdTp
+            +IZueN2zoKMCcE8MpglEsOxF6ZoN+67VP1wfdE1rD+ACFQN/lOV98mA74R2C62qz
+            d5ZYL6FEpuFcZw8+3fRwWlB6CoEhMb1sO1xD/eH2CFPe8zq/2840/bm++Sbk9ffE
+            w04MPnXGjGlX4LAmXrFkG9ws0rMk9fRa/Qq5QXKdit90ulK6hLF4ieekjgnwzjwW
+            vPzegdehdOuHK23qJxns6tM13NqTti4uwHR4srJniAsKdTvOf7svXHdzAp/ocyfB
+            VN/r1kXyYpGxhEOT31HOXef/BtZG1f/H00isJ6FlN82Pla45TnAEHg8XhYqv167S
+            XAEArQPlXn08uNk93geKJl7B1kt+RzWIWV6TGWRi8Mxpy329pl9KbgI8VMekKM2j
+            DNeU8+tMMonEqTmnjNaoSFOhnelhjtAhXwqYpKBsX3bFqpXl869/YRuQUMG8
+            =PNl2
+            -----END PGP MESSAGE-----
+          fp: F37BACAFBA5F2DE9220330CDD696AAB9DB9A6D55
+    unencrypted_suffix: _unencrypted
+    version: 3.7.3

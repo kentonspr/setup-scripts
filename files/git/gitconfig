@@ -1,0 +1,6 @@
+[user]
+        name = Kenton Appanaitis
+        email = kappanaitis@gmail.com
+
+[includeIf "gitdir:~/Code/dscrn/"]
+        path = .gitconfig-dscrn
