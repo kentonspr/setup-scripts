@@ -15,8 +15,8 @@ echo "Linking ZSH Config"
 ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc.d/70-nvm.zsh ${ZSHRCDIR}/70-nvm.zsh
 ln -s ${CODEDIR}/personal/dotfiles/zsh/zprofile.d/70-nvm.zsh ${ZPROFILEDIR}/70-nvm.zsh
 
-. ${ZPROFILEDIR}/70-nvm.sh
-. ${ZSHRCDIR}/70-nvm.sh
+source ${ZPROFILEDIR}/70-nvm.sh
+source ${ZSHRCDIR}/70-nvm.sh
 
 echo "Installing latest node"
 nvm install node
