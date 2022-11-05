@@ -7,10 +7,10 @@ source env.config
 DEVICE=$1
 source env.${DEVICE}
 
-if [[ -z ${GROUPS+x} ]]; then
-    GROUPS="all"
+if [[ -z ${SETUP_GROUPS+x} ]]; then
+    SETUP_GROUPS="all"
 else
-    GROUPS+=( "all" )
+    SETUP_GROUPS+=( "all" )
 fi
 
 echo "OS = $OSNAME"
@@ -31,7 +31,7 @@ mkdir -p ${TMPDIR}
 declare -a SETUP_SCRIPTS=()
 
 # Get list of all scripts for device groups
-for g in ${GROUPS[@]}; do
+for g in ${SETUP_GROUPS[@]}; do
     chmod +x ./scripts/${g}/*
     for i in $(find ./scripts/${g}/ -type f -name '*.sh'|sort); do
         SETUP_SCRIPTS+=(${g})
