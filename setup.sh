@@ -2,37 +2,52 @@
 # This is the initial script to run on first boot.
 
 echo "*** setup.sh - Begin ***"
-export TMPDIR="${HOME}/.tmp/setup"
-export FILESDIR="${PWD}/files"
-export CODEDIR="${HOME}/Code"
-export ZDOTDIR="${HOME}/.zsh"
-export ZSHRCDIR="${ZDOTDIR}/zshrc.d"
-export ZPROFILEDIR="${ZDOTDIR}/zprofile.d"
-export OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
+
+source env.config
+DEVICE=$1
+source env.${DEVICE}
+
+if [[ -z ${GROUPS+x} ]]; then
+    GROUPS="all"
+else
+    GROUPS+=( "all" )
+fi
 
 echo "OS = $OSNAME"
 
 echo "Updating system before proceeding"
-if [ "$OSNAME" = "Fedora Linux" ]; then
+if [ $OSNAME = "Fedora Linux" ]; then
     sudo dnf upgrade --refresh -y
 fi
 
-if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
+if [ $OSNAME = "Ubuntu" ] || [ $OSNAME = "Pop!_OS" ]; then
     sudo apt update
     sudo apt dist-upgrade -y
     sudo apt autoremove -y
 fi
 
-chmod +x ./scripts/*
+echo "Run setup scripts"
 mkdir -p ${TMPDIR}
+declare -a SETUP_SCRIPTS=()
 
-for i in $(find ./scripts/ -type f -name '*.sh'|sort); do
-    echo -e "$(date) - Executing ${i}\n"
+# Get list of all scripts for device groups
+for g in ${GROUPS[@]}; do
+    chmod +x ./scripts/${g}/*
+    for i in $(find ./scripts/${g}/ -type f -name '*.sh'|sort); do
+        SETUP_SCRIPTS+=(${g})
+    done
+done
+
+IFS=$'\n' SORTED_SCRIPTS=($(sort <<<"${SETUP_SCRIPTS[*]}"))
+unset IFS
+
+for i in ${SORTED_SCRIPTS}; do
+    echo -e "START ${i} - $(date)\n"
     FILENAME=$(basename -- "$i")
 
-    ${i} | tee -a ${TMPDIR}/${FILENAME}.log 2>&1
+    ${i} >> ${TMPDIR}/${FILENAME}.log
 
-    echo -e "$(date) - END of ${i}\n"
+    echo -e "\nEND ${i} - $(date)"
     echo -e "\n##########\n"
 done
 
