@@ -39,7 +39,7 @@ for group in ${SETUP_GROUPS[@]}; do
 done
 
 echo -e "Setup scripts -\n${SETUP_SCRIPTS[@]}"
-IFS=$'\n' SORTED_SCRIPTS=($(sort <<<"${SETUP_SCRIPTS[*]}"))
+IFS=$'\n' SORTED_SCRIPTS=($(sort -t/ -k4 <<<"${SETUP_SCRIPTS[*]}"))
 unset IFS
 echo -e "\nSorted -\n${SORTED_SCRIPTS[@]}\n"
 
