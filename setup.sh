@@ -28,24 +28,26 @@ fi
 
 echo "Run setup scripts"
 mkdir -p ${TMPDIR}
-declare -a SETUP_SCRIPTS=()
+SETUP_SCRIPTS=()
 
 # Get list of all scripts for device groups
-for g in ${SETUP_GROUPS[@]}; do
-    chmod +x ./scripts/${g}/*
-    for i in $(find ./scripts/${g}/ -type f -name '*.sh'|sort); do
-        SETUP_SCRIPTS+=(${g})
+for group in ${SETUP_GROUPS[@]}; do
+    chmod +x ./scripts/${group}/*
+    for script in $(find ./scripts/${group}/ -type f -name '*.sh'|sort); do
+        SETUP_SCRIPTS+=("$script")
     done
 done
 
+echo -e "Setup scripts -\n${SETUP_SCRIPTS}"
 IFS=$'\n' SORTED_SCRIPTS=($(sort <<<"${SETUP_SCRIPTS[*]}"))
 unset IFS
+echo -e "\nSorted -\n${SORTED_SCRIPTS}\n"
 
-for i in ${SORTED_SCRIPTS}; do
+for i in ${SORTED_SCRIPTS[@]}; do
     echo -e "START ${i} - $(date)\n"
     FILENAME=$(basename -- "$i")
 
-    ${i} >> ${TMPDIR}/${FILENAME}.log
+    ${i} | tee -a ${TMPDIR}/${FILENAME}.log
 
     echo -e "\nEND ${i} - $(date)"
     echo -e "\n##########\n"
