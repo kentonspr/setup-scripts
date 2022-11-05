@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 # Installs and sets up zsh
 
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${CODEDIR="${HOME}/Code"}
+
+# Assign defaults if variables dont exist
+: ${ZDOTDIR:="${HOME}/.zsh"}
+: ${ZSHRCDIR:="${ZDOTDIR}/zshrc.d"}
+: ${ZPROFILEDIR:="${ZDOTDIR}/zprofile.d"}
+
 if [[ $SKIP_ZSH ]]; then
     echo "SKIP_ZSH is set. Skipping 16-zsh.sh"
     exit 0
@@ -11,7 +19,7 @@ if [ "OSNAME" = "Fedora Linux"];then
     sudo dnf install zsh
 fi
 
-if [ "OSNAME" = "Ubuntu"];then
+if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
     echo "Installing ZSH"
     sudo apt install zsh
 fi

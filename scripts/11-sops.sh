@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Install sops to use with vaulted passwords
 
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${TMPDIR="${HOME}/.tmp/setup"}
+
 if [[ $SKIP_SOPS ]]; then
     echo "SKIP_SOPS is set. Skipping 11-sops.sh"
     exit 0
@@ -27,7 +30,7 @@ if [ "$OSNAME" = "Fedora Linux" ]; then
     exit 0
 fi
 
-if [ "$OSNAME" = "Ubuntu" ]; then
+if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
     echo "Ensuring installed dependencies"
     sudo apt install curl jq
 

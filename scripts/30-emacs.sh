@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # Compiles and installs latest emacs and required plugins
 
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${CODEDIR="${HOME}/Code"}
+: ${FILESDIR="${PWD}/files"}
+
 GCC_VERSION=12
 
 if [[ $SKIP_EMACS ]]; then
@@ -14,7 +18,7 @@ if [ "$OSNAME" = "Fedora Linux" ]; then
          libjpeg-turbo-devel libpng-devel giflib-devel libtiff-devel gnutls-devel ncurses-devel gtk3-devel webkit2gtk3-devel
 fi
 
-if [ "$OSNAME" = "Ubuntu" ]; then
+if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
     # TODO - the GCC_VERSION is going to depend on the release I think
     echo "Installing Dependencies"
     sudo apt install -y build-essential linux-headers-generic autoconf texinfo git libgtk-3-dev libtiff5-dev libgif-dev libjpeg-dev libpng-dev \

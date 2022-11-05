@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Script to install gcloud sdk
 
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${FILESDIR="${PWD}/files"}
+
 if [[ $SKIP_GCLOUD ]]; then
     echo "SKIP_GCLOUD is set. Skipping 12-gcloud-sdk.sh"
     exit 0
@@ -13,7 +16,7 @@ if [ "$OSNAME" = "Fedora Linux" ]; then
     sudo dnf install -y google-cloud-cli
 fi
 
-if [ "$OSNAME" = "Ubuntu" ]; then
+if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
     GPG_KEY_URL="https://packages.cloud.google.com/apt/doc/apt-key.gpg"
     echo "Adding Repo to APT"
     sudo cp ${FILESDIR}/gcloudsdk/google-cloud-sdk.list /etc/apt/sources.list.d/

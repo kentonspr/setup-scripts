@@ -2,7 +2,9 @@
 # Installs flatpak it not already installed
 # Shouldn't be needed on fedora
 
-if [[ $SKIP_FLATPAK ]]; then
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+
+if [[ $SKIP_FLATPAK ]] || [ "OSNAME" = "Pop!_OS" ]; then
     echo "SKIP_FLATPAK is set. Skipping 30-flatpak.sh"
     exit 0
 fi

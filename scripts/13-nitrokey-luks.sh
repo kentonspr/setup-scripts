@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${TMPDIR="${HOME}/.tmp/setup"}
+: ${FILESDIR="${PWD}/files"}
+
 if [[ $SKIP_NITRO ]]; then
     echo "SKIP_NITRO is set. Skipping 13-nitrokey-luks.sh"
     exit 0
@@ -12,7 +16,7 @@ if [ "$OSNAME" = "Fedora Linux" ]; then
     sudo dnf install opensc gnupg2 gnupg2-smime
 fi
 
-if [ "$OSNAME" = "Ubuntu" ]; then
+if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
     echo "Ensuring installed dependencies"
     sudo apt install scdaemon opensc gnupg2
 fi

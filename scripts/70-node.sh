@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+: ${ZSHRCDIR:="${ZDOTDIR}/zshrc.d"}
+: ${ZPROFILEDIR:="${ZDOTDIR}/zprofile.d"}
+: ${CODEDIR="${HOME}/Code"}
+
 if [[ $SKIP_NODE ]]; then
     echo "SKIP_NODE is set. Skipping 60-node.sh"
     exit 0

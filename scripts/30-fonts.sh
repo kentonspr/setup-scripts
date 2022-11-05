@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # Installs fonts
 
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${CODEDIR="${HOME}/Code"}
+: ${TMPDIR="${HOME}/.tmp/setup"}
+
 if [[ $SKIP_FONTS ]]; then
     echo "SKIP_FONTS is set. Skipping 30-fonts.sh"
     exit 0
@@ -24,7 +28,7 @@ if [ "$OSNAME" = "Fedora" ]; then
     sudo dnf install powerline powerline-fonts
 fi
 
-if [ "$OSNAME" = "Ubuntu" ]; then
+if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
     sudo apt install fonts-powerline
 fi
 

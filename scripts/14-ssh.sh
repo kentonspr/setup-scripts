@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Sets up SSH config for server and user
 
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${FILESDIR="${PWD}/files"}
+
 if [[ $SKIP_SSH ]]; then
     echo "SKIP_SSH is set. Skipping 14-ssh.sh"
     exit 0
@@ -11,7 +14,7 @@ if [ "OSNAME" = "Fedora Linux" ]; then
     sudo dnf install openssh-server
 fi
 
-if [ "OSNAME" = "Ubuntu" ]; then
+if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
     sudo apt install openssh-server
 fi
 

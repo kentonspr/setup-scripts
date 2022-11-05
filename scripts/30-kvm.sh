@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Sets up KVM for virtualization
 
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+
 if [ $SKIP_KVM ]; then
     echo "SKIP_KVM is set. Skipping 30-kvm.sh"
     exit 0
@@ -11,7 +13,7 @@ if [ "$OSNAME" = "Fedora Linux" ]; then
     sudo dnf install -y bridge-utils libvirt virt-install qemu-kvm libvirt-devel virt-top libguestfs-tools guestfs-tools virt-manager
 fi
 
-if [ "$OSNAME" = "Ubuntu" ]; then
+if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
     echo "Installing KVM packages"
     sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 fi

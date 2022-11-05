@@ -17,7 +17,7 @@ if [ "$OSNAME" = "Fedora Linux" ]; then
     sudo dnf upgrade --refresh -y
 fi
 
-if [ "$OSNAME" = "Ubuntu" ]; then
+if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
     sudo apt update
     sudo apt dist-upgrade -y
     sudo apt autoremove -y

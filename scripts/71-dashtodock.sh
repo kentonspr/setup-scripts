@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # Installs and configures the dash-to-dock extension
 
-if [[ $SKIP_DTD ]]; then
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${CODEDIR="${HOME}/Code"}
+
+if [[ $SKIP_DTD ]] || [ "OSNAME" = "Pop!_OS" ]; then
     echo "SKIP_DTD is set. Skipping 71-dashtodock.sh"
     exit 0
 fi

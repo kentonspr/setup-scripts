@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-if [[ $SKIP_VERT_OVERVIEW ]]; then
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+
+if [[ $SKIP_VERT_OVERVIEW ]] || [ "OSNAME" = "Pop!_OS" ]; then
     echo "SKIP_VERT_OVERVIEW is set. Skipping 30-vert-overview.sh"
     exit 0
 fi

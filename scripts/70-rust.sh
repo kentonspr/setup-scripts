@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Installs rust and sets up env
 
+: ${CODEDIR="${HOME}/Code"}
+: ${ZPROFILEDIR:="${ZDOTDIR}/zprofile.d"}
+
 if [[ $SKIP_RUST ]]; then
     echo "SKIP_RUST is set. Skipping 60-rust.sh"
     exit 0

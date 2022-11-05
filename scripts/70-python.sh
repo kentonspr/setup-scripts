@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # Installs pyenv & pyenv virtualenv
 
+: ${ZSHRCDIR:="${ZDOTDIR}/zshrc.d"}
+: ${ZPROFILEDIR:="${ZDOTDIR}/zprofile.d"}
+: ${CODEDIR="${HOME}/Code"}
+
 if [[ $SKIP_PYTHON ]]; then
     echo "SKIP_PYTHON is set. Skipping 60-pyenv.sh"
     exit 0

@@ -2,6 +2,10 @@
 # Installs and configures alacritty terminal
 # Requires rust cargo
 
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${ZDOTDIR:="${HOME}/.zsh"}
+: ${CODEDIR="${HOME}/Code"}
+
 if [[ $SKIP_ALACRITTY ]]; then
     echo "SKIP_ALACRITTY is set. Skipping 71-alacritty.sh"
     exit 0
@@ -15,7 +19,7 @@ if [ "$OSNAME" = "Fedora Linux" ]; then
     sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++
 fi
 
-if [ "$OSNAME" = "Ubuntu" ]; then
+if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
     echo "Installing dependencies"
     sudo apt install -y gzip cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
 fi

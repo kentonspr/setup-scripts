@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # Installs and configures pop-shell for gnome
 
-if [[ $SKIP_POPSHELL ]]; then
+: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${CODEDIR="${HOME}/Code"}
+
+if [[ $SKIP_POPSHELL ]] || [ "OSNAME" = "Pop!_OS" ]; then
     echo "SKIP_POPSHELL is set. Skipping 30-popshell.sh"
     exit 0
 fi
