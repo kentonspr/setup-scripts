@@ -3,7 +3,7 @@
 
 : ${ZSHRCDIR:="${ZDOTDIR}/zshrc.d"}
 : ${ZPROFILEDIR:="${ZDOTDIR}/zprofile.d"}
-: ${CODEDIR="${HOME}/Code"}
+: ${CODEDIR:="${HOME}/Code"}
 
 if [[ $SKIP_PYTHON ]]; then
     echo "SKIP_PYTHON is set. Skipping 60-pyenv.sh"

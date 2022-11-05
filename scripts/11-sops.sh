@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Install sops to use with vaulted passwords
 
-: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
-: ${TMPDIR="${HOME}/.tmp/setup"}
+: ${OSNAME:=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${TMPDIR:="${HOME}/.tmp/setup"}
 
 if [[ $SKIP_SOPS ]]; then
     echo "SKIP_SOPS is set. Skipping 11-sops.sh"
@@ -12,9 +12,9 @@ fi
 SOPS_OUTPUT=$(curl -s https://api.github.com/repos/mozilla/sops/releases/latest) 
 mkdir $TMPDIR/sops && cd $TMPDIR/sops
 
-if [ "$OSNAME" = "Fedora Linux" ]; then
+if [[ "$OSNAME" = "Fedora Linux" ]]; then
     echo "Ensuring installed dependencies"
-    sudo dnf install curl jq
+    sudo dnf install -y curl jq
 
     FILE=$(jq -r '.assets[] | select(.name | endswith("86_64.rpm")) .name' \
               <<< $SOPS_OUTPUT)
@@ -30,9 +30,9 @@ if [ "$OSNAME" = "Fedora Linux" ]; then
     exit 0
 fi
 
-if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
+if [[ "$OSNAME" = "Ubuntu" ]] || [[ "$OSNAME" = "Pop!_OS" ]]; then
     echo "Ensuring installed dependencies"
-    sudo apt install curl jq
+    sudo apt install -y curl jq
 
     FILE=$(jq -r '.assets[] | select(.name | endswith("amd64.deb")) .name' \
               <<< $SOPS_OUTPUT)
@@ -43,7 +43,7 @@ if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
     curl -LO $URL
 
     echo "Installing $FILE"
-    sudo apt install ./$FILE
+    sudo apt install -y ./$FILE
 
     exit 0
 fi

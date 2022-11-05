@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 # Installs and configures the dash-to-dock extension
 
-: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
-: ${CODEDIR="${HOME}/Code"}
+: ${OSNAME:=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${CODEDIR:="${HOME}/Code"}
 
-if [[ $SKIP_DTD ]] || [ "OSNAME" = "Pop!_OS" ]; then
+if [[ $SKIP_DTD ]] || [[ "OSNAME" = "Pop!_OS" ]]; then
     echo "SKIP_DTD is set. Skipping 71-dashtodock.sh"
     exit 0
 fi
 
 export SASS=dart
 REPO="https://github.com/micheleg/dash-to-dock.git"
-REPODIR="${CODEDIR}public/dash-to-dock@micxgx.gmail.com"
+REPODIR="${CODEDIR}/public/dash-to-dock@micxgx.gmail.com"
 
 echo "Cloning repo"
 git clone --depth 1 -- ${REPO} ${REPODIR}

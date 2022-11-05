@@ -2,9 +2,9 @@
 # Installs and configures alacritty terminal
 # Requires rust cargo
 
-: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${OSNAME:=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
 : ${ZDOTDIR:="${HOME}/.zsh"}
-: ${CODEDIR="${HOME}/Code"}
+: ${CODEDIR:="${HOME}/Code"}
 
 if [[ $SKIP_ALACRITTY ]]; then
     echo "SKIP_ALACRITTY is set. Skipping 71-alacritty.sh"
@@ -14,12 +14,12 @@ fi
 REPO="https://github.com/alacritty/alacritty.git"
 REPODIR=${CODEDIR}/public/alacritty
 
-if [ "$OSNAME" = "Fedora Linux" ]; then
+if [[ "$OSNAME" = "Fedora Linux" ]]; then
     echo "Installing dependencies"
     sudo dnf install -y cmake freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel g++
 fi
 
-if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
+if [[ "$OSNAME" = "Ubuntu" ]] || [[ "$OSNAME" = "Pop!_OS" ]]; then
     echo "Installing dependencies"
     sudo apt install -y gzip cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
 fi
@@ -35,14 +35,14 @@ echo "Install term info"
 tic -xe alacritty,alacritty-direct extra/alacritty.info
 
 echo "Symlink binary"
-if ![ -d ${HOME}/.local/bin ]; then
+if [[ ! -d ${HOME}/.local/bin ]]; then
     mkdir -p ${HOME}/.local/bin
 fi
 
 ln -s ${REPODIR}/target/release/alacritty ${HOME}/.local/bin/alacritty
 
 echo "Copy icon"
-if ![ -d ${HOME}/.local/share/icons ]; then
+if [[ ! -d ${HOME}/.local/share/icons ]]; then
     mkdir -p ${HOME}/.local/share/icons
 fi
 

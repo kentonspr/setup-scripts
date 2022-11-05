@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installs rust and sets up env
 
-: ${CODEDIR="${HOME}/Code"}
+: ${CODEDIR:="${HOME}/Code"}
 : ${ZPROFILEDIR:="${ZDOTDIR}/zprofile.d"}
 
 if [[ $SKIP_RUST ]]; then

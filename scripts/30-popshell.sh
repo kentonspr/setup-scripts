@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Installs and configures pop-shell for gnome
 
-: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
-: ${CODEDIR="${HOME}/Code"}
+: ${OSNAME:=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${CODEDIR:="${HOME}/Code"}
 
-if [[ $SKIP_POPSHELL ]] || [ "OSNAME" = "Pop!_OS" ]; then
+if [[ $SKIP_POPSHELL ]] || [[ "OSNAME" = "Pop!_OS" ]]; then
     echo "SKIP_POPSHELL is set. Skipping 30-popshell.sh"
     exit 0
 fi
@@ -13,11 +13,11 @@ REPO="https://github.com/pop-os/shell.git"
 REPODIR=${CODEDIR}/public/pop-shell
 
 echo "Installing pop-shell"
-if [ "$OSNAME" = "Fedora Linux" ]; then
+if [[ "$OSNAME" = "Fedora Linux" ]]; then
     sudo dnf install -y gnome-shell-extension-pop-shell
 fi
 
-if [ "$OSNAME" = "Ubuntu" ]; then
+if [[ "$OSNAME" = "Ubuntu" ]]; then
     sudo apt install -y git node-typescript make
     git clone --depth 1 -- ${REPO} ${REPODIR}
 

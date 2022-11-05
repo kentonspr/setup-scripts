@@ -27,12 +27,13 @@ chmod +x ./scripts/*
 mkdir -p ${TMPDIR}
 
 for i in $(find ./scripts/ -type f -name '*.sh'|sort); do
-    echo "$(date) - Executing ${i}"
+    echo -e "$(date) - Executing ${i}\n"
     FILENAME=$(basename -- "$i")
 
     ${i} | tee -a ${TMPDIR}/${FILENAME}.log 2>&1
 
-    echo "$(date) - END of ${i}\n"
+    echo -e "$(date) - END of ${i}\n"
+    echo -e "\n##########\n"
 done
 
 echo "*** setup.sh - End ***"

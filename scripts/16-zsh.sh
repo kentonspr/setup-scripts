@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Installs and sets up zsh
 
-: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
-: ${CODEDIR="${HOME}/Code"}
+: ${OSNAME:=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${CODEDIR:="${HOME}/Code"}
 
 # Assign defaults if variables dont exist
 : ${ZDOTDIR:="${HOME}/.zsh"}
@@ -14,14 +14,14 @@ if [[ $SKIP_ZSH ]]; then
     exit 0
 fi
 
-if [ "OSNAME" = "Fedora Linux"];then
+if [[ "OSNAME" = "Fedora Linux" ]]; then
     echo "Installing ZSH"
     sudo dnf install zsh
 fi
 
-if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
+if [[ "$OSNAME" = "Ubuntu" ]] || [[ "$OSNAME" = "Pop!_OS" ]]; then
     echo "Installing ZSH"
-    sudo apt install zsh
+    sudo apt install -y zsh
 fi
 
 echo "Changing shell for ${USER}"

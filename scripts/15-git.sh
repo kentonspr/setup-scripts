@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 # Installs and configures git
 
-: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
-: ${CODEDIR="${HOME}/Code"}
-: ${FILESDIR="${PWD}/files"}
+: ${OSNAME:=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${CODEDIR:="${HOME}/Code"}
+: ${FILESDIR:="${PWD}/files"}
 
 if [[ $SKIP_GIT ]]; then
     echo "SKIP_GIT is set. Skipping 15-git.sh"
     exit 0
 fi
 
-if [ "$OSNAME" = "Fedora Linux" ]; then
+if [[ "$OSNAME" = "Fedora Linux" ]]; then
     echo "Ensuring git is installed"
     sudo dnf install git
 fi
 
-if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
+if [[ "$OSNAME" = "Ubuntu" ]] || [[ "$OSNAME" = "Pop!_OS" ]]; then
     echo "Ensuring git is installed"
     sudo apt install git
 fi

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Installs fonts
 
-: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
-: ${CODEDIR="${HOME}/Code"}
-: ${TMPDIR="${HOME}/.tmp/setup"}
+: ${OSNAME:=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${CODEDIR:="${HOME}/Code"}
+: ${TMPDIR:="${HOME}/.tmp/setup"}
 
 if [[ $SKIP_FONTS ]]; then
     echo "SKIP_FONTS is set. Skipping 30-fonts.sh"
@@ -24,11 +24,11 @@ curl -o source_sans_pro.zip --output-dir ${TMPDIR} https://fonts.google.com/down
 unzip ${TMPDIR}/source_sans_pro.zip -d ${FONTSDIR}/SourceSansPro
 
 echo "Installing Powerline Fonts"
-if [ "$OSNAME" = "Fedora" ]; then
+if [[ "$OSNAME" = "Fedora" ]]; then
     sudo dnf install powerline powerline-fonts
 fi
 
-if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
+if [[ "$OSNAME" = "Ubuntu" ]] || [[ "$OSNAME" = "Pop!_OS" ]]; then
     sudo apt install fonts-powerline
 fi
 

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Compiles and installs latest emacs and required plugins
 
-: ${OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
-: ${CODEDIR="${HOME}/Code"}
-: ${FILESDIR="${PWD}/files"}
+: ${OSNAME:=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")}
+: ${CODEDIR:="${HOME}/Code"}
+: ${FILESDIR:="${PWD}/files"}
 
 GCC_VERSION=12
 
@@ -12,13 +12,13 @@ if [[ $SKIP_EMACS ]]; then
     exit 0
 fi
 
-if [ "$OSNAME" = "Fedora Linux" ]; then
+if [[ "$OSNAME" = "Fedora Linux" ]]; then
     echo "Installing Dependencies"
     sudo dnf install -y mpfr-devel libmpc-devel gmp-devel libgccjit-devel autoconf texinfo libX11-devel jansson jansson-devel libXpm libXaw-devel \
          libjpeg-turbo-devel libpng-devel giflib-devel libtiff-devel gnutls-devel ncurses-devel gtk3-devel webkit2gtk3-devel
 fi
 
-if [ "$OSNAME" = "Ubuntu" ] || [ "$OSNAME" = "Pop!_OS" ]; then
+if [[ "$OSNAME" = "Ubuntu" ]] || [[ "$OSNAME" = "Pop!_OS" ]]; then
     # TODO - the GCC_VERSION is going to depend on the release I think
     echo "Installing Dependencies"
     sudo apt install -y build-essential linux-headers-generic autoconf texinfo git libgtk-3-dev libtiff5-dev libgif-dev libjpeg-dev libpng-dev \
@@ -51,7 +51,7 @@ make all
 make install
 
 echo "Adding gnome files"
-if ![ -d ${HOME}/.local/share/applications ]; then
+if [[ ! -d ${HOME}/.local/share/applications ]]; then
     mkdir -p ${HOME}/.local/share/applications
 fi
 
@@ -59,7 +59,7 @@ cp ${FILESDIR}/emacs/emacs.desktop ${HOME}/.local/share/applications
 
 update-desktop-database  ${HOME}/.local/share/applications
 
-if ![ -d ${HOME}/.local/share/icons/emacs ]; then
+if [[ ! -d ${HOME}/.local/share/icons/emacs ]]; then
     mkdir -p ${HOME}/.local/share/icons/emacs
 fi
 
