@@ -23,8 +23,7 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
     echo "Adding Repo Key"
     curl ${GPG_KEY_URL} | sudo tee /usr/share/keyrings/cloud.google.gpg
 
-    sudo apt update
-    sudo apt install -y apt-transport-https ca-certificates gnupg google-cloud-cli
+    sudo apt update && sudo apt install -y apt-transport-https ca-certificates gnupg google-cloud-cli
 fi
 
 echo "Logging into gcloud SDK"

@@ -9,7 +9,6 @@ if [[ ! $INC_SOPS ]]; then
 fi
 
 SOPS_OUTPUT=$(curl -s https://api.github.com/repos/mozilla/sops/releases/latest) 
-cd $TMPDIR
 
 if [[ $OSNAME = "Fedora Linux" ]]; then
     echo "Ensuring installed dependencies"
@@ -21,7 +20,7 @@ if [[ $OSNAME = "Fedora Linux" ]]; then
              <<< $SOPS_OUTPUT)
 
     echo "Downloading SOPS from $URL"
-    curl -LO $URL
+    curl -LO --output-dir $TMPDIR $URL
 
     echo "Installing $FILE"
     sudo dnf install -y ./$FILE
@@ -35,14 +34,14 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
 
     FILE=$(jq -r '.assets[] | select(.name | endswith("amd64.deb")) .name' \
               <<< $SOPS_OUTPUT)
-    URL=$(jq -r '.assets[] | select(.name | endswith("86_64.rpm")) .browser_download_url' \
+    URL=$(jq -r '.assets[] | select(.name | endswith("86_64.deb")) .browser_download_url' \
              <<< $SOPS_OUTPUT)
 
     echo "Downloading SOPS from $URL"
-    curl -LO $URL
+    curl -LO --output-dir ${TMPDIR} ${URL}
 
     echo "Installing $FILE"
-    sudo dpkg -i ./$FILE
+    sudo dpkg -i ${TMPDIR}/${FILE}
 
     exit 0
 fi
