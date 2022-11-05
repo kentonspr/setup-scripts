@@ -38,10 +38,10 @@ for group in ${SETUP_GROUPS[@]}; do
     done
 done
 
-echo -e "Setup scripts -\n${SETUP_SCRIPTS}"
+echo -e "Setup scripts -\n${SETUP_SCRIPTS[@]}"
 IFS=$'\n' SORTED_SCRIPTS=($(sort <<<"${SETUP_SCRIPTS[*]}"))
 unset IFS
-echo -e "\nSorted -\n${SORTED_SCRIPTS}\n"
+echo -e "\nSorted -\n${SORTED_SCRIPTS[@]}\n"
 
 for i in ${SORTED_SCRIPTS[@]}; do
     echo -e "START ${i} - $(date)\n"
