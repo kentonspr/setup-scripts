@@ -10,7 +10,7 @@ if [[ $SKIP_SOPS ]]; then
 fi
 
 SOPS_OUTPUT=$(curl -s https://api.github.com/repos/mozilla/sops/releases/latest) 
-mkdir $TMPDIR/sops && cd $TMPDIR/sops
+cd $TMPDIR
 
 if [[ "$OSNAME" = "Fedora Linux" ]]; then
     echo "Ensuring installed dependencies"

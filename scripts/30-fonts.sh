@@ -10,8 +10,6 @@ if [[ $SKIP_FONTS ]]; then
     exit 0
 fi
 
-mkdir -p ${TMPDIR}/fonts
-
 FONTSDIR=${HOME}/.local/share/fonts
 echo -e "\nCleaning ${FONTSDIR}"
 rm -rf ${FONTSDIR} && mkdir -p ${FONTSDIR}
@@ -22,8 +20,8 @@ ln -s ${CODEDIR}/public/JetBrainsMono $FONTSDIR/JetBrainsMono
 
 echo -e "\nInstalling Source Sans Pro Fonts"
 mkdir -p ${FONTSDIR}/SourceSansPro
-curl -o source_sans_pro.zip --output-dir ${TMPDIR}/fonts/ https://fonts.google.com/download?family=Source%20Sans%20Pro
-unzip ${TMPDIR}/fonts/source_sans_pro.zip -d ${FONTSDIR}/SourceSansPro
+curl -o source_sans_pro.zip --output-dir ${TMPDIR} https://fonts.google.com/download?family=Source%20Sans%20Pro
+unzip ${TMPDIR}/source_sans_pro.zip -d ${FONTSDIR}/SourceSansPro
 
 echo -e "\nInstalling Powerline Fonts"
 if [[ "$OSNAME" = "Fedora" ]]; then
