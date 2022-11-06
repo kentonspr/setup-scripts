@@ -1,4 +1,5 @@
 github_token: ENC[AES256_GCM,data:O/QGZLwg8PeUN9RbkHF7a1wU17WaqRs9Ev2j+wD5937x4Ap5iofPQw==,iv:ZEuPXOQ+T78jDjEsQY1V6S/XXphit2dDwOyB1w1as44=,tag:LEYjP4UfcimkhlfjZqAOfg==,type:str]
+nk_user_pin: ENC[AES256_GCM,data:LVF5+cetRgk=,iv:XbUHOzyXt+J0pCKeJZVcQaHwXThSrEi2mULOJbVk8Og=,tag:EED4+YAGZqRF1eGGAn4raw==,type:int]
 sops:
     kms: []
     gcp_kms:
@@ -8,8 +9,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-09-26T01:39:56Z"
-    mac: ENC[AES256_GCM,data:3ODcVF/LJbdNbUyKRdq/uJAFIT2IhFETYnWWzQ/d6/cLO0l+r/lymj9uxv8SfghEWplVUml/ZDDv2u0nF9jc5/CkXNgIY2nIcA6lYQu2h9VYZpPrLYF2cSrvVGgr2fCda8Xr259JIQfxugWSRnBIwnmIAyn2YuKYfTfMUvNP7hc=,iv:y0E8gSnyfligksi1nbCCfjTRUag+BMtZhY9ZCiujjBc=,tag:I3ZsO1N2RDf+lwmpWf+pZA==,type:str]
+    lastmodified: "2022-11-06T13:54:12Z"
+    mac: ENC[AES256_GCM,data:tPM9LixoqXdzQx4ZqgzBRrIz9dI9NNAEqQ1yjYPf7GdXf2Sf/r1QPwItfX+7cbtAhOzLfTvsD91gdUq2XRL0aezTIxJp2PBQPLXxUNTD0kaX7Qd4oRCLo8G5Glmy8neuGlTUTAvsLgc57K+Otjg+Cz7cDO8/pzBFZC/d9DN1k4U=,iv:Z73v8Ui32UqiJWMiblg2rRqDwwSWcWfHAbkZW70WKPk=,tag:WCi2i49xEozuhjYe+TrWag==,type:str]
     pgp:
         - created_at: "2022-09-26T01:39:21Z"
           enc: |
