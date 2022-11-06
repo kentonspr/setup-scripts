@@ -27,20 +27,12 @@ curl -O --output-dir ${TMPDIR} ${SCRIPT_URL}
 
 echo "Modifying script to accept programmatic PIN"
 
-SEARCH='GPG_TTY=$(tty)'
-ADD='eval $(gpg-agent --homedir ${GNUPGHOME} --daemon --allow-loopback-pinentry)'
-
-SEARCH_ESCAPED=$(sed 's/[^^]/[&]/g; s/\^/\\^/g' <<<"$SEARCH")
-ADD_ESCAPED=$(sed 's/[^^]/[&]/g; s/\^/\\^/g' <<<"$ADD")
-
-sed -n "/$SEARCH_ESCAPED/a $ADD_ESCAPED" ${TMPDIR}/smartcard-key-luks
+sed '/GPG_TTY=$(tty)/a eval $(gpg-agent --homedir ${GNUPGHOME} --daemon --allow-loopback-pinentry)' ${TMPDIR}/smartcard-key-luks
 
 SEARCH='  gpg2 --homedir ${GNUPGHOME} --trust-model=always -o ${CRYPTHOME}/cryptkey.gpg $GPG_RECIPIENT --yes --encrypt ${TMPKEY}'
 REPLACE='  gpg2 --homedir ${GNUPGHOME} --trust-model=always --pinentry-mode=loopback --passphrase=${GPG_PIN} -o ${CRYPTHOME}/cryptkey.gpg $GPG_RECIPIENT --yes --encrypt ${TMPKEY}'
 
-SEARCH_ESCAPED=$(sed 's/[^^]/[&]/g; s/\^/\\^/g' <<<"$SEARCH")
-REPLACE_ESCAPED=$(sed 's/[^^]/[&]/g; s/\^/\\^/g' <<<"$REPLACE")
-sed -n "s/$SEARCH_ESCAPED/$REPLACE_ESCAPED/g" ${TMPDIR}/smartcard-key-luks
+sed 's#  gpg2 --homedir ${GNUPGHOME} --trust-model=always -o ${CRYPTHOME}/cryptkey.gpg $GPG_RECIPIENT --yes --encrypt ${TMPKEY}#  gpg2 --homedir ${GNUPGHOME} --trust-model=always --pinentry-mode=loopback --passphrase=${GPG_PIN} -o ${CRYPTHOME}/cryptkey.gpg $GPG_RECIPIENT --yes --encrypt ${TMPKEY}#g'
 
 echo "Looking for modified lines"
 grep loopback ${TMPDIR}/smartcard-key-luks
