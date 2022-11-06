@@ -13,13 +13,24 @@ if [[ OSNAME = "Fedora Linux" ]]; then
     sudo dnf install -y openssh-server
 fi
 
+if [[ $OSNAME = "Ubuntu" ]]; then
+    sudo apt install -y openssh-server
+fi
+
 if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
     sudo apt install -y openssh-server
 fi
 
 echo "Enabling and starting openssh-server"
-sudo systemctl enable openssh-server
-sudo systemctl start openssh-server
+if [[ ! $OSNAME = "Pop!_OS" ]]; then
+    sudo systemctl enable openssh-server
+    sudo systemctl start openssh-server
+fi
+
+if [[ $OSNAME = "Pop!_OS" ]]; then
+    sudo systemctl enable sshd
+    sudo systemctl start sshd
+fi
 
 echo "Adding SSH private key"
 [[ ! -d ${HOME}/.ssh ]] && mkdir ${HOME}/.ssh
