@@ -62,3 +62,7 @@ if [[ ! -d ${HOME}/.local/share/icons/emacs ]]; then
 fi
 
 cp ${FILESDIR}/emacs/icons/* ${HOME}/.local/share/icons/emacs/
+
+echo "Linking config files"
+[[ ! -d ${HOEM}/emacs.d ]] && mkdir ${HOME}/emacs.d
+ln -s ${CODEDIR}/personal/dotfiles/emacs/* ${HOME}/emacs.d/
