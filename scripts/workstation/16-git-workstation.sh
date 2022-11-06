@@ -9,13 +9,13 @@ if [[ ! $INC_GIT ]]; then
 fi
 
 if [[ $OSNAME = "Fedora Linux" ]]; then
-    echo "Ensuring git is installed"
-    sudo dnf install git
+    echo "Ensuring git dependencies are installed"
+    sudo dnf install git expect
 fi
 
 if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
-    echo "Ensuring git is installed"
-    sudo apt install git
+    echo "Ensuring git dependencies are installed"
+    sudo apt install git expect
 fi
 
 echo "Copying git configuration"
@@ -23,16 +23,21 @@ cp ${FILESDIR}/git/gitconfig ${HOME}/.gitconfig
 cp ${FILESDIR}/git/gitconfig-dscrn ${HOME}/.gitconfig-dscrn
 
 echo "Setting up git private key"
-[[ -d ${HOME}/.ssh ]] && mkdir ${HOME}/.ssh
+[[ ! -d ${HOME}/.ssh ]] && mkdir ${HOME}/.ssh
 sops -d --extract '["github_rsa_priv_key"]' ${FILESDIR}/ssh/vault.sops.yml > ${HOME}/.ssh/github
 chmod 600 ${HOME}/.ssh/github
 
 echo "Copying pub key"
 cp ${FILESDIR}/ssh/github.pub ${HOME}/.ssh/
 
+echo "Adding github key to agent"
+export DISPLAY=dummy
+chmod +x ${FILESDIR}/ssh/ssh-add-sops.sh
+SSH_ASKPASS=${FILESDIR}/ssh/ssh-add-sops.sh ssh-add ${HOME}/ssh/github
+
 echo "Setting up Code directories"
-mkdir -p ${CODEDIR}/personal
-mkdir -p ${CODEDIR}/public
+[[ ! -d ${CODEDIR}/personal ]] && mkdir -p ${CODEDIR}/personal
+[[ ! -d ${CODEDIR}/public ]] && mkdir -p ${CODEDIR}/public
 
 echo "Downloading all personal github repos"
 cd ${CODEDIR}/personal
