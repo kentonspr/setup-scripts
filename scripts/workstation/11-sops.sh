@@ -34,7 +34,7 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
 
     FILE=$(jq -r '.assets[] | select(.name | endswith("amd64.deb")) .name' \
               <<< $SOPS_OUTPUT)
-    URL=$(jq -r '.assets[] | select(.name | endswith("86_64.deb")) .browser_download_url' \
+    URL=$(jq -r '.assets[] | select(.name | endswith("amd64.deb")) .browser_download_url' \
              <<< $SOPS_OUTPUT)
 
     echo "Downloading SOPS from $URL"
