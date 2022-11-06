@@ -13,10 +13,8 @@ git clone --depth 1 -- ${REPO} ${REPODIR}
 
 echo "Linking ZSH Config"
 ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc.d/70-nvm.zsh ${ZSHRCDIR}/70-nvm.zsh
-ln -s ${CODEDIR}/personal/dotfiles/zsh/zprofile.d/70-nvm.zsh ${ZPROFILEDIR}/70-nvm.zsh
 
-source ${ZPROFILEDIR}/70-nvm.sh
-source ${ZSHRCDIR}/70-nvm.sh
+source ${ZSHRCDIR}/70-nvm.zsh
 
 echo "Installing latest node"
 nvm install node

@@ -31,8 +31,6 @@ echo "Copying pub key"
 cp ${FILESDIR}/ssh/github.pub ${HOME}/.ssh/
 
 echo "Adding github key to agent"
-export DISPLAY=:0
-export SSH_ASKPASS=${FILESDIR}/ssh/ssh-add-sops.sh
 chmod +x ${FILESDIR}/ssh/ssh-add-sops.sh
 ssh-add ${HOME}/.ssh/github
 
