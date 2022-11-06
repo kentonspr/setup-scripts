@@ -20,5 +20,5 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
     echo "Downloading and installing chrome"
     curl -O --output-dir ${TMPDIR} https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
-    sudo dpkg -i ${TMPDIR}/google-chrome-stable_current_x86_64.rpm
+    sudo dpkg -i ${TMPDIR}/google-chrome-stable_current_amd64.deb
 fi

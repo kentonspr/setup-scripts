@@ -34,19 +34,19 @@ cd ${CODEDIR}/public/emacs
 ./configure --build x86_64-linux-gnu --with-mailutils --with-file-notification=inotify --with-x=yes --with-native-compilation
 make clean
 make all
-make install
+sudo make install
 
 echo "Compiling and installing Async"
 cd ${CODEDIR}/public/emacs-async
 make clean
 make all
-make install
+sudo make install
 
 echo "Compiling and installing Helm"
 cd ${CODEDIR}/public/emacs-async
 make clean
 make all
-make install
+sudo make install
 
 echo "Adding gnome files"
 if [[ ! -d ${HOME}/.local/share/applications ]]; then

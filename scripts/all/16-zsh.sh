@@ -19,7 +19,7 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
 fi
 
 echo "Changing shell for ${USER}"
-chsh -s ${which zsh}
+chsh -s $(which zsh)
 
 echo "Creating symlinks to zsh configs from dotfiles repo"
 mkdir -p ${ZDOTDIR}/zshrc.d
@@ -27,8 +27,8 @@ mkdir -p ${ZDOTDIR}/zprofile.d
 mkdir -p ${ZDOTDIR}/plugins
 mkdir -p ${ZDOTDIR}/functions
 
-ln -s ${CODEDIR}/dotfiles/zsh/zshrc ${$ZDOTDIR}/.zshrc
-ln -s ${CODEDIR}/dotfiles/zsh/zprofile ${$ZDOTDIR}/.zprofile
+ln -s ${CODEDIR}/dotfiles/zsh/zshrc ${ZDOTDIR}/.zshrc
+ln -s ${CODEDIR}/dotfiles/zsh/zprofile ${ZDOTDIR}/.zprofile
 
 echo "Setup Plugins"
 git clone --depth 1 -- https://github.com/trapd00r/LS_COLORS.git ${ZDOTDIR}/plugins/LS_COLORS

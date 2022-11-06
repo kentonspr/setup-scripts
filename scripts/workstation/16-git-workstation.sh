@@ -24,7 +24,7 @@ cp ${FILESDIR}/git/gitconfig-dscrn ${HOME}/.gitconfig-dscrn
 
 echo "Setting up git private key"
 [[ -d ${HOME}/.ssh ]] && mkdir ${HOME}/.ssh
-sops -d --extract '["github_rsa_priv_key"]' files/ssh/vault.sops.yml > ${HOME}/.ssh/github
+sops -d --extract '["github_rsa_priv_key"]' ${FILESDIR}/ssh/vault.sops.yml > ${HOME}/.ssh/github
 chmod 600 ${HOME}/.ssh/github
 
 echo "Copying pub key"
