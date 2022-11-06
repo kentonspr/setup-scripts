@@ -27,15 +27,12 @@ curl -O --output-dir ${TMPDIR} ${SCRIPT_URL}
 
 echo "Modifying script to accept programmatic PIN"
 
-sed '/GPG_TTY=$(tty)/a eval $(gpg-agent --homedir ${GNUPGHOME} --daemon --allow-loopback-pinentry)' ${TMPDIR}/smartcard-key-luks
+sed '/for pb in $PUBKEYS/i eval $(gpg-agent --homedir ${GNUPGHOME} --daemon --allow-loopback-pinentry)' ${TMPDIR}/smartcard-key-luks
 
 SEARCH='  gpg2 --homedir ${GNUPGHOME} --trust-model=always -o ${CRYPTHOME}/cryptkey.gpg $GPG_RECIPIENT --yes --encrypt ${TMPKEY}'
 REPLACE='  gpg2 --homedir ${GNUPGHOME} --trust-model=always --pinentry-mode=loopback --passphrase=${GPG_PIN} -o ${CRYPTHOME}/cryptkey.gpg $GPG_RECIPIENT --yes --encrypt ${TMPKEY}'
 
 sed 's#  gpg2 --homedir ${GNUPGHOME} --trust-model=always -o ${CRYPTHOME}/cryptkey.gpg $GPG_RECIPIENT --yes --encrypt ${TMPKEY}#  gpg2 --homedir ${GNUPGHOME} --trust-model=always --pinentry-mode=loopback --passphrase=${GPG_PIN} -o ${CRYPTHOME}/cryptkey.gpg $GPG_RECIPIENT --yes --encrypt ${TMPKEY}#g'
-
-echo "Looking for modified lines"
-grep loopback ${TMPDIR}/smartcard-key-luks
 
 chmod +x ${TMPDIR}/smartcard-key-luks
 sudo -E ${TMPDIR}/smartcard-key-luks ${LUKS} ${FILESDIR}/pgp_keys/${PGP_PUBKEY_FILE}
