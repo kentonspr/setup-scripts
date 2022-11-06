@@ -23,14 +23,19 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
     echo "Adding Repo Key"
     curl ${GPG_KEY_URL} | sudo tee /usr/share/keyrings/cloud.google.gpg
 
+
     # Complains every time about lock files. This is a wait for relase -
+    COUNT=0
     while sudo fuser /var/{lib/{dpkg,apt/lists},cache/apt/archives}/lock >/dev/null 2>&1; do
+        echo "Waiting for lock - ${COUNT}"
         sleep 1
     done
 
     sudo apt update
 
+    COUNT=0
     while sudo fuser /var/{lib/{dpkg,apt/lists},cache/apt/archives}/lock >/dev/null 2>&1; do
+        echo "Waiting for lock - ${COUNT}"
         sleep 1
     done
 
