@@ -16,7 +16,7 @@ fi
 
 if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
     echo "Ensuring installed dependencies"
-    sudo apt install scdaemon opensc gnupg2
+    sudo apt install -y scdaemon opensc gnupg2
 fi
 
 LUKS=$(sudo cat /etc/crypttab | grep luks | awk -F' ' '{print $1}')

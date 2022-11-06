@@ -44,5 +44,6 @@ fi
 
 echo "Logging into gcloud SDK"
 gcloud init
+gcloud auth application-default login
 
 exit 0
