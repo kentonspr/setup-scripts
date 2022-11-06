@@ -22,15 +22,8 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
 fi
 
 echo "Enabling and starting openssh-server"
-if [[ ! $OSNAME = "Pop!_OS" ]]; then
-    sudo systemctl enable openssh-server
-    sudo systemctl start openssh-server
-fi
-
-if [[ $OSNAME = "Pop!_OS" ]]; then
-    sudo systemctl enable sshd
-    sudo systemctl start sshd
-fi
+sudo systemctl enable sshd
+sudo systemctl start sshd
 
 echo "Adding SSH private key"
 [[ ! -d ${HOME}/.ssh ]] && mkdir ${HOME}/.ssh

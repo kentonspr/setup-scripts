@@ -10,12 +10,12 @@ fi
 
 if [[ $OSNAME = "Fedora Linux" ]]; then
     echo "Ensuring git dependencies are installed"
-    sudo dnf install git expect
+    sudo dnf install git
 fi
 
 if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
     echo "Ensuring git dependencies are installed"
-    sudo apt install git expect
+    sudo apt install git
 fi
 
 echo "Copying git configuration"
@@ -31,9 +31,10 @@ echo "Copying pub key"
 cp ${FILESDIR}/ssh/github.pub ${HOME}/.ssh/
 
 echo "Adding github key to agent"
-export DISPLAY=dummy
+export DISPLAY=:0
+export SSH_ASKPASS=${FILESDIR}/ssh/ssh-add-sops.sh
 chmod +x ${FILESDIR}/ssh/ssh-add-sops.sh
-SSH_ASKPASS=${FILESDIR}/ssh/ssh-add-sops.sh ssh-add ${HOME}/.ssh/github
+ssh-add ${HOME}/.ssh/github
 
 echo "Setting up Code directories"
 [[ ! -d ${CODEDIR}/personal ]] && mkdir -p ${CODEDIR}/personal
