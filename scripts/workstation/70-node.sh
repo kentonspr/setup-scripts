@@ -6,7 +6,7 @@ if [[ ! $INC_NODE ]]; then
 fi
 
 REPO="https://github.com/nvm-sh/nvm.git"
-REPODIR="${CODEDIR}/public/nvm"
+REPODIR=${HOME}/.nvm
 
 echo "Cloning NVM"
 git clone --depth 1 -- ${REPO} ${REPODIR}

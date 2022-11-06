@@ -27,8 +27,10 @@ mkdir -p ${ZDOTDIR}/zprofile.d
 mkdir -p ${ZDOTDIR}/plugins
 mkdir -p ${ZDOTDIR}/functions
 
-ln -s ${CODEDIR}/dotfiles/zsh/zshrc ${ZDOTDIR}/.zshrc
-ln -s ${CODEDIR}/dotfiles/zsh/zprofile ${ZDOTDIR}/.zprofile
+ln -s ${CODEDIR}/personal/dotfiles/zsh/zshenv ${HOME}/.zshenv
+
+ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc ${ZDOTDIR}/.zshrc
+ln -s ${CODEDIR}/personal/dotfiles/zsh/zprofile ${ZDOTDIR}/.zprofile
 
 echo "Setup Plugins"
 git clone --depth 1 -- https://github.com/trapd00r/LS_COLORS.git ${ZDOTDIR}/plugins/LS_COLORS
