@@ -33,7 +33,7 @@ cp ${FILESDIR}/ssh/github.pub ${HOME}/.ssh/
 echo "Adding github key to agent"
 export DISPLAY=dummy
 chmod +x ${FILESDIR}/ssh/ssh-add-sops.sh
-SSH_ASKPASS=${FILESDIR}/ssh/ssh-add-sops.sh ssh-add ${HOME}/ssh/github
+SSH_ASKPASS=${FILESDIR}/ssh/ssh-add-sops.sh ssh-add ${HOME}/.ssh/github
 
 echo "Setting up Code directories"
 [[ ! -d ${CODEDIR}/personal ]] && mkdir -p ${CODEDIR}/personal
