@@ -19,13 +19,11 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
     sudo apt install -y scdaemon opensc gnupg2
 fi
 
-sudo -i
-
 LUKS=$(sudo cat /etc/crypttab | grep luks | awk -F' ' '{print $1}')
-echo "Found LUKS device ${LUKS}_DEVICE"
+echo "Found LUKS device ${LUKS}"
 
 echo "Retrieving smartcard LUKS script"
 curl -O --output-dir ${TMPDIR} ${SCRIPT_URL}
 chmod +x ${TMPDIR}/smartcard-key-luks
 
-${TMPDIR}/smartcard-key-luks ${LUKS} ${FILESDIR}/pgp_keys/${PGP_PUBKEY_FILE}
+sudo ${TMPDIR}/smartcard-key-luks ${LUKS} ${FILESDIR}/pgp_keys/${PGP_PUBKEY_FILE}
