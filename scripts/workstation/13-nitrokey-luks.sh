@@ -26,4 +26,5 @@ echo "Retrieving smartcard LUKS script"
 curl -O --output-dir ${TMPDIR} ${SCRIPT_URL}
 sudo chmod +x ${TMPDIR}/smartcard-key-luks
 
+sudo gpg --card-status
 sudo ${TMPDIR}/smartcard-key-luks ${LUKS} ${FILESDIR}/pgp_keys/${PGP_PUBKEY_FILE}
