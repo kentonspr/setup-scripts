@@ -6,6 +6,6 @@ if [[ ! $INC_LAPTOP_Z16 ]]; then
 fi
 
 if [[ $OSNAME = "Pop!_OS" ]]; then
-    echo "Installing packages"
+    echo "Installing packages for laptop-z16"
     sudo apt install -y libpam-fprintd
 fi
