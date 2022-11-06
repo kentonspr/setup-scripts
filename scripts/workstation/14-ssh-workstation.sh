@@ -18,7 +18,7 @@ if [[ $OSNAME = "Ubuntu" ]]; then
 fi
 
 if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
-    sudo apt install -y openssh-server
+    sudo apt install -y openssh-server ssh-askpass
 fi
 
 echo "Enabling and starting openssh-server"

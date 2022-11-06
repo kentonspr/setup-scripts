@@ -37,6 +37,6 @@ git clone --depth 1 -- https://github.com/trapd00r/LS_COLORS.git ${ZDOTDIR}/plug
 git clone --depth 1 -- https://github.com/davidde/git.git ${ZDOTDIR}/plugins/git
 git clone --depth 1 -- https://github.com/zsh-git-prompt/zsh-git-prompt.git ${ZDOTDIR}/plugins/zsh-git-prompt
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ${ZDOTDIR}/plugins/zsh-autocomplete
-git clone --depth 1 -- https://github.com/zsh-users/zsh-history-substring-search.git ${ZDOTDIR}/plugins/zsh-history-zubstring-search
+git clone --depth 1 -- https://github.com/zsh-users/zsh-history-substring-search.git ${ZDOTDIR}/plugins/zsh-history-substring-search
 git clone --depth 1 -- https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZDOTDIR}/plugins/zsh-syntax-highlighting
 git clone --depth 1 -- https://github.com/softmoth/zsh-vim-mode.git ${ZDOTDIR}/plugins/zsh-vim-mode
