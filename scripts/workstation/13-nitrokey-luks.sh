@@ -26,14 +26,12 @@ echo "Retrieving smartcard LUKS script"
 curl -O --output-dir ${TMPDIR} ${SCRIPT_URL}
 chmod +x ${SCRIPT}
 
-
-GPG_PIN=$(sops -d --extract '["nk_user_pin"]' ${FILESDIR}/all/vault.sops.yml)
-
-echo "Modifying script to accept programmatic PIN"
-SEARCH="  gpg2 --homedir ${GNUPGHOME} --trust-model=always -o ${CRYPTHOME}/cryptkey.gpg $GPG_RECIPIENT --yes --encrypt ${TMPKEY}"
-REPLACE="  gpg2 --homedir ${GNUPGHOME} --trust-model=always --pinentry-mode=loopback --passphrase=${GPG_PIN} -o ${CRYPTHOME}/cryptkey.gpg $GPG_RECIPIENT --yes --encrypt ${TMPKEY}"
-SEARCH_ESCAPED=$(sed 's/[^^]/[&]/g; s/\^/\\^/g' <<<"$SEARCH")
-REPLACE_ESCAPED=$(sed 's/[^^]/[&]/g; s/\^/\\^/g' <<<"$REPLACE")
+# echo "Modifying script to accept programmatic PIN"
+# GPG_PIN=$(sops -d --extract '["nk_user_pin"]' ${FILESDIR}/all/vault.sops.yml)
+# SEARCH="  gpg2 --homedir ${GNUPGHOME} --trust-model=always -o ${CRYPTHOME}/cryptkey.gpg $GPG_RECIPIENT --yes --encrypt ${TMPKEY}"
+# REPLACE="  gpg2 --homedir ${GNUPGHOME} --trust-model=always --pinentry-mode=loopback --passphrase=${GPG_PIN} -o ${CRYPTHOME}/cryptkey.gpg $GPG_RECIPIENT --yes --encrypt ${TMPKEY}"
+# SEARCH_ESCAPED=$(sed 's/[^^]/[&]/g; s/\^/\\^/g' <<<"$SEARCH")
+# REPLACE_ESCAPED=$(sed 's/[^^]/[&]/g; s/\^/\\^/g' <<<"$REPLACE")
 
 sed -n "s/$SEARCH_ESCAPED/$REPLACE_ESCAPED/g" ${SCRIPT}
 

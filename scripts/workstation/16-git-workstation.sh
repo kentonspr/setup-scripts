@@ -36,7 +36,7 @@ mkdir -p ${CODEDIR}/public
 
 echo "Downloading all personal github repos"
 cd ${CODEDIR}/personal
-GITHUB_TOKEN=$(sops -d --extract '["github_token"]' ${FILESDIR}/ssh/vault.sops.yml)
+GITHUB_TOKEN=$(sops -d --extract '["github_token"]' ${FILESDIR}/all/vault.sops.yml)
 GITHUB_JSON=$(curl -H "Authorization: token ${GITHUB_TOKEN}" https://api.github.com/search/repositories\?q\=user:kentonspr)
 
 for item in $(jq -c -r '.items[].ssh_url' <<< $GITHUB_JSON); do
