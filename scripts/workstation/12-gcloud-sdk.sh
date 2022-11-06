@@ -23,7 +23,18 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
     echo "Adding Repo Key"
     curl ${GPG_KEY_URL} | sudo tee /usr/share/keyrings/cloud.google.gpg
 
-    sudo apt update && sudo apt install -y apt-transport-https ca-certificates gnupg google-cloud-cli
+    # Complains every time about lock files. This is a wait for relase -
+    while sudo fuser /var/{lib/{dpkg,apt/lists},cache/apt/archives}/lock >/dev/null 2>&1; do
+        sleep 1
+    done
+
+    sudo apt update
+
+    while sudo fuser /var/{lib/{dpkg,apt/lists},cache/apt/archives}/lock >/dev/null 2>&1; do
+        sleep 1
+    done
+
+    sudo apt install -y apt-transport-https ca-certificates gnupg google-cloud-cli
 fi
 
 echo "Logging into gcloud SDK"
