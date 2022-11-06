@@ -32,6 +32,8 @@ ln -s ${CODEDIR}/personal/dotfiles/zsh/zshenv ${HOME}/.zshenv
 ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc ${ZDOTDIR}/.zshrc
 ln -s ${CODEDIR}/personal/dotfiles/zsh/zprofile ${ZDOTDIR}/.zprofile
 
+ln -s ${CODEDIR}/personal/dotfiles/zsh/zprofile.d/10-local-bin.zsh ${ZDOTDIR}/zprofile.d/10-local-bin.zsh
+
 echo "Setup Plugins"
 git clone --depth 1 -- https://github.com/trapd00r/LS_COLORS.git ${ZDOTDIR}/plugins/LS_COLORS
 git clone --depth 1 -- https://github.com/davidde/git.git ${ZDOTDIR}/plugins/git
