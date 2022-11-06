@@ -42,5 +42,8 @@ SEARCH_ESCAPED=$(sed 's/[^^]/[&]/g; s/\^/\\^/g' <<<"$SEARCH")
 REPLACE_ESCAPED=$(sed 's/[^^]/[&]/g; s/\^/\\^/g' <<<"$REPLACE")
 sed -n "s/$SEARCH_ESCAPED/$REPLACE_ESCAPED/g" ${TMPDIR}/smartcard-key-luks
 
+echo "Looking for modified lines"
+grep loopback ${TMPDIR}/smartcard-key-luks
+
 chmod +x ${TMPDIR}/smartcard-key-luks
 sudo -E ${TMPDIR}/smartcard-key-luks ${LUKS} ${FILESDIR}/pgp_keys/${PGP_PUBKEY_FILE}
