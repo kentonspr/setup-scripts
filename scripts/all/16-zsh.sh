@@ -2,6 +2,7 @@
 # Installs and sets up zsh
 
 OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
+OSVERSION=$(cat /etc/os-release | sed -En "s/^VERSION_ID=\"(.*)\"/\1/p")
 
 if [[ ! $INC_ZSH ]]; then
     echo "INC_ZSH is not set. Skipping 16-zsh.sh"
@@ -37,6 +38,12 @@ ln -s ${CODEDIR}/personal/dotfiles/zsh/zprofile.d/10-local-bin.zsh ${ZDOTDIR}/zp
 
 # zshrc.d configs
 ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc.d/10-aliasses.zsh ${ZDOTDIR}/zshrc.d/10-aliasses.zsh
+
+
+if [[ $OSNAME = "Pop!_OS" ]] && [[ $OSVERSION = "22.04" ]]; then
+    echo "source ${HOME}/.zshenv" >> ${HOME}/.xprofile
+    echo 'source ${ZDOTDIR}/.zprofile' >> ${HOME}/.xprofile
+fi
 
 echo "Setup Plugins"
 git clone --depth 1 -- https://github.com/trapd00r/LS_COLORS.git ${ZDOTDIR}/plugins/LS_COLORS
