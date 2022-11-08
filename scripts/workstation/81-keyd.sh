@@ -20,4 +20,5 @@ echo "Linking config file"
 [[ ! -d /etc/keyd ]] && sudo mkdir /etc/keyd
 sudo ln -s ${DOTFILESDIR}/keyd/default.conf /etc/keyd/default.conf
 
+echo "Reloading keyd"
 sudo keyd reload
