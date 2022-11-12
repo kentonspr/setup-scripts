@@ -4,10 +4,10 @@
 echo "*** setup.sh - Begin ***"
 
 source env.config
-DEVICE=$1
-source env.${DEVICE}
+ENV_DEVICE=$1
+source ${ENV_DEVICE}
 
-if [[ -z ${SETUP_GROUPS+x} ]]; then
+if [[ -z ${SETUP_GROUPS} ]]; then
     SETUP_GROUPS="all"
 else
     SETUP_GROUPS+=( "all" )
@@ -30,6 +30,7 @@ echo "Run setup scripts"
 mkdir -p ${TMPDIR}
 SETUP_SCRIPTS=()
 
+echo "Gather scripts for the following groups - ${SETUP_GROUPS}"
 # Get list of all scripts for device groups
 for group in ${SETUP_GROUPS[@]}; do
     chmod +x ./scripts/${group}/*

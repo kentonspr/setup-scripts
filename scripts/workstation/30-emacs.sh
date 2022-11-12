@@ -26,7 +26,6 @@ fi
 echo "Cloning Repos"
 git clone --depth 1 -- https://github.com/emacs-mirror/emacs.git ${CODEDIR}/public/emacs
 git clone --depth 1 -- https://github.com/jwiegley/emacs-async ${CODEDIR}/public/emacs-async
-git clone --depth 1 -- https://github.com/emacs-helm/helm.git ${CODEDIR}/public/emacs-helm
 
 echo "Compiling and installing Emacs"
 cd ${CODEDIR}/public/emacs
@@ -37,12 +36,6 @@ make all
 sudo make install
 
 echo "Compiling and installing Async"
-cd ${CODEDIR}/public/emacs-async
-make clean
-make all
-sudo make install
-
-echo "Compiling and installing Helm"
 cd ${CODEDIR}/public/emacs-async
 make clean
 make all
