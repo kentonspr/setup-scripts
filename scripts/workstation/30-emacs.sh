@@ -3,7 +3,6 @@
 
 OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 
-GCC_VERSION=12
 
 if [[ ! $INC_EMACS ]]; then
     echo "INC_EMACS is not set. Skipping 30-emacs.sh"
@@ -17,10 +16,10 @@ if [[ $OSNAME = "Fedora Linux" ]]; then
 fi
 
 if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
-    # TODO - the GCC_VERSION is going to depend on the release I think
+    GCC_VERSION=$(gcc --version | grep gcc | awk -F' ' '{print $4}' | awk -F'.' '{print $1}')
     echo "Installing Dependencies"
     sudo apt install -y build-essential linux-headers-generic autoconf texinfo git libgtk-3-dev libtiff5-dev libgif-dev libjpeg-dev libpng-dev \
-         libxpm-dev libncurses-dev libgnutls28-dev libgccjit0 libgccjit-${GCC_VERSION}-dev
+         libxpm-dev libncurses-dev libgnutls28-dev libgccjit0 libjansson-dev libgccjit-${GCC_VERSION}-dev
 fi
 
 echo "Cloning Repos"
@@ -30,7 +29,7 @@ git clone --depth 1 -- https://github.com/jwiegley/emacs-async ${CODEDIR}/public
 echo "Compiling and installing Emacs"
 cd ${CODEDIR}/public/emacs
 ./autogen.sh
-./configure --build x86_64-linux-gnu --with-mailutils --with-file-notification=inotify --with-x=yes --with-native-compilation
+./configure --build x86_64-linux-gnu --with-mailutils --with-file-notification=inotify --with-x=yes --with-native-compilation --with-json
 make clean
 make all
 sudo make install
@@ -46,7 +45,7 @@ if [[ ! -d ${HOME}/.local/share/applications ]]; then
     mkdir -p ${HOME}/.local/share/applications
 fi
 
-cp ${FILESDIR}/emacs/emacs.desktop ${HOME}/.local/share/applications
+# cp ${FILESDIR}/emacs/emacs.desktop ${HOME}/.local/share/applications
 
 update-desktop-database  ${HOME}/.local/share/applications
 

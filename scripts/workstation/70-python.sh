@@ -6,6 +6,12 @@ if [[ ! $INC_PYTHON ]]; then
     exit 0
 fi
 
+OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
+
+if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS"]]; then
+    sudo apt install -y libbz2-dev lipssl-dev libreadline-dev libsqlite3-dev tk-dev
+fi
+
 PYENV_REPO="https://github.com/pyenv/pyenv.git"
 PYENV_REPO_DIR="${HOME}/.pyenv"
 VENV_REPO="https://github.com/pyenv/pyenv-virtualenv.git"
