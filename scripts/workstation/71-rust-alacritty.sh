@@ -2,13 +2,12 @@
 # Installs and configures alacritty terminal
 # Requires rust cargo
 
-OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
-
-if [[ ! $INC_ALACRITTY ]]; then
+if [[ ! $INC_RUST ]] || [[ ! $INC_ALACRITTY ]]; then
     echo "INC_ALACRITTY is not set. Skipping 71-alacritty.sh"
     exit 0
 fi
 
+OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 REPO="https://github.com/alacritty/alacritty.git"
 REPODIR=${CODEDIR}/public/alacritty
 

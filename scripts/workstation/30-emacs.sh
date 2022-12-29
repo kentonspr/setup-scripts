@@ -23,11 +23,18 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
 fi
 
 echo "Cloning Repos"
-git clone --depth 1 -- https://github.com/emacs-mirror/emacs.git ${CODEDIR}/public/emacs
+# git clone https://github.com/tree-sitter/tree-sitter.git ${CODEDIR}/public/tree-sitter
+git clone https://git.savannah.gnu.org/git/emacs.git ${CODEDIR}/public/emacs
 git clone --depth 1 -- https://github.com/jwiegley/emacs-async ${CODEDIR}/public/emacs-async
+
+# echo "Compiling and installing tree-sitter"
+# cd ${CODEDIR}/public/tree-sitter
+# make
+# sudo make install
 
 echo "Compiling and installing Emacs"
 cd ${CODEDIR}/public/emacs
+git checkout emacs-29
 ./autogen.sh
 ./configure --build x86_64-linux-gnu --with-mailutils --with-file-notification=inotify --with-x=yes --with-native-compilation --with-json
 make clean
@@ -56,5 +63,8 @@ fi
 cp ${FILESDIR}/emacs/icons/* ${HOME}/.local/share/icons/emacs/
 
 echo "Linking config files"
-[[ ! -d ${HOEM}/emacs.d ]] && mkdir ${HOME}/emacs.d
-ln -s ${CODEDIR}/personal/dotfiles/emacs/* ${HOME}/emacs.d/
+[[ ! -d ${HOME}/.emacs.d ]] && mkdir ${HOME}/.emacs.d
+ln -s ${CODEDIR}/personal/dotfiles/emacs/* ${HOME}/.emacs.d/
+
+echo "Touch custom.el"
+touch ${HOME}/.emacs.d/custom.el
