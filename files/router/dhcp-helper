@@ -1,0 +1,9 @@
+# Option flags used to start dhcp-helper.
+#
+# You will need at least "-s <DHCP server>" or
+# "-b <interface> so that dhcp-helper knows where
+# to relay DHCP requests.
+#
+# See "man 8 dhcp-helper" for more details.
+
+DHCPHELPER_OPTS="-e enp38s0 -e enp8s0 -s 10.1.100.250"

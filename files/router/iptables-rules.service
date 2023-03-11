@@ -1,0 +1,14 @@
+[Unit]
+Description=Restores iptables rules on boot
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/iptables-restore /etc/iptables/iptables.up.rules
+ExecReload=/sbin/iptables-restore /etc/iptables/iptables.up.rules
+ExecStop=/usr/lib/systemd/scripts/iptables-flush
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
