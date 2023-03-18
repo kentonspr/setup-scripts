@@ -6,4 +6,4 @@
 #
 # See "man 8 dhcp-helper" for more details.
 
-DHCPHELPER_OPTS="-e enp38s0 -e enp8s0 -s 10.1.100.250"
+DHCPHELPER_OPTS="-e enp38s0 -s 10.1.100.250"

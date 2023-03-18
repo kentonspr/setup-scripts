@@ -46,6 +46,11 @@ network:
       link: enp45s0f0
       dhcp4: false
       dhcp6: false
+    v252:
+      id: 252
+      link: enp45s0f0
+      dhcp4: false
+      dhcp6: false
     v254:
       id: 254
       link: enp45s0f0
@@ -62,13 +67,13 @@ network:
       dhcp4: false
       dhcp6: false
   bridges:
-    br0:
-      interfaces: [enp45s0f0]
-      addresses: [10.1.1.1/24]
+    MGMT_br254:
+      interfaces: [v254]
+      addresses: [10.157.254.254/24]
       dhcp6: false
       nameservers:
           search: [kappnet.net]
-          addresses: [10.1.100.250]
+          addresses: [10.157.252.53]
       parameters:
         stp: false
         forward-delay: 0
@@ -93,16 +98,16 @@ network:
       parameters:
         stp: false
         forward-delay: 0
-    br254:
-      interfaces: [v254]
-      addresses: [10.157.254.100/24]
+    br100:
+      interfaces: [v100]
+      addresses: [10.1.100.1/24]
       dhcp6: false
       parameters:
         stp: false
         forward-delay: 0
-    br100:
-      interfaces: [v100]
-      addresses: [10.1.100.1/24]
+    NTWK_Enablers_br252:
+      interfaces: [v252]
+      addresses: [10.157.252.254/24]
       dhcp6: false
       parameters:
         stp: false

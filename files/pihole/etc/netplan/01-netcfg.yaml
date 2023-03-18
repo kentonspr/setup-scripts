@@ -1,0 +1,14 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp1s0:
+      dhcp4: false
+      dhcp6: false
+      addresses: [10.1.100.153/24]
+      nameservers:
+          search: [kappnet.net]
+          addresses: [8.8.8.8, 8.8.4.4]
+      routes:
+        - to-default:
+            via: 10.157.252.254

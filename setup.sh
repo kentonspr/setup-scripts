@@ -5,7 +5,7 @@ echo "*** setup.sh - Begin ***"
 
 source env.config
 ENV_DEVICE=$1
-source ${ENV_DEVICE}
+source env.${ENV_DEVICE}
 
 if [[ -z ${SETUP_GROUPS} ]]; then
     SETUP_GROUPS="all"

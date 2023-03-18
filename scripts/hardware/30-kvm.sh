@@ -18,6 +18,10 @@ fi
     sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 fi
 
+echo "Stop and disable dnsmasq"
+sudo systemctl stop dnsmasq
+sudo systemctl disable dnsmasq
+
 echo "Creating libvirt group if it doesn't exist"
 sudo getent group | grep libvirt:
 

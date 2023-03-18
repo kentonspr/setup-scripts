@@ -1,0 +1,82 @@
+# This is the network config written by 'subiquity'
+network:
+  version: 2
+  ethernets:
+    enp129s0f0:
+      dhcp4: true
+      dhcp6: false
+  vlans:
+    v1000:
+      dhcp4: false
+      dhcp6: false
+      id: 1000
+      link: enp129s0f0
+  vlans:
+    v1001:
+      dhcp4: false
+      dhcp6: false
+      id: 1001
+      link: enp129s0f0
+  vlans:
+    v1002:
+      dhcp4: false
+      dhcp6: false
+      id: 1002
+      link: enp129s0f0
+  vlans:
+    v1003:
+      dhcp4: false
+      dhcp6: false
+      id: 1003
+      link: enp129s0f0
+  vlans:
+    v1004:
+      dhcp4: false
+      dhcp6: false
+      id: 1004
+      link: enp129s0f0
+  bridges:
+    br1000:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - v1000
+      parameters:
+        forward-delay: 0
+        stp: false
+  bridges:
+    br1001:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - v1001
+      parameters:
+        forward-delay: 0
+        stp: false
+  bridges:
+    br1002:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - v1002
+      parameters:
+        forward-delay: 0
+        stp: false
+  bridges:
+    br1003:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - v1003
+      parameters:
+        forward-delay: 0
+        stp: false
+  bridges:
+    br1004:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - v1004
+      parameters:
+        forward-delay: 0
+        stp: false

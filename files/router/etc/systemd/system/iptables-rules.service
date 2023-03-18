@@ -5,8 +5,8 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/sbin/iptables-restore /etc/iptables/iptables.up.rules
-ExecReload=/sbin/iptables-restore /etc/iptables/iptables.up.rules
+ExecStart=/sbin/iptables-restore /etc/iptables/iptables.rules
+ExecReload=/sbin/iptables-restore /etc/iptables/iptables.rules
 ExecStop=/usr/lib/systemd/scripts/iptables-flush
 RemainAfterExit=yes
 
