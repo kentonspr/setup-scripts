@@ -13,28 +13,11 @@ if [[ OSNAME = "Fedora Linux" ]]; then
     sudo dnf install -y openssh-server
 fi
 
-if [[ $OSNAME = "Ubuntu" ]]; then
-    sudo apt install -y openssh-server
-fi
-
 if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
-    sudo apt install -y openssh-server ssh-askpass
+    sudo apt install -y ssh-askpass
 fi
-
-echo "Enabling and starting openssh-server"
-sudo systemctl enable sshd
-sudo systemctl start sshd
 
 echo "Adding SSH private key"
 [[ ! -d ${HOME}/.ssh ]] && mkdir ${HOME}/.ssh
 sops -d --extract '["id_rsa_priv_key"]' ${FILESDIR}/ssh/vault.sops.yml > ${HOME}/.ssh/id_rsa
 chmod 600 ${HOME}/.ssh/id_rsa
-
-echo "Copying pub key"
-cp ${FILESDIR}/ssh/id_rsa.pub ${HOME}/.ssh/
-
-echo "Adding SSH Config"
-cp ${FILESDIR}/ssh/config ${HOME}/.ssh/config
-
-echo "Adding id_rsa.pub to authorized keys"
-cat ${HOME}/.ssh/id_rsa.pub >> ${HOME}/.ssh/authorized_keys

@@ -22,18 +22,6 @@ echo "Copying git configuration"
 cp ${FILESDIR}/git/gitconfig ${HOME}/.gitconfig
 cp ${FILESDIR}/git/gitconfig-dscrn ${HOME}/.gitconfig-dscrn
 
-echo "Setting up git private key"
-[[ ! -d ${HOME}/.ssh ]] && mkdir ${HOME}/.ssh
-sops -d --extract '["github_rsa_priv_key"]' ${FILESDIR}/ssh/vault.sops.yml > ${HOME}/.ssh/github
-chmod 600 ${HOME}/.ssh/github
-
-echo "Copying pub key"
-cp ${FILESDIR}/ssh/github.pub ${HOME}/.ssh/
-
-echo "Adding github key to agent"
-chmod +x ${FILESDIR}/ssh/ssh-add-sops.sh
-ssh-add ${HOME}/.ssh/github
-
 echo "Setting up Code directories"
 [[ ! -d ${CODEDIR}/personal ]] && mkdir -p ${CODEDIR}/personal
 [[ ! -d ${CODEDIR}/public ]] && mkdir -p ${CODEDIR}/public

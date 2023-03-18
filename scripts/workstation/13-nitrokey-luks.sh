@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-if [[ ! $INC_NITRO ]]; then
-    echo "INC_NITRO is not set. Skipping 13-nitrokey-luks.sh"
+if [[ ! $INC_NITRO_PGP ]]; then
+    echo "INC_NITRO_PGP is not set. Skipping 11-nitrokey-pgp.sh"
     exit 0
 fi
 
