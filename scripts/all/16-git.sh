@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Installs and configures git
 
+echo -e "\n### git ###\n"
+
 OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 
 if [[ ! $INC_GIT ]]; then
@@ -18,22 +20,22 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
     sudo apt install git
 fi
 
-echo "Setting up git private key"
+echo -e "\n--- Setting up git private key ---\n"
 [[ ! -d ${HOME}/.ssh ]] && mkdir ${HOME}/.ssh
 sops -d --extract '["github_rsa_priv_key"]' ${FILESDIR}/ssh/vault.sops.yml > ${HOME}/.ssh/github
 chmod 600 ${HOME}/.ssh/github
 
-echo "Copying pub key"
+echo -e "\n--- Copying pub key\n"
 cp ${FILESDIR}/ssh/github.pub ${HOME}/.ssh/
 
-echo "Adding github key to agent"
+echo -e "\n--- Adding github key to agent ---\n"
 chmod +x ${FILESDIR}/ssh/ssh-add-sops.sh
 ssh-add ${HOME}/.ssh/github
 
-echo "Setting up Code directory"
+echo -e "\n--- Setting up Code directory ---\n"
 [[ ! -d ${CODEDIR}/personal ]] && mkdir -p ${CODEDIR}/personal
 
-echo "Clone dotfiles"
-cd ${CODEDIR}/personal
+echo -e "\n--- Clone dotfiles ---\n"
 
+cd ${CODEDIR}/personal
 git clone git@github.com:kentonspr/dotfiles.git

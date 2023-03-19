@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Sets up SSH config for server and user
 
+echo -e "\n### ssh ###\n"
+
 OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 
 if [[ ! $INC_SSH ]]; then

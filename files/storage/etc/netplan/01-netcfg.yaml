@@ -11,25 +11,21 @@ network:
       dhcp6: false
       id: 1000
       link: enp129s0f0
-  vlans:
     v1001:
       dhcp4: false
       dhcp6: false
       id: 1001
       link: enp129s0f0
-  vlans:
     v1002:
       dhcp4: false
       dhcp6: false
       id: 1002
       link: enp129s0f0
-  vlans:
     v1003:
       dhcp4: false
       dhcp6: false
       id: 1003
       link: enp129s0f0
-  vlans:
     v1004:
       dhcp4: false
       dhcp6: false
@@ -44,7 +40,6 @@ network:
       parameters:
         forward-delay: 0
         stp: false
-  bridges:
     br1001:
       dhcp4: false
       dhcp6: false
@@ -53,7 +48,6 @@ network:
       parameters:
         forward-delay: 0
         stp: false
-  bridges:
     br1002:
       dhcp4: false
       dhcp6: false
@@ -62,7 +56,6 @@ network:
       parameters:
         forward-delay: 0
         stp: false
-  bridges:
     br1003:
       dhcp4: false
       dhcp6: false
@@ -71,7 +64,6 @@ network:
       parameters:
         forward-delay: 0
         stp: false
-  bridges:
     br1004:
       dhcp4: false
       dhcp6: false

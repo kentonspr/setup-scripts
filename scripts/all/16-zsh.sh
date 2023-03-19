@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Installs and sets up zsh
 
+echo -e "\n### zsh ###\n"
+
 OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 OSVERSION=$(cat /etc/os-release | sed -En "s/^VERSION_ID=\"(.*)\"/\1/p")
 
@@ -19,7 +21,7 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
     sudo apt install -y zsh
 fi
 
-echo "Changing shell for ${USER}"
+echo -e "\n--- Changing shell for ${USER} ---\n"
 chsh -s $(which zsh)
 
 echo "Creating symlinks to zsh configs from dotfiles repo"
@@ -37,7 +39,7 @@ ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc ${ZDOTDIR}/.zshrc
 ln -s ${CODEDIR}/personal/dotfiles/zsh/zprofile.d/10-local-bin.zsh ${ZDOTDIR}/zprofile.d/10-local-bin.zsh
 
 # zshrc.d configs
-ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc.d/10-aliasses.zsh ${ZDOTDIR}/zshrc.d/10-aliasses.zsh
+ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc.d/10-aliases.zsh ${ZDOTDIR}/zshrc.d/10-aliases.zsh
 
 
 if [[ $OSNAME = "Pop!_OS" ]] && [[ $OSVERSION = "22.04" ]]; then
@@ -45,7 +47,7 @@ if [[ $OSNAME = "Pop!_OS" ]] && [[ $OSVERSION = "22.04" ]]; then
     echo 'source ${ZDOTDIR}/.zprofile' >> ${HOME}/.xprofile
 fi
 
-echo "Setup Plugins"
+echo -e "\n--- Setup Plugins ---\n"
 git clone --depth 1 -- https://github.com/trapd00r/LS_COLORS.git ${ZDOTDIR}/plugins/LS_COLORS
 git clone --depth 1 -- https://github.com/davidde/git.git ${ZDOTDIR}/plugins/git
 git clone --depth 1 -- https://github.com/zsh-git-prompt/zsh-git-prompt.git ${ZDOTDIR}/plugins/zsh-git-prompt

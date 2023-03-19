@@ -1,0 +1,97 @@
+# This is the network config written by 'subiquity'
+network:
+  version: 2
+  ethernets:
+    enp69s0f0:
+      dhcp4: false
+      dhcp6: false
+    enp69s0f1:
+      dhcp4: false
+      dhcp6: false
+  bonds:
+    bond0:
+      interfaces:
+        - enp69s0f0
+        - enp69s0f1
+      parameters:
+        mode: '802.3ad'
+        mii-monitor-interval: 1
+        transmit-hash-policy: 'layer3+4'
+      dhcp4: false
+      dhcp6: false
+  vlans:
+    v254:
+      dhcp4: false
+      dhcp6: false
+      id: 254
+      link: bond0
+    vVLAN_START000:
+      dhcp4: false
+      dhcp6: false
+      id: VLAN_START000
+      link: bond0
+    vVLAN_START001:
+      dhcp4: false
+      dhcp6: false
+      id: VLAN_START001
+      link: bond0
+    vVLAN_START002:
+      dhcp4: false
+      dhcp6: false
+      id: VLAN_START002
+      link: bond0
+    vVLAN_START003:
+      dhcp4: false
+      dhcp6: false
+      id: VLAN_START003
+      link: bond0
+    vVLAN_START004:
+      dhcp4: false
+      dhcp6: false
+      id: VLAN_START004
+      link: bond0
+  bridges:
+    br254:
+      dhcp4: true
+      dhcp6: false
+      macaddress: 4d:fd:4c:2d:7a:f0 
+    brVLAN_START000:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - vVLAN_START000
+      parameters:
+        forward-delay: 0
+        stp: false
+    brVLAN_START001:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - vVLAN_START001
+      parameters:
+        forward-delay: 0
+        stp: false
+    brVLAN_START002:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - vVLAN_START002
+      parameters:
+        forward-delay: 0
+        stp: false
+    brVLAN_START003:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - vVLAN_START003
+      parameters:
+        forward-delay: 0
+        stp: false
+    brVLAN_START004:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - vVLAN_START004
+      parameters:
+        forward-delay: 0
+        stp: false

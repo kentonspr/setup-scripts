@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Install sops to use with vaulted passwords
 
+echo -e "\n### sops ###\n"
+
 OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 
 if [[ ! $INC_SOPS ]]; then
