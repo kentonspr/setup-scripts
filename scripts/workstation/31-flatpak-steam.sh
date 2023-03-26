@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Installs and sets up steam
 
-if [[ $SKIP_FLATPAK ]] || [[ $SKIP_STEAM ]]; then
+if [[ ! $INC_FLATPAK ]] || [[ ! $INC_STEAM ]]; then
     echo "Neither INC_FLATPAK or INC_STEAM is set. Skipping 31-bitwarden.sh"
     exit 0
 fi

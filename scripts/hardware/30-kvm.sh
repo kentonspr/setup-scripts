@@ -9,8 +9,8 @@ if [[ ! $INC_KVM ]]; then
     exit 0
 fi
 
-echo -e "\n--- Ensuring this isn't a VM ---\n"
-if [[ $(sudo dmidecode -s system-manufacturer) == 'QEMU' ]]; then
+echo -e "\n--- Exit if VM accidentally go here ---\n"
+if [[ ${IS_VM} == true ]]; then
     echo "This is a VM. Not installing KVM"
     exit 0
 fi
