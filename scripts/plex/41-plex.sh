@@ -34,7 +34,7 @@ echo -e "\n--- generate and install systemd files ---\n"
 mkdir -p ${HOME}/plex
 cd ${HOME}/plex
 
-podman generate systemd --new --files --name plex
+sudo podman generate systemd --new --files --name plex
 
 for SERVICE in $(find ./ -type f -name '*.service'|sort); do
     FILENAME=$(basename -- "${SERVICE}")
@@ -42,3 +42,6 @@ for SERVICE in $(find ./ -type f -name '*.service'|sort); do
     sudo systemctl enable ${FILENAME}
 done
 
+sudo cp ${FILESDIR}/plex/etc/cron.daily/plex-update.sh /etc/cron.daily/plex-update.sh
+sudo chown root:root /etc/cron.daily/plex-update.sh
+sudo chmod 755 /etc/cron.daily/plex-update.sh
