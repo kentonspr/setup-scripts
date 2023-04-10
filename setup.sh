@@ -30,7 +30,7 @@ if [ $OSNAME = "Ubuntu" ] || [ $OSNAME = "Pop!_OS" ]; then
     sudo apt update
     sudo apt dist-upgrade -y
     sudo apt autoremove -y
-    sudo apt install -y ${UBUNTU_PACKAGES}
+    sudo apt install -y ${UBUNTU_PACKAGES[@]}
 fi
 
 if [[ IS_VM == true ]]; then

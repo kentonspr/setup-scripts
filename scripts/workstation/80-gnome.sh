@@ -10,7 +10,7 @@ echo "Configuring gnome settings"
 # Fonts -
 gsettings set org.gnome.desktop.interface font-name 'Source Sans Pro Regular 11'
 gsettings set org.gnome.desktop.interface document-font-name 'Source Sans Pro Regular 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrainsMono Nerd Font 11'
 
 # Desktop - 
 # TODO - Wallpaper maybe?

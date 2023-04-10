@@ -8,13 +8,29 @@ if [[ ! $INC_FONTS ]]; then
     exit 0
 fi
 
+if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
+    echo -e "\n--- Ensuring installed dependencies ---\n"
+    sudo apt install -y curl jq unzip
+fi
+
 FONTSDIR=${HOME}/.local/share/fonts
 echo -e "\nCleaning ${FONTSDIR}"
 rm -rf ${FONTSDIR} && mkdir -p ${FONTSDIR}
 
 echo -e "\nInstalling JetBrains Mono Fonts"
-git clone --depth 1 -- https://github.com/JetBrains/JetBrainsMono.git ${CODEDIR}/public/JetBrainsMono
-ln -s ${CODEDIR}/public/JetBrainsMono $FONTSDIR/JetBrainsMono
+GITHUB_OUTPUT=$(curl -s https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest) 
+
+FILE=$(jq -r '.assets[] | select(.name | endswith("JetBrainsMono.zip")) .name' \
+          <<< $GITHUB_OUTPUT)
+URL=$(jq -r '.assets[] | select(.name | endswith("JetBrainsMono.zip")) .browser_download_url' \
+         <<< $GITHUB_OUTPUT)
+
+echo -e "\n--- Downloading JetBrains Mono Nerd Font from $URL ---\n"
+curl -LO --output-dir ${TMPDIR} ${URL}
+
+echo -e "\n--- Unzip $FILE ---\n"
+mkdir ${FONTSDIR}/JetBrainsMono
+unzip ${TMPDIR}/${FILE} -d ${FONTSDIR}/JetBrainsMono
 
 echo -e "\nInstalling Source Sans Pro Fonts"
 mkdir -p ${FONTSDIR}/SourceSansPro

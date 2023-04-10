@@ -42,6 +42,6 @@ for SERVICE in $(find ./ -type f -name '*.service'|sort); do
     sudo systemctl enable ${FILENAME}
 done
 
-sudo cp ${FILESDIR}/plex/etc/cron.daily/plex-update.sh /etc/cron.daily/plex-update.sh
-sudo chown root:root /etc/cron.daily/plex-update.sh
-sudo chmod 755 /etc/cron.daily/plex-update.sh
+sudo cp ${FILESDIR}/plex/etc/cron.daily/plex-update /etc/cron.daily/plex-update
+sudo chown root:root /etc/cron.daily/plex-update
+sudo chmod 755 /etc/cron.daily/plex-update
