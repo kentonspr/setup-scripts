@@ -20,4 +20,4 @@ for i in ${COMPONENTS}; do
 done
 
 echo "Linking rust-analyzer to ${HOME}/.cargo/bin"
-ln -s $(rustup which --toolchain stable rust-analyzer) ${HOME}/.cargo/bin/rust-analyzer
+ln -s $(PATH="${PATH}:${HOME}/.cargo/bin" rustup which --toolchain stable rust-analyzer) ${HOME}/.cargo/bin/rust-analyzer
