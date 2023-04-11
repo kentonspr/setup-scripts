@@ -3,7 +3,7 @@
 
 echo "*** setup.sh - Begin ***"
 
-source env.config
+source config
 if [[ -z $1 ]]; then
     echo "Requires name of host, e.g. ./setup.sh media-vm"
     exit 1

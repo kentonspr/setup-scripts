@@ -11,7 +11,6 @@ export DOTFILESDIR="${CODEDIR}/personal/dotfiles"
 export OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 export UBUNTU_PACKAGES=(jq net-tools pv netcat tmux curl htop inetutils-tools unzip zip ripgrep fzf tree whois glances)
 
-
 if [[ $(sudo dmidecode -s system-manufacturer) == 'QEMU' ]]; then
     IS_VM=true
 fi
