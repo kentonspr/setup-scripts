@@ -10,19 +10,31 @@ if [[ -z $1 ]]; then
 fi
 
 ENV_DEVICE=$1
-if [ ${ENV_DEVICE} ~= ^env\..*$ ]; then
+if [[ "${ENV_DEVICE}" =~ ^env\..*$ ]]; then
     source ${ENV_DEVICE}
 else
     source env.${ENV_DEVICE}
 fi
 
 if [[ -z ${SETUP_GROUPS} ]]; then
-    SETUP_GROUPS="all"
+    SETUP_GROUPS="all" 
 else
     SETUP_GROUPS+=( "all" )
 fi
 
+if [[ " ${SETUP_GROUPS[*]} " =~ " headless " ]]; then
+    export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+fi
+
 echo "OS = $OSNAME"
+
+if [[ $(sudo dmidecode -s system-manufacturer) == 'QEMU' ]]; then
+    IS_VM=true
+else
+    IS_VM=false
+fi
+
+echo "IS_VM=${IS_VM}"
 
 echo "Updating system before proceeding"
 if [ $OSNAME = "Fedora Linux" ]; then
@@ -43,6 +55,10 @@ if [[ IS_VM == true ]]; then
     systemctl enable qemu-guest-agent
     systemctl start qemu-guest-agent
 fi
+
+echo -e "\n--- Setting up Code directories ---\n"
+[[ ! -d ${CODEDIR}/personal ]] && mkdir -p ${CODEDIR}/personal
+[[ ! -d ${CODEDIR}/public ]] && mkdir -p ${CODEDIR}/public
 
 echo "Run setup scripts"
 mkdir -p ${TMPDIR}

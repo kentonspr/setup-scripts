@@ -20,7 +20,3 @@ cp ${FILESDIR}/ssh/ssh-agent.service ${HOME}/.config/systemd/user/ssh-agent.serv
 systemctl --user enable ssh-agent
 systemctl --user start ssh-agent
 
-echo -e "\n--- re-sourcing zshrc ---\n"
-source ${HOME}/.zsh/.zshrc
-
-echo -e "\n--- SSH_AUTH_SOCKET=${SSH_AUTH_SOCKET} ---\n"

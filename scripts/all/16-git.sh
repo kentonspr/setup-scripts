@@ -30,13 +30,5 @@ cp ${FILESDIR}/ssh/github.pub ${HOME}/.ssh/
 
 echo -e "\n--- Adding github key to agent ---\n"
 
-# chmod +x ${FILESDIR}/ssh/ssh-add-sops.sh
 ssh-add ${HOME}/.ssh/github
 
-echo -e "\n--- Setting up Code directory ---\n"
-[[ ! -d ${CODEDIR}/personal ]] && mkdir -p ${CODEDIR}/personal
-
-echo -e "\n--- Clone dotfiles ---\n"
-
-cd ${CODEDIR}/personal
-git clone git@github.com:kentonspr/dotfiles.git
