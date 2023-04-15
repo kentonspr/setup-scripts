@@ -62,3 +62,6 @@ mkdir -p ${CONFIGDIR}
 
 ln -s ${CODEDIR}/personal/dotfiles/alacritty/alacritty.yml ${CONFIGDIR}/alacritty.yml
 
+echo -e "\n--- update alternatives ---\n"
+sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator ${HOME}/.local/bin/alacritty 50
+sudo update-alternatives --set x-terminal-emulator ${HOME}/.local/bin/alacritty
