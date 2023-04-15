@@ -14,13 +14,17 @@ fi
 
 echo "IS_VM=${IS_VM}"
 
+echo -e "\n--- loading config ---\n"
 source config
 if [[ -z $1 ]]; then
     echo "Requires name of host, e.g. ./setup.sh media-vm"
     exit 1
 fi
 
-ENV_DEVICE=$1 if [[ "${ENV_DEVICE}" =~ ^env\..*$ ]]; then source ${ENV_DEVICE}
+echo "\n--- loading device ${1} ---\n"
+ENV_DEVICE=$1 
+if [[ "${ENV_DEVICE}" =~ ^env\..*$ ]]; then 
+    source ${ENV_DEVICE}
 else
     source env.${ENV_DEVICE}
 fi
@@ -31,11 +35,13 @@ else
     SETUP_GROUPS+=( "all" )
 fi
 
+echo "SETUP_GROUPS=${SETUP_GROUPS}"
+
 if [[ " ${SETUP_GROUPS[*]} " =~ " headless " ]]; then
     export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 fi
 
-echo "Updating system before proceeding"
+echo "\n--- Updating system before proceeding ---/n"
 if [ $OSNAME = "Fedora Linux" ]; then
     sudo dnf upgrade --refresh -y
     sudo dnf install ${FEDORA_PACKAGES} -y
@@ -59,11 +65,11 @@ echo -e "\n--- Setting up Code directories ---\n"
 [[ ! -d ${CODEDIR}/personal ]] && mkdir -p ${CODEDIR}/personal
 [[ ! -d ${CODEDIR}/public ]] && mkdir -p ${CODEDIR}/public
 
-echo "Run setup scripts"
+echo "\n--- Run setup scripts ---\n"
 mkdir -p ${TMPDIR}
 SETUP_SCRIPTS=()
 
-echo "Gather scripts for the following groups - ${SETUP_GROUPS}"
+echo "\n--- Gather scripts for the following groups - ${SETUP_GROUPS} ---\n"
 # Get list of all scripts for device groups
 for group in ${SETUP_GROUPS[@]}; do
     chmod +x ./scripts/${group}/*
