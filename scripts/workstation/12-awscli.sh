@@ -7,10 +7,7 @@ if [[ ! $INC_AWSCLI ]]; then
 fi
 
 echo -e "\n--- installing awscli ---\n"
-
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "${TMPDIR}/awscliv2.zip"
-unzip ${TMPDIR}/awscliv2.zip -d ${TMPDIR}/aws
-sudo ${TMPDIR}/aws/install
-
-echo -e "\n--- clean up ---\n"
-rm -rf ${TMPDIR}/aws*
+cd ${TMPDIR}
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
