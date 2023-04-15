@@ -3,15 +3,24 @@
 
 echo "*** setup.sh - Begin ***"
 
+export OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
+echo "OS = $OSNAME"
+
+if [[ $(sudo dmidecode -s system-manufacturer) == 'QEMU' ]]; then
+    IS_VM=true
+else
+    IS_VM=false
+fi
+
+echo "IS_VM=${IS_VM}"
+
 source config
 if [[ -z $1 ]]; then
     echo "Requires name of host, e.g. ./setup.sh media-vm"
     exit 1
 fi
 
-ENV_DEVICE=$1
-if [[ "${ENV_DEVICE}" =~ ^env\..*$ ]]; then
-    source ${ENV_DEVICE}
+ENV_DEVICE=$1 if [[ "${ENV_DEVICE}" =~ ^env\..*$ ]]; then source ${ENV_DEVICE}
 else
     source env.${ENV_DEVICE}
 fi
@@ -25,16 +34,6 @@ fi
 if [[ " ${SETUP_GROUPS[*]} " =~ " headless " ]]; then
     export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 fi
-
-echo "OS = $OSNAME"
-
-if [[ $(sudo dmidecode -s system-manufacturer) == 'QEMU' ]]; then
-    IS_VM=true
-else
-    IS_VM=false
-fi
-
-echo "IS_VM=${IS_VM}"
 
 echo "Updating system before proceeding"
 if [ $OSNAME = "Fedora Linux" ]; then
@@ -79,13 +78,13 @@ unset IFS
 echo -e "\nSorted -\n${SORTED_SCRIPTS[@]}\n"
 
 for i in ${SORTED_SCRIPTS[@]}; do
-    echo -e "START ${i} - $(date)\n"
+    echo -e "\n--- START ${i} - $(date) ---\n"
     FILENAME=$(basename -- "$i")
 
     ${i} | tee -a ${TMPDIR}/${FILENAME}.log
 
-    echo -e "\nEND ${i} - $(date)"
-    echo -e "\n##########\n"
+    echo -e "\n--- END ${i} - $(date) ---\n"
+    echo -e "##########\n"
 done
 
 echo "*** setup.sh - End ***"
