@@ -10,7 +10,7 @@ if [[ ! $INC_SSH_AGENT ]]; then
     exit 0
 fi
 
-echo -e "\n--- adding ssh-agent user service
+echo -e "\n--- adding ssh-agent user service ---\n"
 [ ! -d ${HOME}/.config/systemd/user ] && mkdir -p ${HOME}/.config/systemd/user
 cp ${FILESDIR}/ssh/ssh-agent.service ${HOME}/.config/systemd/user/ssh-agent.service
 
