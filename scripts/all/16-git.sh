@@ -29,6 +29,7 @@ echo -e "\n--- Copying pub key\n"
 cp ${FILESDIR}/ssh/github.pub ${HOME}/.ssh/
 
 echo -e "\n--- Adding github key to agent ---\n"
+
 chmod +x ${FILESDIR}/ssh/ssh-add-sops.sh
 ssh-add ${HOME}/.ssh/github
 
