@@ -1,7 +1,9 @@
 Host github.com
     User git
     IdentityFile ~/.ssh/github
+    AddKeysToAgent  yes
 
 Host *
     User kenton
     IdentityFile ~/.ssh/id_rsa
+    AddKeysToAgent  yes

@@ -10,3 +10,9 @@ if [[ ! $INC_SOPS ]]; then
     exit 0
 fi
 
+echo -e "\n--- adding ssh-agent user service
+[ ! -d ${HOME}/.config/systemd/user ] && mkdir -p ${HOME}/.config/systemd/user
+cp ${FILESDIR}/ssh/ssh-agent.service ${HOME}/.config/systemd/user/ssh-agent.service
+
+systemctl --user enable ssh-agent
+systemctl --user start ssh-agent
