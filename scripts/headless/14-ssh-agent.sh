@@ -3,11 +3,14 @@
 
 echo -e "\n### ssh-agent ###\n"
 
-OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
-
 if [[ ! $INC_SSH_AGENT ]]; then
     echo "INC_SSH_AGENT is not set. Skipping 14-ssh-agent.sh"
     exit 0
+fi
+
+if [ -f /usr/lib/systemd/user/ssh-agent.service ]; then
+    echo -e "\n--- removing default ssh-agent service ---\n"
+    sudo rm /usr/lib/systemd/user/ssh-agent.service
 fi
 
 echo -e "\n--- adding ssh-agent user service ---\n"
@@ -16,3 +19,8 @@ cp ${FILESDIR}/ssh/ssh-agent.service ${HOME}/.config/systemd/user/ssh-agent.serv
 
 systemctl --user enable ssh-agent
 systemctl --user start ssh-agent
+
+echo -e "\n--- re-sourcing zshrc ---\n"
+source ${HOME}/.zsh/.zshrc
+
+echo -e "\n--- SSH_AUTH_SOCKET=${SSH_AUTH_SOCKET} ---\n"
