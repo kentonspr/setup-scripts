@@ -10,7 +10,11 @@ if [[ -z $1 ]]; then
 fi
 
 ENV_DEVICE=$1
-source env.${ENV_DEVICE}
+if [ ${ENV_DEVICE} ~= ^env\..*$ ]; then
+    source ${ENV_DEVICE}
+else
+    source env.${ENV_DEVICE}
+fi
 
 if [[ -z ${SETUP_GROUPS} ]]; then
     SETUP_GROUPS="all"
