@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Sets up SSH agent
+# Sets up ssh-agent
 
 echo -e "\n### ssh-agent ###\n"
 

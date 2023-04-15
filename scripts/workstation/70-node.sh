@@ -28,4 +28,5 @@ npm install -g prettier
 npm install -g vls
 npm install -g vue@latest
 npm install -g @vue/cli
-vue add @vue/cli-plugin-eslint
+# May figure out where to add this in
+# vue add @vue/cli-plugin-eslint

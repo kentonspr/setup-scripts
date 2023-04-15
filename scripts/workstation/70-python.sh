@@ -2,13 +2,13 @@
 # Installs pyenv & pyenv virtualenv
 
 if [[ ! $INC_PYTHON ]]; then
-    echo "INC_PYTHON is not set. Skipping 60-pyenv.sh"
+    echo "INC_PYTHON is not set. Skipping 70-pyenv.sh"
     exit 0
 fi
 
 OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 
-if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS"]]; then
+if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
     sudo apt install -y libbz2-dev lipssl-dev libreadline-dev libsqlite3-dev tk-dev
 fi
 
