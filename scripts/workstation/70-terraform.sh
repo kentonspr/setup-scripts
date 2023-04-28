@@ -11,6 +11,7 @@ TFENV_DIR=${CODEDIR}/public/tfenv
 echo -e "\n--- installing tfenv ---\n"
 git clone --depth=1 https://github.com/tfutils/tfenv.git ${TFENV_DIR}
 
+[ ! -d ${HOME}/.local/bin] && mkdir -p ${HOME}/.local/bin
 ln -s ${TFENV_DIR}/* ${HOME}/.local/bin/
 
 echo "Symlinking config files"

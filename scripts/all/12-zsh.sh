@@ -39,6 +39,7 @@ ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc ${ZDOTDIR}/.zshrc
 ln -s ${CODEDIR}/personal/dotfiles/zsh/zprofile.d/10-local-bin.zsh ${ZDOTDIR}/zprofile.d/10-local-bin.zsh
 
 # zshrc.d configs
+ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc.d/01-config.zsh ${ZDOTDIR}/zshrc.d/01-config.zsh
 ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc.d/10-aliases.zsh ${ZDOTDIR}/zshrc.d/10-aliases.zsh
 
 
@@ -54,4 +55,4 @@ git clone --depth 1 -- https://github.com/zsh-git-prompt/zsh-git-prompt.git ${ZD
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ${ZDOTDIR}/plugins/zsh-autocomplete
 git clone --depth 1 -- https://github.com/zsh-users/zsh-history-substring-search.git ${ZDOTDIR}/plugins/zsh-history-substring-search
 git clone --depth 1 -- https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZDOTDIR}/plugins/zsh-syntax-highlighting
-git clone --depth 1 -- https://github.com/softmoth/zsh-vim-mode.git ${ZDOTDIR}/plugins/zsh-vim-mode
+git clone --depth 1 -- https://github.com/jeffreytse/zsh-vi-mode.git ${ZDOTDIR}/plugins/zsh-vi-mode

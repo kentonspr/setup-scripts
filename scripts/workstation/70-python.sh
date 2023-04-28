@@ -9,7 +9,9 @@ fi
 OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 
 if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
-    sudo apt install -y libbz2-dev lipssl-dev libreadline-dev libsqlite3-dev tk-dev
+    sudo apt-get install make build-essential libssl-dev zlib1g-dev \
+    libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+    libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 fi
 
 PYENV_REPO="https://github.com/pyenv/pyenv.git"
