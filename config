@@ -8,5 +8,6 @@ export ZDOTDIR="${HOME}/.zsh"
 export ZSHRCDIR="${ZDOTDIR}/zshrc.d"
 export ZPROFILEDIR="${ZDOTDIR}/zprofile.d"
 export DOTFILESDIR="${CODEDIR}/personal/dotfiles"
+export USER_BOOTSTRAPDIR="${HOME}/.bootstrap.d"
 export UBUNTU_PACKAGES=(jq net-tools pv netcat curl htop inetutils-tools unzip zip ripgrep fzf tree whois glances)
 

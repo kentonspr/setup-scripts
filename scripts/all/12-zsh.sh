@@ -37,6 +37,7 @@ ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc ${ZDOTDIR}/.zshrc
 
 # zprofile.d configs
 ln -s ${CODEDIR}/personal/dotfiles/zsh/zprofile.d/10-local-bin.zsh ${ZDOTDIR}/zprofile.d/10-local-bin.zsh
+ln -s ${CODEDIR}/personal/dotfiles/zsh/zprofile.d/10-local-bin.zsh ${ZDOTDIR}/zprofile.d/90-bootstrap.zsh
 
 # zshrc.d configs
 ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc.d/01-config.zsh ${ZDOTDIR}/zshrc.d/01-config.zsh

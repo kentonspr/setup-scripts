@@ -10,6 +10,11 @@ if [[ ! $INC_NVIM ]]; then
     exit 0
 fi
 
+if [[ ! $INC_PYTHON ]]; then
+    echo "INC_PYTHON is not set. Exiting"
+    exit 0
+fi
+
 echo -e "\n--- Installing neovim ---\n"
 
 GITHUB_OUTPUT=$(curl -s https://api.github.com/repos/neovim/neovim/releases/tags/nightly) 
@@ -39,11 +44,16 @@ sudo update-alternatives --install /usr/bin/nvim nvim ${HOME}/Apps/nvim-linux64/
 sudo update-alternatives --install /usr/bin/vim vim ${HOME}/Apps/nvim-linux64/bin/nvim 1
 sudo update-alternatives --set vim ${HOME}/Apps/nvim-linux64/bin/nvim
 
-
 echo -e "\n--- link dotfiles ---\n"
 ln -s ${CODEDIR}/personal/dotfiles/nvim ${HOME}/.config/nvim
 
 echo -e "\n--- install packer ---\n"
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+echo -e "\n--- adding bootstrap script ---\n"
+[ ! -d ${USER_BOOTSTRAPDIR ] && mkdir -p ${USER_BOOTSRAPDIR}
+
+cp ${FILESDIR}/nvim/11-nvim-bootstrap.sh ${USER_BOOTSTRAPDIR}
+chmod +x ${USER_BOOTSTRAPDR}/11-nvim-bootstrap.sh
 
