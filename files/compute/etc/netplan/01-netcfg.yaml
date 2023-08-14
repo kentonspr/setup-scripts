@@ -56,7 +56,7 @@ network:
       dhcp6: false
       interfaces:
         - v254
-      macaddress: ca:77:7c:41:3f:e3 
+      macaddress: ca:77:7c:41:3f:e3
     brVLAN_START000:
       dhcp4: false
       dhcp6: false
