@@ -15,4 +15,4 @@ git clone --depth=1 https://github.com/tfutils/tfenv.git ${TFENV_DIR}
 ln -s ${TFENV_DIR}/bin/* ${HOME}/.local/bin/
 
 echo "Symlinking config files"
-ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc.d/80-terraform.zsh ${ZPROFILEDIR}/80-terraform.zsh
+ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc.d/80-terraform.zsh ${ZSHRCDIR}/80-terraform.zsh
