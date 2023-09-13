@@ -1,4 +1,4 @@
-github_token: ENC[AES256_GCM,data:O/QGZLwg8PeUN9RbkHF7a1wU17WaqRs9Ev2j+wD5937x4Ap5iofPQw==,iv:ZEuPXOQ+T78jDjEsQY1V6S/XXphit2dDwOyB1w1as44=,tag:LEYjP4UfcimkhlfjZqAOfg==,type:str]
+github_token: ENC[AES256_GCM,data:7MsOtwK941ncXHFMcl8t5hWnhfuAug4NiWBkyUUfHEa2JxXd7sgv6Q==,iv:9DEy/f7Ix/K3Xij8hFnP7jy7seiNz9/+OnpmbMhEaK0=,tag:0eGhwGM2Fk2i5CDXtR2Bbw==,type:str]
 nk_user_pin: ENC[AES256_GCM,data:LVF5+cetRgk=,iv:XbUHOzyXt+J0pCKeJZVcQaHwXThSrEi2mULOJbVk8Og=,tag:EED4+YAGZqRF1eGGAn4raw==,type:int]
 sops:
     kms: []
@@ -9,8 +9,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-11-06T13:54:12Z"
-    mac: ENC[AES256_GCM,data:tPM9LixoqXdzQx4ZqgzBRrIz9dI9NNAEqQ1yjYPf7GdXf2Sf/r1QPwItfX+7cbtAhOzLfTvsD91gdUq2XRL0aezTIxJp2PBQPLXxUNTD0kaX7Qd4oRCLo8G5Glmy8neuGlTUTAvsLgc57K+Otjg+Cz7cDO8/pzBFZC/d9DN1k4U=,iv:Z73v8Ui32UqiJWMiblg2rRqDwwSWcWfHAbkZW70WKPk=,tag:WCi2i49xEozuhjYe+TrWag==,type:str]
+    lastmodified: "2023-09-13T01:25:34Z"
+    mac: ENC[AES256_GCM,data:wxvg/S217SDWOTtu+egZcatNCEUAF+sdtwrH+TDH/iDG+yMCarP6MbKxAs5mIMyf8uB+IT57unmN6gLHOdztfgciBkt8BF0h9w71GptuLe87bW4PdcjBYpiF3mvHDCOfIZhIYYuqaHm7n+cajuD4ZIg4vW+EDbmoOxiIOm6GE+g=,iv:KFtEzrnv9oxW1i9YpBxDQC7A2j70qmHaCftIXaG0BkY=,tag:SES0MF5kqEYgC85lp1YrGQ==,type:str]
     pgp:
         - created_at: "2022-09-26T01:39:21Z"
           enc: |

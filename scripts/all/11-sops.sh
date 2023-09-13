@@ -10,7 +10,7 @@ if [[ ! $INC_SOPS ]]; then
     exit 0
 fi
 
-GITHUB_OUTPUT=$(curl -s https://api.github.com/repos/mozilla/sops/releases/latest) 
+GITHUB_OUTPUT=$(curl -s https://api.github.com/repositories/40684033/releases/latest)
 
 if [[ $OSNAME = "Fedora Linux" ]]; then
     echo "Ensuring installed dependencies"
