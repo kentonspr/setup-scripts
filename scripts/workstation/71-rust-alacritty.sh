@@ -60,7 +60,7 @@ cp ${REPODIR}/extra/completions/_alacritty ${ZDOTDIR}/functions/_alacritty
 echo -e "\n--- symlink config ---\n"
 mkdir -p ${CONFIGDIR}
 
-ln -s ${CODEDIR}/personal/dotfiles/alacritty/alacritty.yml ${CONFIGDIR}/alacritty.yml
+ln -s ${CODEDIR}/personal/dotfiles/alacritty/alacritty.toml ${CONFIGDIR}/alacritty.toml
 ln -s ${CODEDIR}/personal/dotfiles/zsh/zshrc.d/10-aliases.zsh ${ZDOTDIR}/zshrc.d/10-alacritty.zsh
 
 echo -e "\n--- update alternatives ---\n"

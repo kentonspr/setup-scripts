@@ -21,7 +21,7 @@ if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
     sudo cp ${FILESDIR}/gcloudsdk/google-cloud-sdk.list /etc/apt/sources.list.d/
 
     echo "Adding Repo Key"
-    curl ${GPG_KEY_URL} | sudo tee /usr/share/keyrings/cloud.google.gpg
+    curl ${GPG_KEY_URL} | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
 
     sudo apt update
 
