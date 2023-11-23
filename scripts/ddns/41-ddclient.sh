@@ -8,10 +8,10 @@ OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 
 echo -e "\n--- add ddclient.conf ---\n"
 sudo mkdir -p /opt/config
-sudo cp ${FILESDIR}/ddcient/opt/config/ddclient.conf /opt/config/ddclient.conf
+sudo cp ${FILESDIR}/ddns/opt/config/ddclient.conf /opt/config/ddclient.conf
 
-PORKBUN_API_KEY=$(sops -d --extract '["PORKBUN_API_KEY"]')
-PORKBUN_SECRET_API_KEY=$(sops -d --extract '["PORKBUN_SECRET_API_KEY"]')
+PORKBUN_API_KEY=$(sops -d --extract '["PORKBUN_API_KEY"]' ${FILESDIR}/ddns/vault.sops.yml)
+PORKBUN_SECRET_API_KEY=$(sops -d --extract '["PORKBUN_SECRET_API_KEY"]' ${FILESDIR}/ddns/vault.sops.yml)
 sed -i -e "s/PORKBUN_API_KEY/${PORKBUN_API_KEY}/" /opt/config/ddclient.conf
 sed -i -e "s/PORKBUN_SECRET_API_KEY/${PORKBUN_SECRET_API_KEY}/" /opt/config/ddclient.conf
 
@@ -43,6 +43,6 @@ for SERVICE in $(find ./ -type f -name '*.service'|sort); do
     sudo systemctl enable ${FILENAME}
 done
 
-sudo cp ${FILESDIR}/plex/etc/cron.daily/ddclient-update /etc/cron.daily/ddclient-update
+sudo cp ${FILESDIR}/ddns/etc/cron.daily/ddclient-update /etc/cron.daily/ddclient-update
 sudo chown root:root /etc/cron.daily/ddclient-update
 sudo chmod 755 /etc/cron.daily/ddclient-update
