@@ -1,0 +1,36 @@
+porkbun_api_key: ENC[AES256_GCM,data:Pi5WFmuTNPmen5fSocE+TaDh52sptVvcv+JV3EU9idpDtz8H2O3xVYEuXTShEFcQpYAIW7PRLiuoZereAKcZ/dDmP2A=,iv:yecwpLzxM3M1cEwmQ9NS77uHbf9pcEurnvOsBR3e/PM=,tag:y4CcC+hdgqxEEhUojmYOtA==,type:str]
+porkbun_secret_api_key: ENC[AES256_GCM,data:yKXl0tuT/Ss2R8LLyP9g7QPzl6Z2Ga/jumC1LRVeUHBdlCLG3HD6K+Kh9MpS5H2umdHg97j48nPmZYpTGNbKTXBLzOo=,iv:VZuD5RFNLamQDMAGJTkOWuZTJNp8QiWS5eMJU/qHRrk=,tag:epi02S1GsdK8FWy8bkX2qw==,type:str]
+sops:
+    kms: []
+    gcp_kms:
+        - resource_id: projects/digaida-net/locations/global/keyRings/main/cryptoKeys/sops-kms
+          created_at: "2023-11-23T21:01:58Z"
+          enc: CiQAz16OzTZ9eMzSOiTFG7Exa2rjg/H8farvwCI8lom4boR8tgcSSQCcL8599829X9tMRTWyLtj7Uzb/nXkbaQ5T4AxWzCGPhj6H6E6fMCHSopfn2VFmngIznl07whMKZzhp+Z/xp2EIHpcToBoWgQc=
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2023-11-23T21:03:00Z"
+    mac: ENC[AES256_GCM,data:0ShAYx2L2krjmIij73sHgmZZu7C3xC3zi2uvXT2JQoEH5PNRwlrpuLE3xzJmnVTokrGh8vw8QmUhdWlPSBfYPuxbxKh9f8gIqtAjir6FmaS7Ar6WMJvUgyQTKU/5Moq4fRnho7D1a9WDregCLFGFYiJGV5CgF87s/g+LYdQzSK0=,iv:qN3sCEZSgXZ+6Phgfea3qS7xihBsUovFplZ6Dx/76B8=,tag:fwg9ZmsGYfoHO/A3j+DAWg==,type:str]
+    pgp:
+        - created_at: "2023-11-23T21:01:58Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA3PQnft2Jh/tARAAmGa30nf8pe3vfc4Gvn1m88HpYVyNxz0amTGIAIKr/Kqc
+            bI6AHA5XZBlS8sFSTpuYxIc54+WuHo9MU65J7QlamRGez37sxIpmfB+EqAZoITJ/
+            6X1yhp6hJFD8YgEZxRHNszwpKyg0As5ooYA8Menkg+NZM9fup1lDSjKnSVUT4HEJ
+            ksEvlXtkvlEtpCfSOik9Vn3I+OOffyvKybXpHbJ3ZM7U8SV08gPEs9yTXazCxgPe
+            xT5y1gd/F+qauoNQ3znIqUu2AksSGbEMvmS37jXCfrkDqJ5W4kHy6x/QTGeirveo
+            33GKzQYDy4z1RtEkmAvPZdS53qG+sqrt5JRZDsiNy6m9moVIUeyyu5TuEPcLjpnO
+            TYOWD4UDCzmRj+nKLZ9Zu48ErvUKpYkjYpAdjdDhPL5sQV//38LXZJwvri6FBI4H
+            o3Cr7YHam9Xq2MHVfo91R9RGlGURagfLmwxnNpER+qXasIs+vwjXiBESkaxNC2hk
+            82+RabNnvRbpy/5Fp2gYKmGHZ5UZ0XZDxWlcjUmyM2tqXzz0SvNa1JE41oSe/0hx
+            Bc81UKIxx2oMXJtvwSp7RP6CeCwqvrnVMiuanPUSXwyf9QYuesPDDeo3FaIxFENi
+            HQoBKWZKlm9qNbMU7vaor5siVB49e3LdwwcpYNaueK8iQG3ip6Kq8wBeG/wtbojS
+            XgFAg9ycao9pstEt7fxT0vAO/mvU7iBtpArwCF59wNUxY3VU/Tg1BoZQuLBQuzie
+            129DwizBrO7MqYe65y6AXgI1apKXPoYxR7bxOuiCVvC196vF3IFxOVZb8nEATsk=
+            =+OoV
+            -----END PGP MESSAGE-----
+          fp: F37BACAFBA5F2DE9220330CDD696AAB9DB9A6D55
+    unencrypted_suffix: _unencrypted
+    version: 3.7.3
