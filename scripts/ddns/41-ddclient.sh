@@ -9,8 +9,8 @@ echo -e "\n--- add ddclient.conf ---\n"
 sudo mkdir -p /opt/config
 sudo cp ${FILESDIR}/ddns/opt/config/ddclient.conf /opt/config/ddclient.conf
 
-PORKBUN_API_KEY=$(sops -d --extract '["PORKBUN_API_KEY"]' ${FILESDIR}/ddns/vault.sops.yml)
-PORKBUN_SECRET_API_KEY=$(sops -d --extract '["PORKBUN_SECRET_API_KEY"]' ${FILESDIR}/ddns/vault.sops.yml)
+PORKBUN_API_KEY=$(sops -d --extract '["porkbun_api_key"]' ${filesdir}/ddns/vault.sops.yaml)
+PORKBUN_SECRET_API_KEY=$(sops -d --extract '["porkbun_secret_api_key"]' ${FILESDIR}/ddns/vault.sops.yaml)
 sed -i -e "s/PORKBUN_API_KEY/${PORKBUN_API_KEY}/" /opt/config/ddclient.conf
 sed -i -e "s/PORKBUN_SECRET_API_KEY/${PORKBUN_SECRET_API_KEY}/" /opt/config/ddclient.conf
 
