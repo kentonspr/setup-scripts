@@ -2,7 +2,6 @@
 # Sets up a plex container. Expects /opt/media, /opt/media2,
 # and /opt/tank/plex available for volume mounts into the container
 
-exit 0
 echo -e "\n### plex ###\n"
 
 OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")

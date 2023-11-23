@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Sets up a ddclient container. Expects configuration file to be in /opt/config
 
-exit 0
 echo -e "\n### ddclient ###\n"
 
 OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
