@@ -9,6 +9,7 @@ fi
 # Netplan
 sudo rm --interactive=never /etc/netplan/*
 sudo cp ${FILESDIR}/wireguard/etc/netplan/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
+sudo chmod 600 /etc/netplay/01-netcfg.yaml
 sudo netplan apply
 
 # iptables
