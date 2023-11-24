@@ -25,17 +25,17 @@ sudo cp ${FILESDIR}/wireguard/etc/sysctl.d/50-wireguard.conf /etc/sysctl.d/50-wi
 sudo cp ${FILESDIR}/wireguard/etc/wireguard/* /etc/wireguard
 
 # Kenton Config
-WG0_PRIV_KEY=$(sops -d --extract '["wg0_priv_key"]' ${filesdir}/wireguard/vault.sops.yaml)
-LAPTOP_PUB_KEY=$(sops -d --extract '["laptop_pub_key"]' ${filesdir}/wireguard/vault.sops.yaml)
-CELLY_PUB_KEY=$(sops -d --extract '["celly_pub_key"]' ${filesdir}/wireguard/vault.sops.yaml)
+WG0_PRIV_KEY=$(sops -d --extract '["wg0_priv_key"]' ${FILESDIR}/wireguard/vault.sops.yaml)
+LAPTOP_PUB_KEY=$(sops -d --extract '["laptop_pub_key"]' ${FILESDIR}/wireguard/vault.sops.yaml)
+CELLY_PUB_KEY=$(sops -d --extract '["celly_pub_key"]' ${FIlESDIR}/Wireguard/vault.sops.yaml)
 
 # Ian Config
-WG1_PRIV_KEY=$(sops -d --extract '["wg1_priv_key"]' ${filesdir}/wireguard/vault.sops.yaml)
-IAN_PUB_KEY1=$(sops -d --extract '["ian_pub_key1"]' ${filesdir}/wireguard/vault.sops.yaml)
+WG1_PRIV_KEY=$(sops -d --extract '["wg1_priv_key"]' ${FILESDIR}/wireguard/vault.sops.yaml)
+IAN_PUB_KEY1=$(sops -d --extract '["ian_pub_key1"]' ${FILESDIR}/wireguard/vault.sops.yaml)
 
 # Matt Config
-WG2_PRIV_KEY=$(sops -d --extract '["wg2_priv_key"]' ${filesdir}/wireguard/vault.sops.yaml)
-MATT_PUB_KEY1=$(sops -d --extract '["matt_pub_key1"]' ${filesdir}/wireguard/vault.sops.yaml)
+WG2_PRIV_KEY=$(sops -d --extract '["wg2_priv_key"]' ${FILESDIR}/wireguard/vault.sops.yaml)
+MATT_PUB_KEY1=$(sops -d --extract '["matt_pub_key1"]' ${FILESDIR}/wireguard/vault.sops.yaml)
 
 sudo sed -i -e "s/WG0_PRIV_KEY/${WG0_PRIV_KEY}/" /etc/wireguard/wg0.conf
 sudo sed -i -e "s/LAPTOP_PUB_KEY/${LAPTOP_PUB_KEY}/" /etc/wireguard/wg0.conf
