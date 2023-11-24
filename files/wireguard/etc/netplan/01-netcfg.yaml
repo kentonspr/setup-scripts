@@ -8,24 +8,24 @@ network:
     enp7s0:
       addresses: [ 10.157.240.1/30 ]
       routes:
-        to: default
-        via: 10.157.240.2
+        - to: default
+          via: 10.157.240.2
       route-policy:
-        from: 192.168.157.0/28
-        table: 100
+        - from: 192.168.157.0/28
+          table: 100
     enp8s0:
       addresses: [ 10.157.240.5/30 ]
       routes:
-        to: default
-        via: 10.157.240.6
+        - to: default
+          via: 10.157.240.6
       route-policy:
-        from: 192.168.157.16/28
-        table: 101
+        - from: 192.168.157.16/28
+          table: 101
     enp9s0:
       addresses: [ 10.157.240.9/30 ]
       routes:
-        to: default
-        via: 10.157.240.10
+        - to: default
+          via: 10.157.240.10
       route-policy:
-        from: 192.168.157.32/28
-        table: 102
+        - from: 192.168.157.32/28
+          table: 102
