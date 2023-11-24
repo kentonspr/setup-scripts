@@ -10,7 +10,7 @@ network:
       routes:
         - to: default
           via: 10.157.240.2
-      route-policy:
+      routing-policy:
         - from: 192.168.157.0/28
           table: 100
     enp8s0:
@@ -18,7 +18,7 @@ network:
       routes:
         - to: default
           via: 10.157.240.6
-      route-policy:
+      routing-policy:
         - from: 192.168.157.16/28
           table: 101
     enp9s0:
@@ -26,6 +26,6 @@ network:
       routes:
         - to: default
           via: 10.157.240.10
-      route-policy:
+      routing-policy:
         - from: 192.168.157.32/28
           table: 102
