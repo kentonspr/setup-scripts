@@ -66,69 +66,191 @@ network:
       link: enp45s0f0
       dhcp4: false
       dhcp6: false
-  bridges:
-    MGMT_br254:
-      interfaces: [v254]
-      addresses: [10.157.254.254/24]
+    v1000:
+      id: 1000
+      link: enp45s0f0
+      dhcp4: false
       dhcp6: false
-      nameservers:
-          search: [kappnet.net]
-          addresses: [10.157.252.53]
+    v1001:
+      id: 1001
+      link: enp45s0f0
+      dhcp4: false
+      dhcp6: false
+    v1002:
+      id: 1002
+      link: enp45s0f0
+      dhcp4: false
+      dhcp6: false
+    v1003:
+      id: 1003
+      link: enp45s0f0
+      dhcp4: false
+      dhcp6: false
+    v1004:
+      id: 1004
+      link: enp45s0f0
+      dhcp4: false
+      dhcp6: false
+    v2000:
+      id: 2000
+      link: enp45s0f0
+      dhcp4: false
+      dhcp6: false
+    v2001:
+      id: 2001
+      link: enp45s0f0
+      dhcp4: false
+      dhcp6: false
+    v3000:
+      id: 3000
+      link: enp45s0f0
+      dhcp4: false
+      dhcp6: false
+  bridges:
+    br0:
+      interfaces: [ enp45s0f0 ]
+      dhcp4: false
+      dhcp6: false
+      addresses: [ 10.1.1.1/24 ]
       parameters:
         stp: false
         forward-delay: 0
     br10:
-      interfaces: [v10]
-      addresses: [10.1.10.1/24]
+      interfaces: [ v10 ]
+      addresses: [ 10.1.10.1/24 ]
       dhcp6: false
       parameters:
         stp: false
         forward-delay: 0
     br11:
-      interfaces: [v11]
-      addresses: [10.1.11.1/24]
+      interfaces: [ v11 ]
+      addresses: [ 10.1.11.1/24 ]
       dhcp6: false
       parameters:
         stp: false
         forward-delay: 0
     br12:
-      interfaces: [v12]
-      addresses: [10.1.12.1/24]
+      interfaces: [ v12 ]
+      addresses: [ 10.1.12.1/24 ]
       dhcp6: false
       parameters:
         stp: false
         forward-delay: 0
     br100:
-      interfaces: [v100]
-      addresses: [10.1.100.1/24]
+      interfaces: [ v100 ]
+      addresses: [ 10.1.100.1/24 ]
       dhcp6: false
       parameters:
         stp: false
         forward-delay: 0
-    NTWK_Enablers_br252:
-      interfaces: [v252]
-      addresses: [10.157.252.254/24]
+    br240:
+      addresses: [ 10.157.240.2/30 ]
       dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br241:
+      addresses: [ 10.157.240.6/30 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br242:
+      addresses: [ 10.157.240.10/30 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br252:
+      interfaces: [ v252 ]
+      addresses: [ 10.157.252.254/24 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br254:
+      interfaces: [ v254 ]
+      addresses: [ 10.157.254.254/24 ]
+      dhcp6: false
+      nameservers:
+        search: [ kappnet.net ]
+        addresses: [ 10.157.252.53 ]
       parameters:
         stp: false
         forward-delay: 0
     br157:
-      interfaces: [v157]
-      addresses: [10.157.10.254/24]
+      interfaces: [ v157 ]
+      addresses: [ 10.157.10.254/24 ]
       dhcp6: false
       parameters:
         stp: false
         forward-delay: 0
     br998:
-      interfaces: [v998]
-      addresses: [10.1.98.1/24]
+      interfaces: [ v998 ]
+      addresses: [ 10.1.98.1/24 ]
       dhcp6: false
       parameters:
         stp: false
         forward-delay: 0
     br999:
-      interfaces: [v999]
-      addresses: [10.1.99.1/24]
+      interfaces: [ v999 ]
+      addresses: [ 10.1.99.1/24 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br1000:
+      interfaces: [ v1000 ]
+      addresses: [ 10.157.251.2/30 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br1001:
+      interfaces: [ v1001 ]
+      addresses: [ 10.157.251.6/30 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br1002:
+      interfaces: [ v1002 ]
+      addresses: [ 10.157.251.10/30 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br1003:
+      interfaces: [ v1003 ]
+      addresses: [ 10.157.251.14/30 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br1004:
+      interfaces: [ v1004 ]
+      addresses: [ 10.157.251.18/30 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br2000:
+      interfaces: [ v2000 ]
+      addresses: [ 10.157.100.2/30 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br2001:
+      interfaces: [ v2001 ]
+      addresses: [ 10.157.100.14/29 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br3000:
+      interfaces: [ v3000 ]
+      addresses: [ 10.157.200.14/28 ]
       dhcp6: false
       parameters:
         stp: false

@@ -1,0 +1,35 @@
+test: ENC[AES256_GCM,data:DqdC9pKh2k+QHbfFSV0GJ63I32rH3ZyhwSB7/ZU0+InHfWafN144ivlAZiW3kA==,iv:ECubOII5Ic0cj992OyUl5CMyuZx7RtQ6HMlJqnK+p4s=,tag:YsmL7ioQs35zL5NFdLRC7A==,type:str]
+sops:
+    kms: []
+    gcp_kms:
+        - resource_id: projects/digaida-net/locations/global/keyRings/main/cryptoKeys/sops-kms
+          created_at: "2023-11-24T14:36:00Z"
+          enc: CiQAz16OzQ0DmPSEOxiiAIfxZubsPPt/932jRKyg8NgH9757IQsSSQCcL859WwOKN3CR+EMPUL/QTy8IAwBm6e9T3EmV7jDqUDu37aNuGx8eY4AJTzRJkZ5DH6+ZM7uqIMbZ4HQMc4sXLbBMmww94gk=
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2023-11-24T14:36:11Z"
+    mac: ENC[AES256_GCM,data:vftbMxAMxVUS+Zh8gdpo12YTtofcfhTFuAItURJGXKS2FbdgjVE4KsZpPS2HquGvaBWOqYDsIf9/JES2IudhKczYxpZEB169IfWNVw7HB6CswHCk7A5eXnhFMK449DZ840UPRgIkpNBLTexDWv7FnEHhjZEtr2OMRMKHRan5H6o=,iv:1M0TNGtfH/NH0mfbAJkusrttnY0M0JhGRnU1oPB5UOE=,tag:+zB0NABxaVwKaC4HhjKcCQ==,type:str]
+    pgp:
+        - created_at: "2023-11-24T14:36:00Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA3PQnft2Jh/tARAAikX7P9iUxH9tDKMkj+Oa5BREwrPpHhkbGfvuHLfNEPee
+            RApmzSNKEmVevZVnS3jEgq9mVZfuTzb/MTaJmtJsGPHgkgXjJMjxAnjrV7tTeY8w
+            +xmDwE5USSIeEA68lQ924yOEoDv67nZYphoTgJDGd954bmT6UDGVtZWiq94DWHIl
+            6pNe1TnMy1+gIUSd2mkq53PT2It3375Guwbe5Z0L4sBRjGa5JoUic4o1S0Ck3GrM
+            txT03WQtwvq3VDWhhcYIjGig1AGC+qytK/F8A6TJ8bQ/jZ2XQT66MPdUyDHSEECh
+            l5qwxka2zuF4AQXbYyDy7tEKp5QQiOi7MowP0zO0+nXOYrgv3libao5h+Z0EHkkB
+            E+69d4yzYOdNgnhahliMGbx6Afrcrk76w3U2pnrLgPAHvbZAq8HfYyN2KVGOai6g
+            lB3KbwgoBALEIxH0yYt0rdIo7iR8/l4LkPq44HldG+62An8P4zgrojn/IgY+ZaH5
+            vBy3feZ00sDweEo0ltdUCbSrOls0YqbadYuNUL4mUipELmol/kpoXzbyRTK9YxF+
+            Q9IcQ1jPQGe3401EFSl+gMP65QZcX9favK1b4FA/eoGKtQ7Z+btLXegV6EHafqea
+            OcS6DldWvZgzI2VVJycFmclzROyrjaIUi8tGn0YAZRhyt4ZrhUjQEbsPJTqYfffS
+            XgE4ngU2MvqAzit/uF+SPNmSKSuhOLcCmYBLVu1wiyRlEDOf9CjM38c4m6OmZP8w
+            9ae3v1Rw9xmKkIV7yIxB9fo7ROfjHTu26YNb3I8OIKlg3jslHwI4kqhmJlzVMXM=
+            =iZ//
+            -----END PGP MESSAGE-----
+          fp: F37BACAFBA5F2DE9220330CDD696AAB9DB9A6D55
+    unencrypted_suffix: _unencrypted
+    version: 3.7.3

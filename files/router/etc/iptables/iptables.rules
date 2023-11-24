@@ -12,36 +12,63 @@
 -A INPUT -s 10.1.10.0/24 -p tcp -m tcp --dport 22 -m comment --comment "allow SSH to this host from WiredLAN" -j ACCEPT
 -A INPUT -s 10.1.11.3/32 -p tcp -m tcp --dport 22 -m comment --comment "allow SSH to this host from Laptop" -j ACCEPT
 -A INPUT -s 10.1.1.0/24 -p tcp -m tcp --dport 22 -m comment --comment "allow SSH from temp desktop IP" -j ACCEPT
+-A INPUT -s 10.157.254.0/24 -p tcp -m tcp --dport 22 -m comment --comment "allow SSH from temp desktop IP" -j ACCEPT
 -A INPUT -p udp -m udp --dport 51820 -m conntrack --ctstate NEW -m comment --comment "allow incoming personal VPN wg0" -j ACCEPT
 -A INPUT -p udp -m udp --dport 51821 -m conntrack --ctstate NEW -m comment --comment "allow incoming dscrn VPN wg1" -j ACCEPT
 #FORWARD for Internet Traffic
 -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
--A FORWARD -i br0 -o enp6s0f0 -m comment --comment "allow all Internet bound traffic from the itnernal interface" -j ACCEPT
--A FORWARD -i br10 -o enp6s0f0 -m comment --comment "allow all internet bound traffic from Wired LAN VLAN" -j ACCEPT
--A FORWARD -i br11 -o enp6s0f0 -m comment --comment "allow all internet bound traffic from Wireless LAN VLAN" -j ACCEPT
--A FORWARD -i br12 -o enp6s0f0 -m comment --comment "allow all internet bound traffic from Streaming LAN VLAN" -j ACCEPT
--A FORWARD -i br100 -o enp6s0f0 -m comment --comment "allow all internet bound traffic from Server VLAN" -j ACCEPT
--A FORWARD -i br157 -o enp6s0f0 -m comment --comment "allow all internet bound traffic from temp personal VLAN" -j ACCEPT
--A FORWARD -i br254 -o enp6s0f0 -m comment --comment "allow all internet bound traffic from mgmt VLAN" -j ACCEPT
--A FORWARD -i br998 -o enp6s0f0 -m comment --comment "allow all internet bound traffic from Home Automation interface" -j ACCEPT
--A FORWARD -i br999 -o enp6s0f0 -m comment --comment "allow all internet bound traffic from Guest WiFi" -j ACCEPT
--A FORWARD -i wg0 -o enp6s0f0 -m comment --comment "allow all internet bound traffic from personal VPN" -j ACCEPT
--A FORWARD -i wg1 -o enp6s0f0 -m comment --comment "allow all internet bound traffic from dscrn VPN" -j ACCEPT
+-A FORWARD -i br0 -o enp38s0 -m comment --comment "allow all Internet bound traffic from the itnernal interface" -j ACCEPT
+-A FORWARD -i br10 -o enp38s0 -m comment --comment "allow all internet bound traffic from Wired LAN VLAN" -j ACCEPT
+-A FORWARD -i br11 -o enp38s0 -m comment --comment "allow all internet bound traffic from Wireless LAN VLAN" -j ACCEPT
+-A FORWARD -i br12 -o enp38s0 -m comment --comment "allow all internet bound traffic from Streaming LAN VLAN" -j ACCEPT
+-A FORWARD -i br100 -o enp38s0 -m comment --comment "allow all internet bound traffic from Server VLAN" -j ACCEPT
+-A FORWARD -i br157 -o enp38s0 -m comment --comment "allow all internet bound traffic from temp personal VLAN" -j ACCEPT
+-A FORWARD -i br240 -o enp38s0 -m comment --comment "allow all internet bound traffic from Kenton VPN" -j ACCEPT
+-A FORWARD -i br241 -o enp38s0 -m comment --comment "allow all internet bound traffic from Ian VPN" -j ACCEPT
+-A FORWARD -i br242 -o enp38s0 -m comment --comment "allow all internet bound traffic from Matt VPN" -j ACCEPT
+-A FORWARD -i br252 -o enp38s0 -m comment --comment "allow all internet bound traffic from mgmt VLAN" -j ACCEPT
+-A FORWARD -i br254 -o enp38s0 -m comment --comment "allow all internet bound traffic from mgmt VLAN" -j ACCEPT
+-A FORWARD -i br998 -o enp38s0 -m comment --comment "allow all internet bound traffic from Home Automation interface" -j ACCEPT
+-A FORWARD -i br999 -o enp38s0 -m comment --comment "allow all internet bound traffic from Guest WiFi" -j ACCEPT
+-A FORWARD -i br1000 -o enp38s0 -m comment --comment "allow all internet bound traffic from personal-share" -j ACCEPT
+-A FORWARD -i br1001 -o enp38s0 -m comment --comment "allow all internet bound traffic from media-share" -j ACCEPT
+-A FORWARD -i br1002 -o enp38s0 -m comment --comment "allow all internet bound traffic from scratch-share" -j ACCEPT
+-A FORWARD -i br1003 -o enp38s0 -m comment --comment "allow all internet bound traffic from server-share" -j ACCEPT
+-A FORWARD -i br1004 -o enp38s0 -m comment --comment "allow all internet bound traffic from random-share" -j ACCEPT
+-A FORWARD -i br2000 -o enp38s0 -m comment --comment "allow all internet bound traffic from plex" -j ACCEPT
+-A FORWARD -i br2001 -o enp38s0 -m comment --comment "allow all internet bound traffic from jollyroger" -j ACCEPT
+-A FORWARD -i br3000 -o enp38s0 -m comment --comment "allow all internet bound traffic from compute2 vlan 3k" -j ACCEPT
+-A FORWARD -i wg0 -o enp38s0 -m comment --comment "allow all internet bound traffic from personal VPN" -j ACCEPT
+-A FORWARD -i wg1 -o enp38s0 -m comment --comment "allow all internet bound traffic from dscrn VPN" -j ACCEPT
 -A FORWARD -i wg0 -o wg0 -m conntrack --ctstate NEW -j ACCEPT
 -A FORWARD -i wg1 -o wg1 -m conntrack --ctstate NEW -j ACCEPT
 #laptop for everything
--A FORWARD -s 10.1.11.3/32 -d 10.0.0.0/8 -m comment --comment "allow laptop to mgmt" -j ACCEPT
+-A FORWARD -s 10.1.11.0/24 -d 10.0.0.0/8 -m comment --comment "allow laptop to mgmt" -j ACCEPT
+# TEMP MGMT Subnet
+-A FORWARD -s 10.157.254.0/24 -p tcp -m tcp --dport 22 -m comment --comment "Allow SSH from MGMT subnet" -j ACCEPT
+-A FORWARD -d 10.157.254.0/24 -p tcp -m tcp --dport 80 -m comment --comment "Allow HTTP to MGMT subnet" -j ACCEPT
 ## Temp Pi HTTP
 -A FORWARD -d 10.1.100.170/32 -p tcp -m tcp --dport 80 -m comment --comment "temp allowance for the pi server" -j ACCEPT
+## PiHole Admin
+-A FORWARD -d 10.1.100.153/32 -p tcp -m tcp --dport 80 -m comment --comment "Allow pihole admin interface" -j ACCEPT
 ## DNS
--A FORWARD -d 10.1.100.250/32 -p udp -m udp --dport 53 -m comment --comment "allow all traffic to kappnet.net DNS server" -j ACCEPT
+-A FORWARD -d 10.1.100.53/32 -p udp -m udp --dport 53 -m comment --comment "allow all traffic to kappnet.net DNS server" -j ACCEPT
+-A FORWARD -d 10.157.252.53/32 -p udp -m udp --dport 53 -m comment --comment "allow all traffic to kappnet.net DNS server" -j ACCEPT
 ## Plex
 -A FORWARD -d 10.1.100.95/32 -p tcp -m tcp --dport 32400 -m comment --comment "allow plex traffic" -j ACCEPT
+-A FORWARD -d 10.157.100.1/32 -p tcp -m tcp --dport 32400 -m comment --comment "allow plex traffic" -j ACCEPT
 -A FORWARD -d 10.1.100.95/32 -p tcp -m tcp --dport 8080 -m comment --comment "allow sabnzbd traffic" -j ACCEPT
+## sabnzbd
+-A FORWARD -d 10.157.100.10/32 -p tcp -m tcp --dport 8080 -m comment --comment "allow sabnzbd traffic" -j ACCEPT
 ## Synergy
 -A FORWARD -s 10.1.99.0/24 -d 10.1.10.2 -p tcp -m tcp --dport 24800 -m comment --comment "Synergy for ADT Laptop" -j ACCEPT
 ## TEMP FOR MikroTik Web
 -A FORWARD -s 10.1.10.2/32 -d 10.1.1.251 -p tcp -m tcp --dport 80 -m comment --comment "Web interface for switch" -j ACCEPT
+## Sunshine Gaming
+-A FORWARD -d 10.1.10.104/32 -p tcp -m tcp --dport 48010 -m comment --comment "Web interface for sunshine" -j ACCEPT
+-A FORWARD -d 10.1.10.104/32 -p tcp -m tcp --dport 47990 -m comment --comment "Web interface for sunshine" -j ACCEPT
+-A FORWARD -d 10.1.10.104/32 -p tcp -m tcp --dport 47989 -m comment --comment "Web interface for sunshine" -j ACCEPT
+-A FORWARD -d 10.1.10.104/32 -p tcp -m tcp --dport 47984 -m comment --comment "Web interface for sunshine" -j ACCEPT
 #Subnet Denies
 -A FORWARD -s 10.1.99.0/24 -d 10.0.0.0/8 -m comment --comment "deny guest VLAN to all 10/8 space" -j DROP
 -A FORWARD -s 10.1.12.0/24 -d 10.0.0.0/8 -m comment --comment "deny streaming device VLAN to all 10/8 space" -j DROP
@@ -50,7 +77,7 @@
 #-A FORWARD -d 10.1.100.252/32 -p tcp -m tcp --dport 80 -m comment --comment "allow external port 80 to reverse proxy" -j ACCEPT
 #-A FORWARD -d 10.1.100.252/32 -p tcp -m tcp --dport 443 -m comment --comment "allow external port 443 to reverse proxy" -j ACCEPT
 # Printer
--A FORWARD -s 10.0.0.0/8 -d 10.1.11.10/32 -m comment --comment "Allow everyonne to printer" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.1.11.174/32 -m comment --comment "Allow everyonne to printer" -j ACCEPT
 #Lapto Temp Web
 -A FORWARD -d 10.1.11.3/32 -p tcp -m tcp --dport 80 -m comment --comment "allow python webserver from laptop" -j ACCEPT
 -A FORWARD -s 10.1.11.3/32 -d 10.0.0.0/8 -m comment --comment "allow laptop to mgmt" -j ACCEPT
@@ -59,6 +86,7 @@
 ## Ansible
 -A FORWARD -s 10.1.100.96/32 -p tcp -m tcp --dport 22 -m comment --comment "allow ansible.kappnet.net to SSH to errbody" -j ACCEPT
 ## Desktop
+-A FORWARD -s 10.1.1.2/32 -p tcp -m tcp --dport 22 -m comment --comment "allow desktop to SSH to anyone" -j ACCEPT
 -A FORWARD -s 10.1.10.2/32 -p tcp -m tcp --dport 22 -m comment --comment "allow desktop to SSH to anyone" -j ACCEPT
 -A FORWARD -s 10.1.10.2/32 -p tcp -m tcp --dport 5900 -m comment --comment "allow desktop to VNC to anyone" -j ACCEPT
 -A FORWARD -s 10.1.10.2/32 -p tcp -m tcp --dport 1022 -m comment --comment "allow desktop to all ubuntu upgrade daemons" -j ACCEPT
@@ -88,13 +116,30 @@
 -A FORWARD -s 10.1.11.0/24 -d 10.0.0.0/8 -m comment --comment "allow WIRELESS LAN  to home networks" -j ACCEPT
 -A FORWARD -s 10.0.0.0/8 -d 10.0.0.0/8 -p tcp -m tcp --dport 22000 -m comment --comment "allow syncthing" -j ACCEPT
 -A FORWARD -s 10.0.0.0/8 -d 10.0.0.0/8 -p icmp -m comment --comment "allow ICMP to and from all 10/8 hosts" -j ACCEPT
+## jolly roger
+-A FORWARD -s 10.157.200.1/32 -d 10.157.251.5 -p tcp -m tcp --dport 22 -m comment --comment "allow SSH from jollyroger to media-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.200.1 -p tcp -m tcp --dport 22 -m comment --comment "allow SSH to jollyroger" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.200.1 -p tcp -m tcp --dport 8080 -m comment --comment "allow sabnzbd access" -j ACCEPT
 ##TEMP NFS For Media Share
 -A FORWARD -s 10.0.0.0/8 -d 10.1.100.176 -p tcp -m tcp --dport 2049 -m comment --comment "allow NFS from all local subnets to media-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.200.1 -p tcp -m tcp --dport 2049 -m comment --comment "allow NFS from all local subnets to jollyroger" -j ACCEPT
 -A FORWARD -s 10.0.0.0/8 -d 10.1.100.100 -p tcp -m tcp --dport 2049 -m comment --comment "allow NFS from all local subnets to nas.home.kappnet.net" -j ACCEPT
 -A FORWARD -s 10.0.0.0/8 -d 10.1.100.97 -p tcp -m tcp --dport 587 -m comment --comment "allow mail into smtp.home.kappnet.net" -j ACCEPT
 -A FORWARD -s 10.100.0.0/24 -d 10.0.0.0/8 -m comment --comment "allow all internal traffic on personal VPN" -j ACCEPT
 -A FORWARD -s 10.100.1.0/24 -d 10.1.1.0/24 -m comment --comment "allow all management VLAN traffic on dscrn VPN" -j ACCEPT
 -A FORWARD -s 10.100.1.0/24 -d 10.1.100.0/24 -m comment --comment "allow all server VLAN traffic on dscrn VPN" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.251.13 -p tcp -m tcp --dport 2049 -m comment --comment "allow NFS from all local subnets to server-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.251.13 -p udp -m udp --dport 2049 -m comment --comment "allow NFS from all local subnets to server-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.251.13 -p tcp -m tcp --dport 111 -m comment --comment "allow NFS from all local subnets to server-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.251.13 -p udp -m udp --dport 111 -m comment --comment "allow NFS from all local subnets to server-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.251.5 -p tcp -m tcp --dport 2049 -m comment --comment "allow NFS from all local subnets to server-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.251.5 -p udp -m udp --dport 2049 -m comment --comment "allow NFS from all local subnets to server-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.251.5 -p tcp -m tcp --dport 111 -m comment --comment "allow NFS from all local subnets to server-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.251.5 -p udp -m udp --dport 111 -m comment --comment "allow NFS from all local subnets to server-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.251.9 -p tcp -m tcp --dport 2049 -m comment --comment "allow NFS from all local subnets to server-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.251.9 -p udp -m udp --dport 2049 -m comment --comment "allow NFS from all local subnets to server-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.251.9 -p tcp -m tcp --dport 111 -m comment --comment "allow NFS from all local subnets to server-share" -j ACCEPT
+-A FORWARD -s 10.0.0.0/8 -d 10.157.251.9 -p udp -m udp --dport 111 -m comment --comment "allow NFS from all local subnets to server-share" -j ACCEPT
 COMMIT
 # Completed on Sat Oct 11 09:53:54 2014
 # Generated by iptables-save v1.4.14 on Sat Oct 11 09:53:54 2014
@@ -103,18 +148,18 @@ COMMIT
 :INPUT ACCEPT [36:3016]
 :OUTPUT ACCEPT [3:206]
 :POSTROUTING ACCEPT [0:0]
--A PREROUTING -i enp6s0f0 -p udp -m udp --dport 9987 -j DNAT --to-destination 10.1.100.30
--A PREROUTING -i enp6s0f0 -p tcp -m tcp --dport 30033 -j DNAT --to-destination 10.1.100.30
--A PREROUTING -i enp6s0f0 -p tcp -m tcp --dport 10011 -j DNAT --to-destination 10.1.100.30
--A PREROUTING -i enp6s0f0 -p tcp -m tcp --dport 25565 -j DNAT --to-destination 10.1.100.20
--A PREROUTING -i enp6s0f0 -p tcp -m tcp --dport 62400 -j DNAT --to-destination 10.1.100.95:32400
--A PREROUTING -i enp6s0f0 -p tcp -m tcp --dport 64000 -j DNAT --to-destination 10.1.10.2
--A PREROUTING -i enp6s0f0 -p tcp -m tcp --dport 64022 -j DNAT --to-destination 10.1.10.2:22
--A PREROUTING -i enp6s0f0 -p udp -m udp --dport 1195 -j DNAT --to-destination 10.1.10.251:1194
--A PREROUTING -i enp6s0f0 -p tcp -m tcp --dport 1195 -j DNAT --to-destination 10.1.10.251:1194
--A PREROUTING -i enp6s0f0 -p tcp -m tcp --dport 8767 -j DNAT --to-destination 10.1.100.31
--A PREROUTING -i enp6s0f0 -p udp -m udp --dport 8767 -j DNAT --to-destination 10.1.100.31
-#-A PREROUTING -i enp6s0f0 -p tcp -m tcp --dport 80 -j DNAT --to-destination 10.1.100.252
-#-A PREROUTING -i enp6s0f0 -p tcp -m tcp --dport 443 -j DNAT --to-destination 10.1.100.252
--A POSTROUTING -o enp6s0f0 -j MASQUERADE
+-A PREROUTING -i enp38s0 -p udp -m udp --dport 9987 -j DNAT --to-destination 10.1.100.30
+-A PREROUTING -i enp38s0 -p tcp -m tcp --dport 30033 -j DNAT --to-destination 10.1.100.30
+-A PREROUTING -i enp38s0 -p tcp -m tcp --dport 10011 -j DNAT --to-destination 10.1.100.30
+-A PREROUTING -i enp38s0 -p tcp -m tcp --dport 25565 -j DNAT --to-destination 10.1.100.20
+-A PREROUTING -i enp38s0 -p tcp -m tcp --dport 62400 -j DNAT --to-destination 10.157.100.1:32400
+-A PREROUTING -i enp38s0 -p tcp -m tcp --dport 64000 -j DNAT --to-destination 10.1.10.2
+-A PREROUTING -i enp38s0 -p tcp -m tcp --dport 64022 -j DNAT --to-destination 10.1.10.2:22
+-A PREROUTING -i enp38s0 -p udp -m udp --dport 1195 -j DNAT --to-destination 10.1.10.251:1194
+-A PREROUTING -i enp38s0 -p tcp -m tcp --dport 1195 -j DNAT --to-destination 10.1.10.251:1194
+-A PREROUTING -i enp38s0 -p tcp -m tcp --dport 8767 -j DNAT --to-destination 10.1.100.31
+-A PREROUTING -i enp38s0 -p udp -m udp --dport 8767 -j DNAT --to-destination 10.1.100.31
+#-A PREROUTING -i enp38s0 -p tcp -m tcp --dport 80 -j DNAT --to-destination 10.1.100.252
+#-A PREROUTING -i enp38s0 -p tcp -m tcp --dport 443 -j DNAT --to-destination 10.1.100.252
+-A POSTROUTING -o enp38s0 -j MASQUERADE
 COMMIT
