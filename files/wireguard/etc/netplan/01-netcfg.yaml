@@ -10,6 +10,7 @@ network:
       routes:
         - to: default
           via: 10.157.240.2
+          table: 100
       routing-policy:
         - from: 192.168.157.0/28
           table: 100
@@ -18,6 +19,7 @@ network:
       routes:
         - to: default
           via: 10.157.240.6
+          table: 101
       routing-policy:
         - from: 192.168.157.16/28
           table: 101
@@ -26,6 +28,7 @@ network:
       routes:
         - to: default
           via: 10.157.240.10
+          table: 102
       routing-policy:
         - from: 192.168.157.32/28
           table: 102
