@@ -21,8 +21,8 @@
 -A INPUT -p udp -m udp --dport 51821 -m comment --comment "Accept new wireguard connections for Ian" -j ACCEPT
 -A INPUT -p udp -m udp --dport 51822 -m comment --comment "Accept new wireguard connections for Matt" -j ACCEPT
 -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
--A FORWARD -i wg0 -o ens7s0 -m conntrack --ctstate NEW -m comment --comment "Allow forwarding of traffic from wg0 for Kenton" -j ACCEPT
--A FORWARD -i wg1 -o ens8s0 -m conntrack --ctstate NEW -m comment --comment "Allow forwarding of traffic from wg1 for Ian" -j ACCEPT
--A FORWARD -i wg2 -o ens9s0 -m conntrack --ctstate NEW -m comment --comment "Allow forwarding of traffic from wg2 for Matt" -j ACCEPT
+-A FORWARD -i wg0 -o enp7s0 -m conntrack --ctstate NEW -m comment --comment "Allow forwarding of traffic from wg0 for Kenton" -j ACCEPT
+-A FORWARD -i wg1 -o enp8s0 -m conntrack --ctstate NEW -m comment --comment "Allow forwarding of traffic from wg1 for Ian" -j ACCEPT
+-A FORWARD -i wg2 -o enp9s0 -m conntrack --ctstate NEW -m comment --comment "Allow forwarding of traffic from wg2 for Matt" -j ACCEPT
 COMMIT
 # Completed on Tue Feb 15 00:29:51 2022

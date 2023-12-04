@@ -21,7 +21,7 @@ sudo netplan apply
 # iptables
 sudo mkdir /etc/iptables
 sudo cp ${FILESDIR}/router/etc/iptables/iptables.rules /etc/iptables/iptables.rules
-sudo cp ${FILESDIR}/router/systemd/system/iptables-rules.service /etc/systemd/system/iptables-rules.service
+sudo cp ${FILESDIR}/router/etc/systemd/system/iptables-rules.service /etc/systemd/system/iptables-rules.service
 sudo systemctl enable iptables-rules.service
 
 # Enable IP routing

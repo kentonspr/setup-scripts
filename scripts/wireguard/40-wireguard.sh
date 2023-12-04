@@ -15,7 +15,7 @@ sudo netplan apply
 # iptables
 sudo mkdir /etc/iptables
 sudo cp ${FILESDIR}/wireguard/etc/iptables/iptables.rules /etc/iptables/iptables.rules
-sudo cp ${FILESDIR}/wireguard/systemd/system/iptables-rules.service /etc/systemd/system/iptables-rules.service
+sudo cp ${FILESDIR}/wireguard/etc/systemd/system/iptables-rules.service /etc/systemd/system/iptables-rules.service
 sudo systemctl enable iptables-rules.service
 
 # Enable IP routing
