@@ -10,6 +10,10 @@ if [[ ! $INC_ZFS ]]; then
 fi
 
 echo -e "\n--- Install ZFS ---\n"
-if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
+if [[ $OSNAME = "Ubuntu" ]]; then
     sudo apt install -y zfsutils-linux nfs-kernel-server
+fi
+
+if [[ $OSNAME = "Pop!_OS" ]]; then
+    sudo apt install -y zfs-dkms nfs-kernel-server
 fi
