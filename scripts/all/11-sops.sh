@@ -30,7 +30,7 @@ if [[ ${OSNAME} = "Fedora Linux" ]]; then
 	exit 0
 fi
 
-if [[ ${OSNAME} = "Ubuntu" ]] || [[ ${OSNAME} = "Pop!_OS" ]]; then
+if [[ ${OSNAME} = "Ubuntu" ]] || [[ ${OSNAME} = "Pop!_OS" ]] || [[ "${OSNAME}" = "Debian GNU/Linux" ]]; then
 	echo "Ensuring installed dependencies"
 	sudo apt install -y curl jq
 

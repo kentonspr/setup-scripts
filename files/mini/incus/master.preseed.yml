@@ -1,0 +1,34 @@
+config:
+  core.https_address: 10.157.254.201:8443
+networks: []
+storage_pools:
+- config:
+    source: /dev/sda
+  description: ""
+  name: local
+  driver: zfs
+profiles:
+- config: {}
+  description: ""
+  devices:
+    eth0:
+      name: eth0
+      nictype: bridged
+      parent: br254
+      type: nic
+    root:
+      path: /
+      pool: local
+      type: disk
+  name: default
+projects: []
+cluster:
+  server_name: mini1
+  enabled: true
+  member_config: []
+  cluster_address: ""
+  cluster_certificate: ""
+  server_address: ""
+  cluster_password: ""
+  cluster_certificate_path: ""
+  cluster_token: ""

@@ -12,7 +12,7 @@ if [[ "${OSNAME}" = "Fedora Linux" ]]; then
 	sudo dnf install opensc gnupg2 gnupg2-smime
 fi
 
-if [[ "${OSNAME}" = "Ubuntu" ]] || [[ "${OSNAME}" = "Pop!_OS" ]]; then
+if [[ "${OSNAME}" = "Ubuntu" ]] || [[ "${OSNAME}" = "Pop!_OS" ]] || [[ "${OSNAME}" = "Debian GNU/Linux" ]]; then
 	echo "Ensuring installed dependencies"
 	sudo apt install -y scdaemon opensc gnupg2
 fi

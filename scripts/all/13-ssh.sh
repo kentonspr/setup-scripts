@@ -15,11 +15,7 @@ if [[ "${OSNAME}" = "Fedora Linux" ]]; then
 	sudo dnf install -y openssh-server
 fi
 
-if [[ ${OSNAME} = "Ubuntu" ]]; then
-	sudo apt install -y openssh-server
-fi
-
-if [[ ${OSNAME} = "Ubuntu" ]] || [[ ${OSNAME} = "Pop!_OS" ]]; then
+if [[ ${OSNAME} = "Ubuntu" ]] || [[ ${OSNAME} = "Pop!_OS" ]] || [[ "${OSNAME}" = "Debian GNU/Linux" ]]; then
 	sudo apt install -y openssh-server
 fi
 

@@ -5,12 +5,12 @@ echo -e "\n### neovim ###\n"
 
 OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 
-if [[ ! ${INC_NVIM} ]]; then
+if [[ ! "${INC_NVIM}" ]]; then
 	echo "INC_NVIM is not set. Skipping 30-nvim.sh"
 	exit 0
 fi
 
-if [[ ! ${INC_PYTHON} ]]; then
+if [[ ! "${INC_PYTHON}" ]]; then
 	echo "INC_PYTHON is not set. Exiting"
 	exit 0
 fi
@@ -19,7 +19,7 @@ echo -e "\n--- Installing neovim ---\n"
 
 GITHUB_OUTPUT="$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest)"
 
-if [[ ${OSNAME} = "Ubuntu" ]] || [[ ${OSNAME} = "Pop!_OS" ]]; then
+if [[ "${OSNAME}" = "Ubuntu" ]] || [[ "${OSNAME}" = "Pop!_OS" ]] || [[ "${OSNAME}" = "Debian GNU/Linux" ]]; then
 	echo -e "\n--- Ensuring installed dependencies ---\n"
 	sudo apt install -y curl jq
 fi
@@ -45,13 +45,11 @@ sudo update-alternatives --install /usr/bin/vim vim "${HOME}/Apps/nvim-linux64/b
 sudo update-alternatives --set vim "${HOME}/Apps/nvim-linux64/bin/nvim"
 
 echo -e "\n--- link dotfiles ---\n"
-ln -s "${CODEDIR}/personal/dotfiles/nvim" "${HOME}/.config/nvim"
+[ ! -d "${HOME}/.config" ] && mkdir "${HOME}/.config"
+ln -s "${CODEDIR}/personal/dotfiles/lazyvim" "${HOME}/.config/nvim"
 
-echo -e "\n--- install packer ---\n"
-git clone --depth 1 "https://github.com/wbthomason/packer.nvim/${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim"
-
-echo -e "\n--- adding bootstrap script ---\n"
-[ ! -d "${USER_BOOTSTRAPDIR}" ] && mkdir -p "${USER_BOOTSRAPDIR}"
+# echo -e "\n--- install packer ---\n"
+# git clone --depth 1 "https://github.com/wbthomason/packer.nvim/${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim"
 
 cp "${FILESDIR}/nvim/11-nvim-bootstrap.sh" "${USER_BOOTSTRAPDIR}"
-chmod +x "${USER_BOOTSTRAPDR}/11-nvim-bootstrap.sh"
+chmod +x "${USER_BOOTSTRAPDIR}/11-nvim-bootstrap.sh"

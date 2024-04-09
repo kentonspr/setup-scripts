@@ -9,18 +9,29 @@ network:
       dhcp4: false
       dhcp6: false
   vlans:
+    v33:
+      dhcp4: false
+      dhcp6: false
+      id: 33
+      link: enp1s0
     v252:
       dhcp4: false
       dhcp6: false
       id: 252
       link: enp1s0
   bridges:
+    br33:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - v33
+      macaddress: ca:77:0a:9d:21:MAC_OCTET
     br252:
       dhcp4: false
       dhcp6: false
       interfaces:
         - v252
-      macaddress: ca:77:7c:41:3e:MAC_OCTET
+      macaddress: ca:77:0a:9d:fc:MAC_OCTET
     br254:
       dhcp4: false
       dhcp6: false
@@ -36,4 +47,4 @@ network:
         via: 10.157.254.254
       interfaces:
         - enp1s0
-      macaddress: ca:77:7c:41:3d:MAC_OCTET
+      macaddress: ca:77:0a:9d:fe:MAC_OCTET

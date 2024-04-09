@@ -1,0 +1,16 @@
+  server_name: HOSTNAME
+  enabled: true
+  member_config:
+  - entity: storage-pool
+    name: local
+    key: source
+    value: /dev/sda
+    description: '"source" property for storage pool "local"'
+  - entity: storage-pool
+    name: local
+    key: zfs.pool_name
+    value: ""
+    description: '"zfs.pool_name" property for storage pool "local"'
+  cluster_address: 10.157.254.201:8443
+  server_address: 10.157.254.IP_OCTET:8443
+  cluster_token: INCUS_JOIN_TOKEN

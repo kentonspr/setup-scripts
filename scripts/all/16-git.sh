@@ -15,7 +15,7 @@ if [[ ${OSNAME} = "Fedora Linux" ]]; then
 	sudo dnf install git
 fi
 
-if [[ ${OSNAME} = "Ubuntu" ]] || [[ ${OSNAME} = "Pop!_OS" ]]; then
+if [[ ${OSNAME} = "Ubuntu" ]] || [[ ${OSNAME} = "Pop!_OS" ]] || [["${OSNAME}" = "Debian GNU/Linux" ]]; then
 	echo "Ensuring git dependencies are installed"
 	sudo apt install git
 fi

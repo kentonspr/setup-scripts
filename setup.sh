@@ -45,12 +45,19 @@ if [[ " ${SETUP_GROUPS[*]} " =~ " headless " ]]; then
 fi
 
 echo -e "\n--- Updating system before proceeding ---/n"
-if [ "${OSNAME}" = "Fedora Linux" ]; then
+if [ "${OSNAME}" = "Debian GNU/Linux" ]; then
+	sudo apt update
+	sudo apt dist-upgrade -y
+	sudo apt autoremove -y
+	sudo apt install -y "${DEBIAN_PACKAGES[@]}"
+fi
+
+if [[ "${OSNAME}" = "Fedora Linux" ]]; then
 	sudo dnf upgrade --refresh -y
 	sudo dnf install "${FEDORA_PACKAGES}" -y
 fi
 
-if [ "${OSNAME}" = "Ubuntu" ] || [ "${OSNAME}" = "Pop!_OS" ]; then
+if [[ "${OSNAME}" = "Ubuntu" ]] || [[ "${OSNAME}" = "Pop!_OS" ]]; then
 	sudo apt update
 	sudo apt dist-upgrade -y
 	sudo apt autoremove -y
@@ -64,9 +71,10 @@ if [[ "${IS_VM}" = true ]]; then
 	systemctl start qemu-guest-agent
 fi
 
-echo -e "\n--- Setting up Code directories ---\n"
+echo -e "\n--- Setting up directories ---\n"
 [[ ! -d "${CODEDIR}/personal" ]] && mkdir -p "${CODEDIR}/personal"
 [[ ! -d "${CODEDIR}/public" ]] && mkdir -p "${CODEDIR}/public"
+[[ ! -d "${USER_BOOTSTRAPDIR}" ]] && mkdir -p "${USER_BOOTSTRAPDIR}"
 
 printf "\n--- Run setup scripts ---\n"
 mkdir -p "${TMPDIR}"
@@ -74,8 +82,9 @@ SETUP_SCRIPTS=()
 
 echo -e "\n--- Gather scripts for the following groups - ${SETUP_GROUPS[*]} ---\n"
 # Get list of all scripts for device groups
-for GROUP in "${SETUP_GROUPS[@]}"; do
-	chmod +x ./scripts/"${GROUP}"/*
+# shellcheck disable=SC2068
+for GROUP in ${SETUP_GROUPS[@]}; do
+	chmod +x "./scripts/${GROUP}/"*
 	for SCRIPT in $(find "./scripts/${GROUP}/" -type f -name '*.sh' | sort); do
 		SETUP_SCRIPTS+=("${SCRIPT}")
 	done
@@ -86,7 +95,8 @@ IFS=$'\n' SORTED_SCRIPTS=("$(sort -t/ -k4 <<<"${SETUP_SCRIPTS[*]}")")
 unset IFS
 echo -e "\nSorted -\n${SORTED_SCRIPTS[*]}\n"
 
-for i in "${SORTED_SCRIPTS[@]}"; do
+# shellcheck disable=SC2068
+for i in ${SORTED_SCRIPTS[@]}; do
 	echo -e "\n--- START ${i} - $(date) ---\n"
 	FILENAME=$(basename -- "$i")
 

@@ -16,7 +16,7 @@ if [[ ${OSNAME} = "Fedora Linux" ]]; then
 	sudo dnf install zsh
 fi
 
-if [[ ${OSNAME} = "Ubuntu" ]] || [[ ${OSNAME} = "Pop!_OS" ]]; then
+if [[ ${OSNAME} = "Ubuntu" ]] || [[ ${OSNAME} = "Pop!_OS" ]] || [[ "${OSNAME}" = "Debian GNU/Linux" ]]; then
 	echo "Installing ZSH"
 	sudo apt install -y zsh
 fi

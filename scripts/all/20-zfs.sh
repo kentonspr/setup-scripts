@@ -10,6 +10,13 @@ if [[ ! ${INC_ZFS} ]]; then
 fi
 
 echo -e "\n--- Install ZFS ---\n"
+if [[ ${OSNAME} = "Debian GNU/Linux" ]]; then
+	echo -e "Enable contrib/non-free repos for ZFS install"
+	sudo apt-add-repository contrib -y
+	sudo apt-add-repository non-free -y
+	sudo apt install -y zfsutils-linux nfs-kernel-server
+fi
+
 if [[ ${OSNAME} = "Ubuntu" ]]; then
 	sudo apt install -y zfsutils-linux nfs-kernel-server
 fi

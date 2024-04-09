@@ -22,6 +22,6 @@ if [[ "${OSNAME}" = "Ubuntu" ]] || [[ "${OSNAME}" = "Pop!_OS" ]]; then
 fi
 
 echo -e "\n--- Install Packages ---\n"
-if [[ "${OSNAME}" = "Ubuntu" ]] || [[ "${OSNAME}" = "Pop!_OS" ]]; then
+if [[ "${OSNAME}" = "Ubuntu" ]] || [[ "${OSNAME}" = "Pop!_OS" ]] || [[ ${OSNAME} = "Debian GNU/Linux" ]]; then
 	sudo apt install -y podman
 fi
