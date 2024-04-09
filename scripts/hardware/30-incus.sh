@@ -16,10 +16,10 @@ fi
 
 echo "Installing Incus packages"
 if [[ "${OSVERSION}" = 12 ]]; then
-	sudo apt isntall incus/bookwork-backports
+	echo "deb http://deb.debian.org/debian bookworm-backports main" | sudo tee /etc/apt/sources.list.d/bookworm-backports.list
+	sudo apt update
+	sudo apt install incus/bookworm-backports
 fi
-
-sudo apt install incus
 
 if [[ "${IS_INCUS_MASTER}" = true ]]; then
 	echo -e "\n--- Initializing Incus ---\n"
@@ -29,7 +29,7 @@ if [[ "${IS_INCUS_MASTER}" = true ]]; then
 
 	# shellcheck disable=SC2068
 	for i in ${INCUS_CHILDREN[@]}; do
-		lxc cluster add "${i}" >"${i}.lxd.token"
+		incus cluster add "${i}" >"${i}.incus.token"
 	done
 fi
 
