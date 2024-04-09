@@ -57,7 +57,7 @@ if [ "${OSNAME}" = "Ubuntu" ] || [ "${OSNAME}" = "Pop!_OS" ]; then
 	sudo apt install -y "${UBUNTU_PACKAGES[@]}"
 fi
 
-if [[ "${IS_VM}" ]]; then
+if [[ "${IS_VM}" = true ]]; then
 	echo -e "\n--- installing vm tools ---\n"
 	sudo apt install -y qemu-guest-agent spice-vdagent
 	systemctl enable qemu-guest-agent
@@ -75,7 +75,7 @@ SETUP_SCRIPTS=()
 echo -e "\n--- Gather scripts for the following groups - ${SETUP_GROUPS[*]} ---\n"
 # Get list of all scripts for device groups
 for GROUP in "${SETUP_GROUPS[@]}"; do
-	chmod +x "./scripts/${GROUP}/*"
+	chmod +x ./scripts/"${GROUP}"/*
 	for SCRIPT in $(find "./scripts/${GROUP}/" -type f -name '*.sh' | sort); do
 		SETUP_SCRIPTS+=("${SCRIPT}")
 	done
