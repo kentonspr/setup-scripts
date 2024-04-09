@@ -2,4 +2,4 @@
 
 echo -e "\n### hostname ###\n"
 
-sudo hostnamectl set-hostname $HOSTNAME
+sudo hostnamectl set-hostname "${HOSTNAME}"

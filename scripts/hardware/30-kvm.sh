@@ -5,24 +5,24 @@ OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 CPU_VENDOR=$(cat /proc/cpuinfo | grep vendor_id | head -n1 | sed 's/^vendor_id\t:\s//')
 
 if [[ ! $INC_KVM ]]; then
-    echo "INC_KVM is not set. Skipping 30-kvm.sh"
-    exit 0
+	echo "INC_KVM is not set. Skipping 30-kvm.sh"
+	exit 0
 fi
 
 echo -e "\n--- Exit if VM accidentally go here ---\n"
 if [[ ${IS_VM} == true ]]; then
-    echo "This is a VM. Not installing KVM"
-    exit 0
+	echo "This is a VM. Not installing KVM"
+	exit 0
 fi
 
 if [[ $OSNAME = "Fedora Linux" ]]; then
-    echo "Installing KVM packages"
-    sudo dnf install -y bridge-utils libvirt virt-install qemu-kvm libvirt-devel virt-top libguestfs-tools guestfs-tools virt-manager
+	echo "Installing KVM packages"
+	sudo dnf install -y bridge-utils libvirt virt-install qemu-kvm libvirt-devel virt-top libguestfs-tools guestfs-tools virt-manager
 fi
 
-    if [[  $OSNAME = "Ubuntu" ]] || [[  $OSNAME = "Pop!_OS" ]]; then
-    echo "Installing KVM packages"
-    sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils ovmf
+if [[ $OSNAME = "Ubuntu" ]] || [[ $OSNAME = "Pop!_OS" ]]; then
+	echo "Installing KVM packages"
+	sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils ovmf
 fi
 
 echo -e "\n--- Stop and disable dnsmasq ---\n"
@@ -32,9 +32,9 @@ sudo systemctl disable dnsmasq
 echo -e "\n--- Creating libvirt group if it doesn't exist ---\n"
 sudo getent group | grep libvirt:
 
-if [[  $? -eq 1 ]]; then
-    echo "libvirt group does not exist. Creating..."
-    sudo groupadd --system libvirt
+if [[ $? -eq 1 ]]; then
+	echo "libvirt group does not exist. Creating..."
+	sudo groupadd --system libvirt
 fi
 
 echo -e "\n--- Adding ${USER} to libvirt group ---\n"
@@ -52,10 +52,9 @@ sudo mkdir -p /var/lib/libvirt/images/vms
 
 # Set IOMMU if on
 if [[ ! -z $IOMMU ]]; then
-   if [[ $CPU_VENDOR == 'AuthenticAMD' ]]; then
-       sudo sed -i -E 's/^(GRUB_CMDLINE_LINUX_DEFAULT=".*)"$/\1 amdiommu=on kvm.ignore_msrs=1"/' /etc/default/grub
-   fi
+	if [[ $CPU_VENDOR == 'AuthenticAMD' ]]; then
+		sudo sed -i -E 's/^(GRUB_CMDLINE_LINUX_DEFAULT=".*)"$/\1 amdiommu=on kvm.ignore_msrs=1"/' /etc/default/grub
+	fi
 
-   sudo grub-mkconfig -o /boot/grub/grub.cfg
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
 fi
-

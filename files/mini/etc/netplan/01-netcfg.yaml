@@ -1,0 +1,39 @@
+# This is the network config written by 'subiquity'
+network:
+  version: 2
+  ethernets:
+    enp1s0:
+      dhcp4: false
+      dhcp6: false
+    enp2s0:
+      dhcp4: false
+      dhcp6: false
+  vlans:
+    v252:
+      dhcp4: false
+      dhcp6: false
+      id: 252
+      link: enp1s0
+  bridges:
+    br252:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - v252
+      macaddress: ca:77:7c:41:3e:MAC_OCTET
+    br254:
+      dhcp4: false
+      dhcp6: false
+      addresses:
+      - 10.157.254.IP_OCTET/24
+      nameservers:
+        addresses:
+        - 10.157.252.53
+        search:
+        - kappnet.net
+      routes:
+      - to: default
+        via: 10.157.254.254
+      interfaces:
+        - enp1s0
+      macaddress: ca:77:7c:41:3d:MAC_OCTET
