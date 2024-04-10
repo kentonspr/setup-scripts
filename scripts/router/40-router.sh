@@ -6,8 +6,7 @@ OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
 sudo cp ${FILESDIR}/router/etc/default/dhcp-helper /etc/default/dhcp-helper
 
 # Install packages
-export DEBIAN_FRONTEND=noninteractive
-sudo apt-get install dhcp-helper vlan net-tools
+sudo DEBIAN_FRONTEND=noninteractive apt-get install dhcp-helper vlan net-tools
 
 # dhcp-helper pre-install
 sudo systemctl enable dhcp-helper.service

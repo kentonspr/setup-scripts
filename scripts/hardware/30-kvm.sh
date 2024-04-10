@@ -38,7 +38,7 @@ if [[ $? -eq 1 ]]; then
 fi
 
 echo -e "\n--- Adding ${USER} to libvirt group ---\n"
-sudo usermod -a -G libvirt ${USER}
+sudo usermod -a -G libvirt "${USER}"
 
 echo -e "\n--- Adding libvirt group to /etc/libvirt/libvirtd.conf ---\n"
 sudo sed -i 's/^#unix_sock_group = \"libvirt\"/unix_sock_group = \"libvirt\"/'

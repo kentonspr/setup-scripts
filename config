@@ -10,4 +10,4 @@ export ZPROFILEDIR="${ZDOTDIR}/zprofile.d"
 export DOTFILESDIR="${CODEDIR}/personal/dotfiles"
 export USER_BOOTSTRAPDIR="${HOME}/.bootstrap.d"
 export UBUNTU_PACKAGES=(jq net-tools pv netcat curl htop inetutils-tools unzip zip ripgrep fzf tree whois glances)
-export DEBIAN_PACKAGES=(jq net-tools pv netcat-openbsd curl htop inetutils-tools unzip zip ripgrep fzf tree whois glances software-properties-common netplan.io)
+export DEBIAN_PACKAGES=(jq net-tools pv netcat-openbsd curl htop inetutils-tools unzip zip ripgrep fzf tree whois glances software-properties-common git)

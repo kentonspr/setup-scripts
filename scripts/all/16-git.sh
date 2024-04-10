@@ -3,7 +3,7 @@
 
 echo -e "\n### git ###\n"
 
-OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
+OSNAME=$(sed -En "s/^NAME=\"(.*)\"/\1/p" </etc/os-release)
 
 if [[ ! ${INC_GIT} ]]; then
 	echo "INC_GIT is not set. Skipping 15-git.sh"
@@ -15,7 +15,7 @@ if [[ ${OSNAME} = "Fedora Linux" ]]; then
 	sudo dnf install git
 fi
 
-if [[ ${OSNAME} = "Ubuntu" ]] || [[ ${OSNAME} = "Pop!_OS" ]] || [["${OSNAME}" = "Debian GNU/Linux" ]]; then
+if [[ ${OSNAME} = "Ubuntu" ]] || [[ ${OSNAME} = "Pop!_OS" ]] || [[ "${OSNAME}" = "Debian GNU/Linux" ]]; then
 	echo "Ensuring git dependencies are installed"
 	sudo apt install git
 fi
