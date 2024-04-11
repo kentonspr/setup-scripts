@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Sets up KVM for virtualization
 
-OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
-CPU_VENDOR=$(cat /proc/cpuinfo | grep vendor_id | head -n1 | sed 's/^vendor_id\t:\s//')
+OSNAME=$(sed -En "s/^NAME=\"(.*)\"/\1/p" </etc/os-release)
 
 if [[ ! $INC_KVM ]]; then
 	echo "INC_KVM is not set. Skipping 30-kvm.sh"
@@ -49,12 +48,3 @@ sudo mkdir -p /var/lib/libvirt/images/isos
 sudo mkdir -p /var/lib/libvirt/images/vms
 
 #TODO Custom image directories
-
-# Set IOMMU if on
-if [[ ! -z $IOMMU ]]; then
-	if [[ $CPU_VENDOR == 'AuthenticAMD' ]]; then
-		sudo sed -i -E 's/^(GRUB_CMDLINE_LINUX_DEFAULT=".*)"$/\1 amdiommu=on kvm.ignore_msrs=1"/' /etc/default/grub
-	fi
-
-	sudo grub-mkconfig -o /boot/grub/grub.cfg
-fi

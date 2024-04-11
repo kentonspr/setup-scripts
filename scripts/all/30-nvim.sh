@@ -3,7 +3,7 @@
 
 echo -e "\n### neovim ###\n"
 
-OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
+OSNAME=$(sed -En "s/^NAME=\"(.*)\"/\1/p" </etc/os-release)
 
 if [[ ! "${INC_NVIM}" ]]; then
 	echo "INC_NVIM is not set. Skipping 30-nvim.sh"
@@ -37,6 +37,7 @@ echo -e "\n--- Installing $FILE ---\n"
 
 tar xzvf "${TMPDIR}/${FILE}" --directory "${HOME}/Apps"
 
+[[ -d "${HOME}/.local/bin" ]] || mkdir -p "${HOME}/.local/bin"
 ln -s "${HOME}/Apps/nvim-linux64/bin/nvim" "${HOME}/.local/bin/nvim"
 
 echo -e "\n--- update-alternatives ---\n"
@@ -47,9 +48,6 @@ sudo update-alternatives --set vim "${HOME}/Apps/nvim-linux64/bin/nvim"
 echo -e "\n--- link dotfiles ---\n"
 [ ! -d "${HOME}/.config" ] && mkdir "${HOME}/.config"
 ln -s "${CODEDIR}/personal/dotfiles/lazyvim" "${HOME}/.config/nvim"
-
-# echo -e "\n--- install packer ---\n"
-# git clone --depth 1 "https://github.com/wbthomason/packer.nvim/${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim"
 
 cp "${FILESDIR}/nvim/11-nvim-bootstrap.sh" "${USER_BOOTSTRAPDIR}"
 chmod +x "${USER_BOOTSTRAPDIR}/11-nvim-bootstrap.sh"

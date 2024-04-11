@@ -22,15 +22,15 @@ sudo systemctl enable systemd-resolved.service
 sudo apt install -y systemd-resolved
 
 # migrate current config to netplan
-sudo ENABLE_TEST_COMMANDS=1 netplan migrate && sudo netplan try
+sudo ENABLE_TEST_COMMANDS=1 netplan migrate
 
 # change permissions
 sudo chmod 600 /etc/netplan/*
+
+sudo netplan apply
 
 # remove old packages
 sudo apt purge ifupdown resolvconf -y && sudo rm -rf /etc/network
 
 # symlnk /etc/resolv.conf to /run/systemd/resolve/stub-resolv.conf
 sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
-
-sudo netplan apply

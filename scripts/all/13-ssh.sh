@@ -3,9 +3,9 @@
 
 echo -e "\n### ssh ###\n"
 
-OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
+OSNAME=$(sed -En "s/^NAME=\"(.*)\"/\1/p" </etc/os-release)
 
-if [[ ! ${INC_SSH} ]]; then
+if [[ ! "${INC_SSH}" = true ]]; then
 	echo "INC_SSH is not set. Skipping 14-ssh.sh"
 	exit 0
 fi
@@ -24,10 +24,11 @@ sudo systemctl enable sshd
 sudo systemctl start sshd
 
 echo "Copying pub key"
-cp "${FILESDIR}/ssh/id_rsa.pub" "${HOME}/.ssh/"
+[[ -d "${HOME}"/.ssh ]] || mkdir "${HOME}"/.ssh
+cp "${FILESDIR}"/ssh/id_rsa.pub "${HOME}"/.ssh/
 
 echo "Adding SSH Config"
-cp "${FILESDIR}/ssh/config" "${HOME}/.ssh/config"
+cp "${FILESDIR}"/ssh/config "${HOME}"/.ssh/config
 
 echo "Adding id_rsa.pub to authorized keys"
-cat "${HOME}/.ssh/id_rsa.pub" >>"${HOME}/.ssh/authorized_keys"
+cat "${HOME}"/.ssh/id_rsa.pub >>"${HOME}"/.ssh/authorized_keys

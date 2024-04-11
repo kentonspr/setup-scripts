@@ -3,8 +3,8 @@
 
 echo -e "\n### zsh ###\n"
 
-OSNAME=$(cat /etc/os-release | sed -En "s/^NAME=\"(.*)\"/\1/p")
-OSVERSION=$(cat /etc/os-release | sed -En "s/^VERSION_ID=\"(.*)\"/\1/p")
+OSNAME=$(sed -En "s/^NAME=\"(.*)\"/\1/p" </etc/os-release)
+OSVERSION=$(sed -En "s/^VERSION_ID=\"(.*)\"/\1/p" </etc/os-release)
 
 if [[ ! ${INC_ZSH} ]]; then
 	echo "INC_ZSH is not set. Skipping 16-zsh.sh"
@@ -22,7 +22,7 @@ if [[ ${OSNAME} = "Ubuntu" ]] || [[ ${OSNAME} = "Pop!_OS" ]] || [[ "${OSNAME}" =
 fi
 
 echo -e "\n--- Changing shell for ${USER} ---\n"
-chsh -s "$(which zsh)"
+sudo chsh -s "$(which zsh)" "${USER}"
 
 echo "Creating symlinks to zsh configs from dotfiles repo"
 mkdir -p "${ZDOTDIR}/zshrc.d"

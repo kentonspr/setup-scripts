@@ -29,6 +29,6 @@ cluster:
   cluster_address: ""
   cluster_certificate: ""
   server_address: ""
-  cluster_password: ""
+  # cluster_password: "" Not used in Incus
   cluster_certificate_path: ""
   cluster_token: ""
