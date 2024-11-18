@@ -5,7 +5,8 @@ echo -e "\n### 20-netplan.sh ###\n"
 OSNAME=$(sed -En "s/^NAME=\"(.*)\"/\1/p" </etc/os-release)
 
 if [[ ! ${OSNAME} = "Debian GNU/Linux" ]]; then
-	echo -e "OS is not Debian GNU/Linux. Skipping 20-netplan.sh"
+  echo -e "OS is not Debian GNU/Linux. Skipping 20-netplan.sh"
+  exit 0
 fi
 
 # install netplan

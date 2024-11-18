@@ -6,6 +6,16 @@ network:
       dhcp4: true
       dhcp6: false
   vlans:
+    v500:
+      dhcp4: false
+      dhcp6: false
+      id: 500
+      link: enp129s0f0
+    v501:
+      dhcp4: false
+      dhcp6: false
+      id: 501
+      link: enp129s0f0
     v1000:
       dhcp4: false
       dhcp6: false
@@ -32,6 +42,22 @@ network:
       id: 1004
       link: enp129s0f0
   bridges:
+    br500:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - v500
+      parameters:
+        forward-delay: 0
+        stp: false
+    br501:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - v501
+      parameters:
+        forward-delay: 0
+        stp: false
     br1000:
       dhcp4: false
       dhcp6: false

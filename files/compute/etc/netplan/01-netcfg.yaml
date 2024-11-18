@@ -25,6 +25,16 @@ network:
       dhcp6: false
       id: 254
       link: bond0
+    v500:
+      dhcp4: false
+      dhcp6: false
+      id: 500
+      link: bond0
+    v501:
+      dhcp4: false
+      dhcp6: false
+      id: 501
+      link: bond0
     vVLAN_START000:
       dhcp4: false
       dhcp6: false
@@ -57,6 +67,22 @@ network:
       interfaces:
         - v254
       macaddress: ca:77:7c:41:3f:e3
+    br500:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - v500
+      parameters:
+        forward-delay: 0
+        stp: false
+    br501:
+      dhcp4: false
+      dhcp6: false
+      interfaces:
+        - v501
+      parameters:
+        forward-delay: 0
+        stp: false
     brVLAN_START000:
       dhcp4: false
       dhcp6: false

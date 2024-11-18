@@ -56,6 +56,16 @@ network:
       link: enp45s0f0
       dhcp4: false
       dhcp6: false
+    v500:
+      id: 500
+      link: enp45s0f0
+      dhcp4: false
+      dhcp6: false
+    v501:
+      id: 501
+      link: enp45s0f0
+      dhcp4: false
+      dhcp6: false
     v998:
       id: 998
       link: enp45s0f0
@@ -143,6 +153,13 @@ network:
       parameters:
         stp: false
         forward-delay: 0
+    br157:
+      interfaces: [ v157 ]
+      addresses: [ 10.157.10.254/24 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
     br240:
       addresses: [ 10.157.240.2/30 ]
       dhcp6: false
@@ -178,9 +195,16 @@ network:
       parameters:
         stp: false
         forward-delay: 0
-    br157:
-      interfaces: [ v157 ]
-      addresses: [ 10.157.10.254/24 ]
+    br500:
+      interfaces: [ v500 ]
+      addresses: [ 10.157.201.254/24 ]
+      dhcp6: false
+      parameters:
+        stp: false
+        forward-delay: 0
+    br501:
+      interfaces: [ v501 ]
+      addresses: [ 10.157.203.254/24 ]
       dhcp6: false
       parameters:
         stp: false
